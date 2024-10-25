@@ -1,5 +1,5 @@
 footer {
-    background-color: #ffffff;
+    background-color: #777;
     color: white;
     padding: 15px 0;
     text-align: center;
@@ -66,7 +66,7 @@ footer {
 }
 
 .footer-left img.footer-logo {
-    height: 150px;
+    height: 100px;
     width: auto;
     display: block;
 }
