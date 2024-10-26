@@ -72,16 +72,3 @@ footer {
     display: block;
 }
 
-header{
-    background-color: #777;
-    color: white;
-    padding: 15px 0;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    position: fixed;
-    bottom: -10px;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    border-top: 1px solid #000000;
-}
