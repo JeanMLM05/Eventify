@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <link rel='stylesheet' type='text/css' media='screen' href='PerfilAdmin.css'> <!--CSS-->
+    <link rel="stylesheet" href="https://use.typekit.net/ltx2luq.css">
+
+    <title>MI PERFIL</title>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+        <a href="#" class="header-left">
+            <img src="eventify-logo.png" alt="Eventify Logo" class="header-logo">
+        </a>
+        <div class="header-right">
+            <a href="#">DASHBOARD</a>
+            <a href="#">EVENTOS</a>
+            <a href="#">USUARIOS</a>
+            <a href="#">CONFIGURACIÓN</a>
+            <a href="#">MI PERFIL</a>
+        </div>
+    </header>
+
+    <!-- CUERPO -->
+    <div class="contenedor-fondo" id="contenedor-fondo">
+
+        <!-- Parte izquierda de la página: foto, nombre y opciones del perfil -->
+        <div class="contenedor-menu" id="contenedor-menu"> <!-- Añadir imagen de usuario -->
+            <div class="nombre-y-foto" id="nombre-y-foto">
+                <img src="foto-de-perfil.png" width="50%" alt="foto de perfil">
+                <p class="nombre-txt" id="nombre-txt">Diego Vargas</p>
+            </div>
+            <div class="opciones-menu" id="opciones-menu">
+                <a href="#">Cerrar sesión<span></span></a> <!--Link al landing page (primera iteración)-->
+            </div>
+        </div>
+
+        <!-- Contenedor principal "Mi perfil" -->
+        <div class="contenedor-datos-perfil" id="contenedor-datos-perfil">
+            <h1 class="titulo-perfil" id="titulo-perfil">MI PERFIL</h1>
+
+            <div class="mi-perfil" id="mi-perfil">
+                <div class="mi-perfil-titulos" id="mi-perfil-titulos">
+                    <p>Identificación:</p>
+                    <p>Correo electrónico:</p>
+                    <p>Fecha de nacimiento:</p>
+                    <p>Residencia:</p>
+                </div>
+                <div class="mi-perfil-datos" id="mi-perfil-datos">
+                    <p>1-9876-5432</p> <!--Cambiar datos quemados por reales con la base de datos-->
+                    <p>diegovargas@gmail.com</p>
+                    <p>21-03-1997</p>
+                    <p>San José, Santa Ana</p>
+                </div>
+                
+
+            </div>
+            <div class="btnEditar" id="btnEditar">
+                <a href="ConfigPerfilAdmin.html">Editar perfil<span></span></a> <!--Link a página editar perfil-->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <span class="footer-logo">EVENTIFY</span>
+            </div>
+            <div class="footer-center">
+                <a href="#">Términos y condiciones</a>
+                <a href="#">Ayuda</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Contáctanos</a>
+            </div>
+            <div class="footer-right">
+                <a href="#" class="social">Facebook</a>
+                <a href="#" class="social">Instagram</a>
+                <a href="#" class="social">Twitter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Tropical Developers. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
