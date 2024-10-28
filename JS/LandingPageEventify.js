@@ -1,1 +1,0 @@
-//no sé qué poner pero es solo para guardar las carpetas
