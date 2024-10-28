@@ -13,6 +13,7 @@ header {
     height: 8vw; /* La altura se adapta al ancho de la pantalla */
     margin-left: 5%;
     margin-top: -4%;
+    margin-bottom: 1%;
     transition: transform .3s ease;
 }
 
