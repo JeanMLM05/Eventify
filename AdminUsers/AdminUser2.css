@@ -1,15 +1,22 @@
+/*------HEADER-----*/
+
 header{
     display: flex;
     align-items: center;
     padding: 0px 20px ;
     justify-content: space-between;
-
+    margin-top: -10px;
 }
 
 .header-logo{
-    height: 120px;
+    height: 140px;
     margin-left: 30px;
+    margin-top: -10px;
+    transition: transform .3s ease;
+}
 
+.header-logo:hover{
+    transform: scale(1.05);
 }
 
 .header-right{
@@ -21,6 +28,7 @@ header{
     padding: 5px 0px;
     margin-top: -10px;
     margin-right: 50px;
+    margin-top: -20px;
 }
 
 .header-right a{
@@ -31,9 +39,24 @@ header{
     font-family:sans-serif;
     font-size: 20px;
     font-weight: bolder;
+    transition: color .2s ease, transform .3s ease-out;
 }
 
+.header-right a:hover{
+    color: #cccccc;
+    transform: scale(1.03);
+}
 
+/*------FOOTER-----*/
+
+footer{
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo{
+    height: 140px;
+}
 
 
 
