@@ -7,8 +7,9 @@ header{
 }
 
 .header-logo{
-    height: 110px;
+    height: 120px;
     margin-left: 20px;
+
 }
 
 .header-right{
@@ -18,10 +19,11 @@ header{
     border-radius: 30px;
     height: 50px;
     padding: 5px 0px;
+    margin-top: -10px;
 }
 
 .header-right a{
-    padding: 0px 20px;
+    padding: 0px 10px;
     text-decoration: none;
     color: white;
     align-content: center;
@@ -29,6 +31,18 @@ header{
     font-size: 30px;
     font-weight: bolder;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 @keyframes hero-gradient-animation {
     0% {
