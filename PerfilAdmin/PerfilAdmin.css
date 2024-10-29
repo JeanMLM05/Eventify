@@ -43,8 +43,8 @@ header {
     border-radius: 2em;
     height: 3vw;
     width: 90%;
-    padding: 0.3em 0;
-    margin-top: -2%;
+    padding: 0.3em ;
+    margin-top: 0.3rem;
     margin-right: 5%;
 }
 
@@ -96,11 +96,12 @@ p{
     max-width: 27%;
     height: 80%;
     margin: 0;
-    margin-top: 1%;
+    margin: 4rem 1rem;
     margin-bottom: 2%;
     padding: 2%;
     border: #000000;
-    border-radius: 7%;
+    border-radius: 1.875rem;
+
     align-items: center;
     text-align: center;
     position: relative;
@@ -174,10 +175,10 @@ p{
     height: 75%;
     padding: 2%;
     margin-left: 12%;
-    margin-top: 0;
+    margin-top: 1rem; /*cambio*/
     position: relative;
     background-color: #000000;
-    border-radius: 8%;;
+    border-radius: 1.875rem;
     align-items: center;
     align-content: center;
     text-align: center;
