@@ -51,7 +51,7 @@ header {
 .header-right a {
     padding: 0 1.5vw;
     text-decoration: none;
-    color: white;
+    color: rgb(255, 255, 255);
     align-content: center;
     font-family:  "coolvetica", sans-serif;
     font-size: 1.100em;
