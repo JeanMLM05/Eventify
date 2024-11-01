@@ -1,0 +1,508 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+    font-family: "coolvetica", sans-serif;
+    font-weight: 400;
+    font-size: 1.200rem; /* Aproximadamente 30px */
+    color:rgb(255, 255, 255);
+    letter-spacing: 0.063rem; /* Aproximadamente 1px */
+    text-decoration: none;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main{
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1{
+    font-size: 5rem;
+    color: #000;
+    text-align: center;
+    padding: 2rem;
+}
+.container{
+    position: relative;
+    width: 100%;
+    max-width: 31.25rem;
+    border-radius: 1.875rem; /* Aproximadamente 30px */
+    padding: 1.875rem;
+    background-color: rgb(0, 0, 0);
+    width: 29.25rem;
+    
+
+}
+
+.container header{
+    font-size:3rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem; 
+    text-align: center;
+    margin: 0.8rem;
+
+}
+
+
+.formulario--label{
+    display: block;
+    padding: 10px 0;
+    
+}
+
+.formulario--grupo-input{
+    position: relative;
+}
+
+
+.formulario--input{
+    width: 100%;
+    border-bottom: 2px solid #035f22;
+    border-right: none;
+    outline: none;
+    padding: 0 10px;
+    transition: all 1s;
+    line-height: 45px;
+    
+}
+
+.formulario--validacion-estado{
+    position: absolute;
+    right: 45px;
+    bottom: 15px;
+    font-size: 20px;
+    opacity: 0;
+}
+
+.formulario--input:focus{
+    box-shadow: 0 0 8px #9376ff;
+}
+
+.formulario--input-error{
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
+}
+
+/*CSS llamado por el JS*/
+.formulario--input-error-activo{
+    display: block;
+    margin-left: 0.2rem;
+}
+
+.formulario--mensaje{
+    padding: 15px;
+    background-color: #b70505;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+
+/*CSS llamado por el JS*/
+.formulario--mensaje-activo{
+    display: block;
+}
+
+.formulario--grupo-btn-enviar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.container form .fields{
+    display: grid;
+    gap: 0.9rem 0.7rem;
+}
+
+form .fields .formulario--label{
+    
+    width: calc(100% / 3 - 10);
+    flex-direction: column;
+    padding-left: 0.5rem;
+}
+
+.formulario--grupo-input input{
+    outline: none;
+    border: 0.0625rem solid #aaa;
+    border-radius: 0.55rem;
+    font-size: 1rem;
+    padding: 0 15px;
+    height: 2.125rem;
+}
+
+
+.formulario--btn{
+    font-family: "coolvetica", sans-serif;
+    font-weight: 400;
+    font-size: 1.200rem; /* Aproximadamente 30px */
+    color:rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    letter-spacing: 0.063rem; 
+    border-radius: 0.55rem;
+    padding: 0.3rem 3rem;
+    cursor: pointer;
+    align-content: center;
+
+}
+
+.formulario--btn:hover{
+    background-color: #d9a0ff;
+    transition: 1s;
+}
+
+.formulario--mensaje-exito{
+    font-size: 2em;
+    color: #00ff55;
+    padding: 0.625rem;
+    text-align: center;
+    display: none;
+}
+
+/*CSS llamado por el JS*/
+.formulario--mensaje-exito-activo{
+    display: block;
+}
+
+.registro{
+    color: white;
+    
+}
+
+.registrop{
+    text-align: center;
+    padding-top: 0.9rem;
+    font-size: 1rem;
+}
+
+/*-------------VALIDACIONES----------------*/
+.formulario--grupo-correcto .formulario--validacion-estado{
+    color: #29ee0f;
+    opacity: 1;
+}
+
+/* .formulario--grupo-incorrecto .formulario--label{
+    color: #ee0f0f;
+} */
+
+.formulario--grupo-incorrecto .formulario--validacion-estado{
+    color: #ee0f0f;
+    opacity: 1;
+}
+
+.formulario--grupo-incorrecto .formulario--input{
+    border: 1px solid #ee0f0f;
+}
+
+/* FOOTER */
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    /* position: fixed; */
+    margin-top: 2rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    border-top: 1px solid #444;
+    font-family: 'Coolvetica', Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.footer-left .footer-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.footer-center a {
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-center a:hover {
+    text-decoration: underline;
+}
+
+.footer-right a {
+    color: #ffffff;
+    background-color: #444;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-right a:hover {
+    background-color: #333;
+}
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    margin-top: 10px;
+    padding-top: 10px;
+    font-size: 12px;
+    color: #ccc;
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+
+/*fondo*/
+@keyframes hero-gradient-animation {
+    0% {
+        --x-0: 85%;
+        --s-start-0: 9%;
+        --s-end-0: 55%;
+        --c-0: hsla(338.04878048780483, 100%, 91%, 1);
+        --y-0: 80%;
+        --c-1: hsla(285.2631578947368, 80%, 86%, 1);
+        --s-start-1: 5%;
+        --s-end-1: 72%;
+        --x-1: 60%;
+        --y-1: 24%;
+        --y-2: 82%;
+        --x-2: 13%;
+        --c-2: hsla(261.8181818181818, 100%, 87%, 1);
+        --s-start-2: 5%;
+        --s-end-2: 52%;
+        --s-start-3: 13%;
+        --s-end-3: 68%;
+        --x-3: 24%;
+        --y-3: 7%;
+        --c-3: hsla(230.24999999999997, 100%, 84%, 1);
+        --s-start-4: 13%;
+        --s-end-4: 68%;
+        --x-4: 24%;
+        --y-4: 7%;
+        --c-4: hsla(214.44444444444443, 100%, 78%, 1);
+    }
+
+    100% {
+        --x-0: 31%;
+        --s-start-0: 9%;
+        --s-end-0: 55%;
+        --c-0: hsla(338.04878048780483, 100%, 91%, 1);
+        --y-0: 94%;
+        --c-1: hsla(285.2631578947368, 80%, 86%, 1);
+        --s-start-1: 5%;
+        --s-end-1: 72%;
+        --x-1: 2%;
+        --y-1: 25%;
+        --y-2: 20%;
+        --x-2: 98%;
+        --c-2: hsla(261.8181818181818, 100%, 87%, 1);
+        --s-start-2: 5%;
+        --s-end-2: 52%;
+        --s-start-3: 13%;
+        --s-end-3: 68%;
+        --x-3: 95%;
+        --y-3: 92%;
+        --c-3: hsla(230.24999999999997, 100%, 84%, 1);
+        --s-start-4: 13%;
+        --s-end-4: 68%;
+        --x-4: 95%;
+        --y-4: 92%;
+        --c-4: hsla(214.44444444444443, 100%, 78%, 1);
+    }
+}
+
+@property --x-0 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 85%
+}
+
+@property --s-start-0 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 9%
+}
+
+@property --s-end-0 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 55%
+}
+
+@property --c-0 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hsla(338.04878048780483, 100%, 91%, 1)
+}
+
+@property --y-0 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 80%
+}
+
+@property --c-1 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hsla(285.2631578947368, 80%, 86%, 1)
+}
+
+@property --s-start-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 5%
+}
+
+@property --s-end-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 72%
+}
+
+@property --x-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 60%
+}
+
+@property --y-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 24%
+}
+
+@property --y-2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 82%
+}
+
+@property --x-2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 13%
+}
+
+@property --c-2 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hsla(261.8181818181818, 100%, 87%, 1)
+}
+
+@property --s-start-2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 5%
+}
+
+@property --s-end-2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 52%
+}
+
+@property --s-start-3 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 13%
+}
+
+@property --s-end-3 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 68%
+}
+
+@property --x-3 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 24%
+}
+
+@property --y-3 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 7%
+}
+
+@property --c-3 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hsla(230.24999999999997, 100%, 84%, 1)
+}
+
+@property --s-start-4 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 13%
+}
+
+@property --s-end-4 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 68%
+}
+
+@property --x-4 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 24%
+}
+
+@property --y-4 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 7%
+}
+
+@property --c-4 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hsla(214.44444444444443, 100%, 78%, 1)
+}
+
+body {
+    --x-0: 85%;
+    --c-0: hsla(338.04878048780483, 100%, 91%, 1);
+    --y-0: 80%;
+    --c-1: hsla(285.2631578947368, 80%, 86%, 1);
+    --x-1: 60%;
+    --y-1: 24%;
+    --y-2: 82%;
+    --x-2: 13%;
+    --c-2: hsla(261.8181818181818, 100%, 87%, 1);
+    --x-3: 24%;
+    --y-3: 7%;
+    --c-3: hsla(230.24999999999997, 100%, 84%, 1);
+    --x-4: 24%;
+    --y-4: 7%;
+    --c-4: hsla(214.44444444444443, 100%, 78%, 1);
+    ;
+    background-color: hsla(228.97058823529406, 100%, 84%, 1);
+    background-image: radial-gradient(circle at var(--x-0) var(--y-0), var(--c-0) var(--s-start-0), transparent var(--s-end-0)), radial-gradient(circle at var(--x-1) var(--y-1), var(--c-1) var(--s-start-1), transparent var(--s-end-1)), radial-gradient(circle at var(--x-2) var(--y-2), var(--c-2) var(--s-start-2), transparent var(--s-end-2)), radial-gradient(circle at var(--x-3) var(--y-3), var(--c-3) var(--s-start-3), transparent var(--s-end-3)), radial-gradient(circle at var(--x-4) var(--y-4), var(--c-4) var(--s-start-4), transparent var(--s-end-4));
+    animation: hero-gradient-animation 10s linear infinite alternate;
+    background-blend-mode: normal, normal, normal, normal, normal;
+}
