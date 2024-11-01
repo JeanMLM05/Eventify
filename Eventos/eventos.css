@@ -1,0 +1,559 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+body{
+    font-family: "coolvetica", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.900rem; /* Aproximadamente 30px arreglar */
+    color:rgb(255, 255, 255);
+    letter-spacing: 0.099rem; /* Aproximadamente 1px */
+    text-decoration: none;
+    min-height: 100vh;
+    border-radius: 1.875rem; /* Aproximadamente 30px */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    justify-content: space-between;
+    margin-top: 1%;
+    
+}
+
+.header-left{
+    margin-left: -2%;
+
+}
+
+.header-logo {
+    height: 8vw; /* La altura se adapta al ancho de la pantalla */
+    margin-top: 4%;
+    margin-bottom: 1%;;
+    transition: .3s ease;
+}
+
+.header-logo:hover {
+    transform: scale(1.05);
+}
+
+.header-right {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    background-color: black;
+    z-index: 10;
+    border-radius: 2em;
+    height: 3vw;
+    width: 90%;
+    padding: 0.3em ;
+    padding-right: 0.9em;
+    margin-right: 5%;
+    margin-left: 3%; /*agregar al de admin*/
+}
+
+.sub-menu-header {
+    display: none;
+    position: absolute;
+    top: 118%; /* Coloca el submenú justo debajo de "EVENTOS" */
+    left: 50%; /* Alinea el submenú al centro de "EVENTOS" */
+    transform: translateX(-51%); /* Centra el submenú */
+    background-color: #000000;
+    padding: 0.9375rem 1.25rem;
+    width: 16.25rem;
+    border-radius: 1.875rem;
+    text-align: center;
+    border-color: rgb(233, 222, 255);
+    border-style: solid;
+    border-width: 0.3125rem;
+    
+
+}
+
+.header-right a {
+    padding: 0 1.5vw;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    align-content: center;
+    font-family:  "coolvetica", sans-serif;
+    font-size: 1.100em;
+    font-weight: 700;
+    letter-spacing: 0.063rem;
+    border-radius: 1.875rem;
+    transition: color .2s ease, transform .3s ease-out;
+}
+
+.header-right a:hover {
+    color: #cccccc;
+    transform: scale(1.03);
+}
+
+
+/* Estilo de los enlaces del menú */
+.opciones-menu-header {
+    padding-left: 0.8rem ;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    align-content: center;
+    font-family:  "coolvetica", sans-serif;
+    font-size: 1.020em;
+    font-weight: 700;
+    letter-spacing: 0.063rem;
+    border-radius: 1.875rem;
+    transition: color .2s ease, transform .3s ease-out;
+    list-style: none;
+}
+
+.opciones-menu-header:hover{
+    color: #cccccc;
+    transform: scale(1.03);
+}
+.opciones-menu-header .enlace-menu-header {
+    color: white;
+    text-decoration: none;
+}
+
+.opciones-menu-header .enlace-menu-header:hover {
+    color: #cccccc;
+    transform: scale(1.03);
+    display: inline-block;
+    transition: color .2s ease, transform .3s ease-out; 
+}
+
+
+/* mostrar submenú al pasar el cursor ???*/
+.opciones-menu-header:hover .sub-menu-header {
+    display: block;
+    
+}
+
+.opciones-submenu-header {
+    padding: 10px 0px;
+    color: #ffffff;
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+
+}
+
+.opciones-submenu-header:hover {
+    color: #cccccc;
+    transform: scale(1.03);
+}
+
+/* estilo de barra de búsqueda */
+.search {
+
+    width: 12.5;
+    display: flex;
+    align-items: center;
+    padding: 0.1em ;
+    border-radius: 2em;
+    background: #000000;
+    transition: box-shadow 0.25s;
+    padding-left: 1.875rem;
+}
+
+.search-input {
+    font-family: "coolvetica", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.875rem;
+    color: #ffffff;
+    letter-spacing: 0.063rem;
+    margin-left: 1rem;
+    margin-right: 2rem;
+    margin: 0.6rem;
+    text-align: center;
+    outline: none;
+    border: none;
+    background: transparent;
+    width: 9vw;
+    flex: 1;
+}
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+
+/*fin 
+
+css del header*/
+
+/*cuerpo*/
+h1{
+    text-align: center;
+    color: #000;
+    padding-bottom: 1rem;
+}
+.container-evento{
+    max-width: 31.25rem;
+    border-radius: 1.875rem; /* Aproximadamente 30px */
+    padding: 1rem;
+    background-color: rgb(0, 0, 0);
+}
+
+.container-evento p{
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.container-evento a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-evento{
+    margin-top: 10px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-item{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-p{
+    width: 200px;
+}
+
+
+.imagen-evento{
+    border-radius: 1.875rem;
+}
+
+.proximos-eventos{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+h4{
+    padding-top: 0.8rem;
+}
+
+
+/* FOOTER */
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    /* position: fixed; */
+    margin-top: 2rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    border-top: 1px solid #444;
+    font-family: 'Coolvetica', Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.footer-left .footer-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.footer-center a {
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-center a:hover {
+    text-decoration: underline;
+}
+
+.footer-right a {
+    color: #ffffff;
+    background-color: #444;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-right a:hover {
+    background-color: #333;
+}
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    margin-top: 10px;
+    padding-top: 10px;
+    font-size: 12px;
+    color: #ccc;
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+
+/*fondo*/
+@keyframes hero-gradient-animation {
+    0% {
+        --x-0: 85%;
+        --s-start-0: 9%;
+        --s-end-0: 55%;
+        --c-0: hsla(338.04878048780483, 100%, 91%, 1);
+        --y-0: 80%;
+        --c-1: hsla(285.2631578947368, 80%, 86%, 1);
+        --s-start-1: 5%;
+        --s-end-1: 72%;
+        --x-1: 60%;
+        --y-1: 24%;
+        --y-2: 82%;
+        --x-2: 13%;
+        --c-2: hsla(261.8181818181818, 100%, 87%, 1);
+        --s-start-2: 5%;
+        --s-end-2: 52%;
+        --s-start-3: 13%;
+        --s-end-3: 68%;
+        --x-3: 24%;
+        --y-3: 7%;
+        --c-3: hsla(230.24999999999997, 100%, 84%, 1);
+        --s-start-4: 13%;
+        --s-end-4: 68%;
+        --x-4: 24%;
+        --y-4: 7%;
+        --c-4: hsla(214.44444444444443, 100%, 78%, 1);
+    }
+
+    100% {
+        --x-0: 31%;
+        --s-start-0: 9%;
+        --s-end-0: 55%;
+        --c-0: hsla(338.04878048780483, 100%, 91%, 1);
+        --y-0: 94%;
+        --c-1: hsla(285.2631578947368, 80%, 86%, 1);
+        --s-start-1: 5%;
+        --s-end-1: 72%;
+        --x-1: 2%;
+        --y-1: 25%;
+        --y-2: 20%;
+        --x-2: 98%;
+        --c-2: hsla(261.8181818181818, 100%, 87%, 1);
+        --s-start-2: 5%;
+        --s-end-2: 52%;
+        --s-start-3: 13%;
+        --s-end-3: 68%;
+        --x-3: 95%;
+        --y-3: 92%;
+        --c-3: hsla(230.24999999999997, 100%, 84%, 1);
+        --s-start-4: 13%;
+        --s-end-4: 68%;
+        --x-4: 95%;
+        --y-4: 92%;
+        --c-4: hsla(214.44444444444443, 100%, 78%, 1);
+    }
+}
+
+@property --x-0 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 85%
+}
+
+@property --s-start-0 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 9%
+}
+
+@property --s-end-0 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 55%
+}
+
+@property --c-0 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hsla(338.04878048780483, 100%, 91%, 1)
+}
+
+@property --y-0 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 80%
+}
+
+@property --c-1 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hsla(285.2631578947368, 80%, 86%, 1)
+}
+
+@property --s-start-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 5%
+}
+
+@property --s-end-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 72%
+}
+
+@property --x-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 60%
+}
+
+@property --y-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 24%
+}
+
+@property --y-2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 82%
+}
+
+@property --x-2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 13%
+}
+
+@property --c-2 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hsla(261.8181818181818, 100%, 87%, 1)
+}
+
+@property --s-start-2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 5%
+}
+
+@property --s-end-2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 52%
+}
+
+@property --s-start-3 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 13%
+}
+
+@property --s-end-3 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 68%
+}
+
+@property --x-3 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 24%
+}
+
+@property --y-3 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 7%
+}
+
+@property --c-3 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hsla(230.24999999999997, 100%, 84%, 1)
+}
+
+@property --s-start-4 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 13%
+}
+
+@property --s-end-4 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 68%
+}
+
+@property --x-4 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 24%
+}
+
+@property --y-4 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 7%
+}
+
+@property --c-4 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hsla(214.44444444444443, 100%, 78%, 1)
+}
+
+body {
+    --x-0: 85%;
+    --c-0: hsla(338.04878048780483, 100%, 91%, 1);
+    --y-0: 80%;
+    --c-1: hsla(285.2631578947368, 80%, 86%, 1);
+    --x-1: 60%;
+    --y-1: 24%;
+    --y-2: 82%;
+    --x-2: 13%;
+    --c-2: hsla(261.8181818181818, 100%, 87%, 1);
+    --x-3: 24%;
+    --y-3: 7%;
+    --c-3: hsla(230.24999999999997, 100%, 84%, 1);
+    --x-4: 24%;
+    --y-4: 7%;
+    --c-4: hsla(214.44444444444443, 100%, 78%, 1);
+    ;
+    background-color: hsla(228.97058823529406, 100%, 84%, 1);
+    background-image: radial-gradient(circle at var(--x-0) var(--y-0), var(--c-0) var(--s-start-0), transparent var(--s-end-0)), radial-gradient(circle at var(--x-1) var(--y-1), var(--c-1) var(--s-start-1), transparent var(--s-end-1)), radial-gradient(circle at var(--x-2) var(--y-2), var(--c-2) var(--s-start-2), transparent var(--s-end-2)), radial-gradient(circle at var(--x-3) var(--y-3), var(--c-3) var(--s-start-3), transparent var(--s-end-3)), radial-gradient(circle at var(--x-4) var(--y-4), var(--c-4) var(--s-start-4), transparent var(--s-end-4));
+    animation: hero-gradient-animation 10s linear infinite alternate;
+    background-blend-mode: normal, normal, normal, normal, normal;
+}
