@@ -149,7 +149,7 @@ main{
 }
 
 main h1{
-    margin: 5vh auto;
+    margin: 0vh 0vh 8vh 0vh;
     display: inline-block;
     text-align: center;
     font-size: 4vh;
