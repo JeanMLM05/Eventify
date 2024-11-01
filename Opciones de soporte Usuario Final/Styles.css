@@ -176,24 +176,6 @@ footer {
     text-align: center;
 }
 
-/* Responsive adjustments for footer */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .footer-center, .footer-right {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-}
-
-
-
-
-
 /* Estilo del contenedor de reporte de problema */
 .report-problem-container {
     max-width: 600px;
