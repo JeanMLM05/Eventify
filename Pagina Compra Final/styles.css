@@ -21,44 +21,6 @@ body {
 }
 
 /* Header */
-header {
-    display: flex;
-    align-items: center;
-    padding: 10px 5%;
-    justify-content: space-between;
-}
-
-.header-logo {
-    height: 150px;
-    transition: transform .3s ease;
-}
-
-.header-logo:hover {
-    transform: scale(1.05);
-}
-
-.header-right {
-    display: flex;
-    justify-content: space-between;
-    background-color: #000;
-    border-radius: 20px;
-    padding: 5px 10px;
-}
-
-.header-right a {
-    padding: 10px 15px;
-    text-decoration: none;
-    color: white;
-    font-size: 1em;
-    font-weight: 700;
-    letter-spacing: 0.063rem;
-    transition: color .2s ease, transform .3s ease-out;
-}
-
-.header-right a:hover {
-    color: #cccccc;
-    transform: scale(1.05);
-}
 
 /* Checkout Container */
 .checkout-container {
