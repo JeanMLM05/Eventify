@@ -11,35 +11,59 @@
 <body>
     <!-- Header -->
     <header>
-        <a href="#" class="header-left">
-            <img src="logo-img.png" alt="Eventify Logo" class="header-logo">
-        </a>
-        <div class="header-right">
-            <a href="#">DASHBOARD</a>
-            <a href="#">EVENTOS</a>
-            <a href="#">USUARIOS</a>
-            <a href="#">CONFIGURACIÓN</a>
-            <a href="#">MI PERFIL</a>
+        <a href="index.html" class="header-left">
+                <img src="eventify-logo.png" alt="Eventify Logo" class="header-logo">
+            </a>
+
+
+            <div class="header-right">
+                    <li class="opciones-menu-header">
+                    <a href="eventos.html">EVENTOS</a>
+                    <ul class="sub-menu-header">
+                        <li class="opciones-submenu-header"><a href="fiestas.html">FIESTAS</a></li>
+                        <li class="opciones-submenu-header"><a href="deportes.html">DEPORTES</a></li>
+                        <li class="opciones-submenu-header"><a href="conciertos.html">CONCIERTOS</a></li>
+                        <li class="opciones-submenu-header"><a href="exposiciones.html">EXPOSICIONES</a></li>
+                        <li class="opciones-submenu-header"><a href="gastronomia.html">GASTRONOMÍA</a></li>
+           
+                    </ul>
+                    </li>
+                <a href="nosotros.html">NOSOTROS</a>
+                <a href="miperfil.html">MI PERFIL</a>
+       
+            </div>
+
+
+    <form>
+        <div class="search">
+            <img src="searchh.png" alt="buscar" width="30rem">
+            <input class="search-input" type="search" placeholder="BUSCAR">
         </div>
+    </form>
     </header>
+
 
     
         <!--BODY-->
         <div class="main-content">
             <!-- Sección izquierda -->
-            <aside class="sidebar">
-                <div class="profile">
-                    <div class="profile-picture">
-                        <img src="foto-de-perfil.jpg" alt="Foto de perfil">
+            <!-- CUERPO -->
+            <div class="contenedor-fondo" id="contenedor-fondo">
+                <!-- Parte izquierda de la página: foto, nombre y opciones del perfil -->
+                <div class="contenedor-menu" id="contenedor-menu"> <!-- Añadir imagen de usuario -->
+                    <div class="nombre-y-foto" id="nombre-y-foto">
+                        <img src="foto-de-perfil.jpg" width="50%" alt="foto de perfil">
+                            <p class="nombre-txt" id="nombre-txt">Alejandra López</p>
                     </div>
-                    <p class="profile-name">Rayner Rodriguez</p>
+                        <div class="opciones-menu" id="opciones-menu">
+                            <a href="#">Mis eventos<span></span></a> <!--Link pantalla mis eventos-->
+                            <a href="#">Mis métodos de pago<span></span></a><!--Link pantalla de métodos de pago(listado de tarjetas)-->
+                            <a href="#">Cerrar sesión<span></span></a> <!--Link al landing page (primera iteración)-->
+                        </div>
                 </div>
-                <nav class="menu">
-                    <a href="#">Mis Eventos <span></span></a>
-                    <a href="#">Mis métodos de pago <span></span></a>
-                    <a href="#">Cerrar sesión <span></span></a>
-                </nav>
-            </aside>
+
+            </div>
+
         
             <!-- Sección central -->
             <section class="event-container">
@@ -60,7 +84,7 @@
                     <div class="event-image">
                         <img src="evento2.png" alt="evento2">
                     </div>
-                    <h3>Ladies Night</h3>
+                    <h3>LADIES NIGHT</h3>
                     <p>📅 <span>Sab Nov 02, 2024 9pm</p>
                     <p><span></span>📍 <span>Centro de eventos la Uruca</p>
                     <p>🟢 <span>Estado: Disponible</p>
