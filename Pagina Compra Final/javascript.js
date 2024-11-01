@@ -97,9 +97,10 @@ document.getElementById("checkout-form").addEventListener("submit", function(eve
 
 // Formato de número de tarjeta y número de teléfono
 document.getElementById("cardNumber").addEventListener("input", function(event) {
-    const value = event.target.value.replace(/\s/g, '').match(/.{1,4}/g);
+    const value = event.target.value.replace(/\D/g, '').match(/.{1,4}/g);
     event.target.value = value ? value.join(' ') : '';
 });
+
 
 document.getElementById("phone").addEventListener("input", function(event) {
     const value = event.target.value.replace(/[^\d+]/g, '').slice(0, 12);

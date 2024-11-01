@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <link rel='stylesheet' type='text/css' media='screen' href='InfoEvento.css'> <!--CSS-->
+    <link rel="stylesheet" href="https://use.typekit.net/ltx2luq.css">
+
+    <title>INFORMACIÓN DEL EVENTO</title>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="header-left">
+            <img src="eventify-logo.png" alt="Eventify Logo" class="header-logo">
+        </a>
+
+        <div class="header-right">
+            <li class="opciones-menu-header">
+                <a href="eventos.html">EVENTOS</a>
+                <ul class="sub-menu-header">
+                    <li class="opciones-submenu-header"><a href="fiestas.html">FIESTAS</a></li>
+                    <li class="opciones-submenu-header"><a href="deportes.html">DEPORTES</a></li>
+                    <li class="opciones-submenu-header"><a href="conciertos.html">CONCIERTOS</a></li>
+                    <li class="opciones-submenu-header"><a href="exposiciones.html">EXPOSICIONES</a></li>
+                    <li class="opciones-submenu-header"><a href="gastronomia.html">GASTRONOMÍA</a></li>
+
+                </ul>
+            </li>
+            <a href="nosotros.html">NOSOTROS</a>
+            <a href="miperfil.html">MI PERFIL</a>
+
+        </div>
+
+        <form>
+            <div class="search">
+                <img src="searchh.png" alt="buscar" width="30rem">
+                <input class="search-input" type="search" placeholder="BUSCAR">
+            </div>
+        </form>
+    </header>
+
+
+    <!-- CUERPO -->
+
+    <div class="contenedor-fondo" id="contenedor-fondo">
+
+        <!-- Parte izquierda de la página: foto del evento -->
+        <div class="contenedor-foto" id="contenedor-foto">
+            <img class="foto-evento" src="evento-1.png" alt="Imagen ilustrativa del evento">
+        </div>
+
+        <!-- Contenedor principal "Mi perfil" -->
+        <div class="contenedor-datos-evento" id="contenedor-datos-evento">
+            <h1 class="titulo-evento" id="titulo-evento">EL CULTO: RITUAL</h1>
+
+            <div class="datos-evento" id="datos-evento">
+                <p>📅<span>Sab, Nov 02, 2024</p>
+                <p>📍<span>Centro de Eventos La Uruca</p>
+                <p>🕒<span>9:00pm</p>
+            </div>
+
+            <div class="descripcion-evento" id="descripcion-evento">
+                <p>Prepárate para la noche más aterradora y emocionante del año.
+                    No te pierdas esta fiesta llena de buena música y un gran ambiente.
+                    Premios a los mejores 3 disfraces de la noche. ¡Te esperamos para
+                    una fiesta de disfraces inolvidable!
+                </p>
+            </div>
+
+            <form class="formulario-evento" id="formulario-evento">
+
+                <div class="contenedor-entradas">
+                    <div class="entradas-general" id="entradas-general">
+                        <p class="titulo-entradas" id="titulo-entradas">GENERAL</p>
+                        <p class="precio-entrada">$20</p>
+                        <p class="num-entradas" id="num-entradas1">0</p>
+                        <button type="button" class="btn-entradas-menos1">-<span></span></button>
+                        <button type="button" class="btn-entradas-mas1">+<span></span></button>
+                    </div>
+
+                    <div class="entradas-vip" id="entradas-vip">
+                        <p class="titulo-entradas" id="titulo-entradas">VIP</p>
+                        <p class="precio-entrada">$35</p>
+                        <p class="num-entradas" id="num-entradas2">0</p>
+                        <button type="button" class="btn-entradas-menos2">-<span></span></button>
+                        <button type="button" class="btn-entradas-mas2">+<span></span></button>
+                    </div>
+                </div>
+
+                <div class="contenedor-requisitos" id="contenedor-requisitos">
+                    <p class="requisito1">+18</p>
+                    <p class="requisito2">No hay reingreso</p>
+                    <p class="requisito3">No traer bebidas</p>
+                </div>
+
+                <div class="formulario-terminos" id="grupo-terminos">
+                    <label class="formulario-label">
+                        <input type="checkbox" class="formulario-checkbox" name="terminos" id="terminos">
+                        <b class="formulario-span">Acepto los terminos y condiciones<span></span></b>
+                    </label>
+                </div>
+
+                <div class="btn-FinalizarCompra" id="btn-FinalizarCompra">
+                    <a href="PerfilAdmin.html">Finalizar compra<span></span></a> <!-- AGREGAR LINK A CHECKOUT -->
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <span class="footer-logo">EVENTIFY</span>
+            </div>
+            <div class="footer-center">
+                <a href="#">Términos y condiciones</a>
+                <a href="#">Ayuda</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Contáctanos</a>
+            </div>
+            <div class="footer-right">
+                <a href="#" class="social">Facebook</a>
+                <a href="#" class="social">Instagram</a>
+                <a href="#" class="social">Twitter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Tropical Developers. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
