@@ -25,13 +25,18 @@ body {
 header {
     display: flex;
     align-items: center;
-    padding: 2vh 5vw;
+    padding: 0 5%;
     justify-content: space-between;
+    margin-top: 1%;
+    
 }
 
 .header-logo {
-    height: 8vh;
-    transition: transform .3s ease;
+    height: 8vw; /* La altura se adapta al ancho de la pantalla */
+    margin-left: 5%;
+    margin-top: -4%;
+    margin-bottom: 1%;;
+    transition: .3s ease;
 }
 
 .header-logo:hover {
@@ -41,24 +46,33 @@ header {
 .header-right {
     display: flex;
     justify-content: space-between;
-    background-color: #000;
-    border-radius: 1rem;
-    padding: 0.5rem 1rem;
+    background-color: black;
+    border-radius: 2em;
+    height: 3vw;
+    width: 90%;
+    padding: 0.3em ;
+    margin-top: 0.3rem;
+    margin-right: 5%;
 }
 
 .header-right a {
-    padding: 0.5rem 1rem;
+    padding: 0 1.5vw;
     text-decoration: none;
-    color: white;
-    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    align-content: center;
+    font-family:  "coolvetica", sans-serif;
+    font-size: 1.100em;
     font-weight: 700;
+    letter-spacing: 0.063rem;
+    border-radius: 1.875rem;
     transition: color .2s ease, transform .3s ease-out;
 }
 
 .header-right a:hover {
     color: #cccccc;
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
+
 
 /* Contenedor de Configuración */
 .config-container {
