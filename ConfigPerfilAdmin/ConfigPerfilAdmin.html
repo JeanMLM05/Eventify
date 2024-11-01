@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <link rel='stylesheet' type='text/css' media='screen' href='ConfigPerfilAdmin.css'> <!--CSS-->
+    <link rel="stylesheet" href="https://use.typekit.net/ltx2luq.css">
+
+    <title>MI PERFIL</title>
+</head>
+
+<body>
+    <!-- HEADER -->
+
+    <header>
+        <a href="#" class="header-left">
+            <img src="eventify-logo.png" alt="Eventify Logo" class="header-logo">
+        </a>
+        <div class="header-right">
+            <a href="#">DASHBOARD</a>
+            <a href="#">EVENTOS</a>
+            <a href="#">USUARIOS</a>
+            <a href="#">CONFIGURACIÓN</a>
+            <a href="#">MI PERFIL</a>
+        </div>
+    </header>
+
+    <!-- CUERPO -->
+
+    <div class="contenedor-fondo" id="contenedor-fondo">
+
+        <!-- Parte izquierda de la página: foto, nombre y opciones del perfil -->
+        <div class="contenedor-menu" id="contenedor-menu"> <!-- Añadir imagen de usuario -->
+            <div class="nombre-y-foto" id="nombre-y-foto">
+                <img src="foto-de-perfil.png" width="50%" alt="foto de perfil">
+                <p class="nombre-txt" id="nombre-txt">Diego Vargas</p>
+            </div>
+            <div class="opciones-menu" id="opciones-menu">
+                <a href="#">Cerrar sesión<span></span></a> <!--Link al landing page (primera iteración)-->
+            </div>
+        </div>
+
+        <!-- Contenedor principal "Mi perfil" -->
+        <div class="contenedor-datos-perfil" id="contenedor-datos-perfil">
+            <h1 class="titulo-perfil" id="titulo-perfil">MI PERFIL</h1>       
+
+
+            <div class="mi-perfil" id="mi-perfil">
+
+                <div class="mi-perfil-titulos" id="mi-perfil-titulos">
+                    <p>Identificación:</p>
+                    <p>Correo electrónico:</p>
+                    <p>Fecha de nacimiento:</p>
+                    <p>Residencia:</p>
+                </div>
+                <form action="#" class="mi-perfil-datos" id="formulario">
+                    <!--Cambiar datos quemados por reales con la base de datos-->
+
+                    <!--GRUPO DE IDENTIFICACION-->
+                    <div class="formulario-grupo" id="grupo-identificacion">
+                        <div class="formulario-grupo-input">
+                            <input type="text" class="formulario-input" name="identificacion" id="identificacion"
+                                placeholder="1-9876-5432">
+                        </div>
+                        <p class="formulario-input-error">La identificación debe tener mínimo
+                            9 caracteres y máximo 14, solo se admiten números y guiones.
+                        </p>
+                    </div>
+
+                    <!--GRUPO DE EMAIL-->
+                    <div class="formulario-grupo" id="grupo-correo">
+                        <div class="formulario-grupo-input">
+                            <input type="email" class="formulario-input" name="correo" id="correo"
+                                placeholder="correo@correo.com">
+                        </div>
+                        <p class="formulario-input-error">El correo deber tener mínimo 5 caracteres y
+                            solo se admiten números, letras y guión bajo.
+                        </p>
+                    </div>
+
+                    <!--GRUPO DE FECHA NACIMIENTO-->
+                    <div class="formulario-grupo" id="grupo-fechanacimiento">
+                        <div class="formulario-grupo-input">
+                            <input type="text" class="formulario-input" name="fechanacimiento" id="fechanacimiento"
+                                placeholder="21-03-1997">
+                        </div>
+                        <p class="formulario-input-error">El formato de la fecha es día, mes, año; utilizando
+                            guiones como separación (ejemplo: 15-08-2005).
+                        </p>
+                    </div>
+
+                    <!--GRUPO DE RESIDENCIA-->
+                    <div class="formulario-grupo" id="grupo-residencia">
+                        <div class="formulario-grupo-input">
+                            <input type="text" class="formulario-input" name="residencia" id="residencia"
+                                placeholder="San José, Santa Ana">
+                        </div>
+                        <p class="formulario-input-error">La dirección debe tener mínimo 6 caracteres,
+                            debe incluir provincia y cantón, en ese orden.
+                        </p>
+
+                    </div>
+
+                    <!--BOTÓN CANCELAR-->
+                    <div class="btnCancelar" id="btnCancelar">
+                        <a href="PerfilAdmin.html">Cancelar<span></span></a> <!--Link a página editar perfil-->
+                    </div>
+
+                    <!--BOTÓN GUARDAR CAMBIOS-->
+                    <div class="btnEnviar"> <!--   CONFIGURAR BOTÓN   -->
+                        <p class="formulario-mensaje-exito" id="formulario-mensaje-exito">Cambios guardados
+                            correctamente</p>
+                        <input type="submit" class="formulario-btn-enviar" value="Guardar cambios">
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <span class="footer-logo">EVENTIFY</span>
+            </div>
+            <div class="footer-center">
+                <a href="#">Términos y condiciones</a>
+                <a href="#">Ayuda</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Contáctanos</a>
+            </div>
+            <div class="footer-right">
+                <a href="#" class="social">Facebook</a>
+                <a href="#" class="social">Instagram</a>
+                <a href="#" class="social">Twitter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Tropical Developers. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+    <script src='ConfigPerfilAdmin.js'></script> <!--JAVA SCRIPT-->
+
+</body>
+
+</html>

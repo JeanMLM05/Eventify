@@ -20,23 +20,21 @@ header {
     align-items: center;
     padding: 0 5%;
     justify-content: space-between;
-    margin-top: -1%;
+    margin-top: 1%;
+    
 }
-
 
 .header-logo {
     height: 8vw; /* La altura se adapta al ancho de la pantalla */
     margin-left: 5%;
     margin-top: -4%;
-    margin-bottom: 1%;
-    transition: transform .2s ease;
+    margin-bottom: 1%;;
+    transition: .3s ease;
 }
-
 
 .header-logo:hover {
     transform: scale(1.05);
 }
-
 
 .header-right {
     display: flex;
@@ -44,11 +42,11 @@ header {
     background-color: black;
     border-radius: 2em;
     height: 3vw;
+    width: 90%;
     padding: 0.3em 0;
     margin-top: -2%;
     margin-right: 5%;
 }
-
 
 .header-right a {
     padding: 0 1.5vw;
@@ -56,23 +54,21 @@ header {
     color: white;
     align-content: center;
     font-family:  "coolvetica", sans-serif;
-    font-size: 1.1em;
+    font-size: 1.100em;
     font-weight: 700;
     letter-spacing: 0.063rem;
     border-radius: 1.875rem;
     transition: color .2s ease, transform .3s ease-out;
 }
 
-
 .header-right a:hover {
     color: #cccccc;
     transform: scale(1.03);
 }
-
 /*fin header*/
 
 
-/*CUERPO*/
+/* CUERPO */
 
 p{
     font-family: "coolvetica", sans-serif;
@@ -100,7 +96,7 @@ p{
     max-width: 25%;
     height: 80%;
     margin: 0;
-    margin: 4rem 1rem;
+    margin: 3.5rem 1rem;
     margin-bottom: 2%;
     padding: 2%;
     border: #000000;
@@ -119,6 +115,58 @@ p{
     text-align: center;
     margin-top: 10%;
     margin-bottom: 10%;
+}
+
+.cambio-foto-y-nombre{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1%;
+    box-sizing: border-box;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    font-weight: 400;
+    width: 100%;
+    height: fit-content;
+    margin: 1%;
+    padding: 2%;
+    position: relative;
+    top: -3%;
+    left: 0;
+    border: none;
+    cursor: pointer;
+    transition: 1.5s;
+}
+
+.cambio-foto-y-nombre a{
+    color: #ffffff;
+    text-decoration: underline 1px;
+    margin-left: 2%;
+    margin-right: 2%;
+    align-items: center;
+    align-content: center;
+}
+
+.cambio-foto-y-nombre a:hover{
+    font-size: 1em; 
+    font-weight: 410;
+}
+
+.cambio-foto-y-nombre a span{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;    
+    opacity: 0;
+    transform: scale(0) translateY(50px);
+    transition: .8s;
+}
+
+.cambio-foto-y-nombre a:hover span{
+    transform: scale(1) translateY(0px);
+    opacity: 0.5;
 }
 
 .opciones-menu{
@@ -191,9 +239,8 @@ p{
 .titulo-perfil{
     box-sizing: border-box;
     position: relative;
-    bottom: 5%;
+    bottom: 3%;
     margin-top: 3%;
-    font-weight: 700;
 }
 
 .mi-perfil{
@@ -209,19 +256,18 @@ p{
 .mi-perfil-titulos{
     box-sizing: border-box;
     position: relative;
-    top: -9%;
+    top: -11%;
     right: 2%;
     flex-grow: 1;
     width: 30%;
     height: 80%;
     text-align: right;
-    
 }
 
 .mi-perfil-datos{  
     box-sizing: border-box;
     position: relative;
-    top: -9%;
+    top: -11%;
     flex-grow: 1;
     width: 35%;
     height: 80%;  
@@ -242,34 +288,118 @@ p{
     margin-right: 1%;
 }
 
-.btnEditar{
+.formulario-grupo-input{
+    position: relative;
+}
+
+.formulario-input{
+    box-sizing: border-box;
+    width: 90%;
+    height: 200%;
+    color: #000000;
+    background: #ffffff;
+
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-radius: 3%;
+    outline: none;
+    
+    padding: 0% 2%;
+    margin: 0;
+    margin-bottom: 9%;
+
+    transition: all 1s;
+    line-height: 14%;
+
+    font-size: 90%;
+    font-family: "coolvetica", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+
+.formulario-grupo{
+    position: relative;
+}
+
+.formulario-input-error{
+    font-size: 0.3em;
+    margin-bottom: 0;
+    width: 55%;
+    height: 85%;
+    position: absolute;
+    bottom: 1%;
+    left: 92%;
+    margin-bottom: 15%;
+    background-color: #000000;
+    border: 2px solid #ffffff;
+    border-radius: 7%;
+    text-align: center;
+    align-content: center;
+    display: none;
+}
+
+
+/*CSS llamado por el JS*/
+.formulario-input-error-activo{
+    display: block;
+}
+
+.formulario-mensaje-exito{
+    box-sizing: border-box;
+    font-size: 0.5em;
+    color: #ffffff;
+    background-color: #000000;
+    padding: 1%;
+    border-radius: 6%;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    width: max-content;
+    position: relative;
+    bottom: 30%;
+    left: 33%;
+    display: none;
+}
+
+/*CSS llamado por el JS*/
+.formulario-mensaje-exito-activo{
+    display: block;
+}
+
+.btnCancelar{
     box-sizing: border-box;
     font-weight: 400;
-    font-size: 70%;
-    width: 21%;
-    margin: 1%;
+    font-size: 0.7em;
+    width: fit-content;
+    height: max-content;
     padding: 2%;
-    position: absolute;
-    left: 39%;
-    top: 75%;
+    margin: 1%;
+    align-items: center;
+    align-content: center;
+    text-align: center;
     background-color: #ffffff;
     border: none;
     border-radius: 1.25rem;
     cursor: pointer;
+    position: absolute;
+    top: 17.25rem;
+    left: -7.8125rem;
     transition: 1.5s;
 }
 
-.btnEditar a{
+.btnCancelar a{
     text-decoration: none;
     color: #000000;
 }
 
-.btnEditar a:hover{
-    font-size: 1.05em; 
+.btnCancelar a:hover{
     font-weight: 500;
 }
 
-.btnEditar a span{
+.btnCancelar a span{
     width: 100%;
     height: 100%;
     position: absolute;
@@ -281,11 +411,81 @@ p{
     transition: 1.5s;
 }
 
-.btnEditar a:hover span{
+.btnCancelar a:hover span{
     transform: scale(1) translateY(0px);
     opacity: 0.5;
 }
-/*fin cuerpo*/
+
+.formulario-btn-enviar {
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 0.7em;
+    width: fit-content;
+    height: max-content;
+    padding: 2%;
+    margin: 1%;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 1.25rem;
+    cursor: pointer;
+    position: absolute;
+    left: -0.125rem;
+    top: 17.25rem;
+    font-family: "coolvetica", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 1px;
+    transition: 1s;
+}
+
+.formulario-btn-enviar:hover{
+    font-weight: 500;
+}
+
+.formulario-btn-enviar span{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;    
+    opacity: 0;
+    transform: scale(0) translateY(50px);
+    transition: 1.5s;
+}
+
+.formulario-btn-enviar:hover span{
+    transform: scale(1) translateY(0px);
+    opacity: 0.5;
+}
+
+
+
+
+/*-------------VALIDACIONES----------------*/
+.formulario-grupo-incorrecto{
+    color: #8e1a1a;
+}
+
+.formulario-grupo-incorrecto{
+    color: #8e1a1a;
+    opacity: 1;
+}
+
+.formulario-grupo-incorrecto .formulario-input{
+    border: 0.1875rem solid #8e1a1a;
+}
+
+.formulario-grupo-correcto .formulario-input{
+    border: 0.1875rem solid #28861c;
+    color: #28861c;
+    opacity: 1;
+}
+
+
 
 
 /* FOOTER */
@@ -361,6 +561,7 @@ footer {
 
 
 /* FONDO */
+
 @keyframes hero-gradient-animation {
     0% {
         --x-0: 85%;

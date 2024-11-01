@@ -6,7 +6,7 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <link rel='stylesheet' type='text/css' media='screen' href='PerfilUsuario.css'> <!--CSS-->
+    <link rel='stylesheet' type='text/css' media='screen' href='ConfigPerfilUsuario.css'> <!--CSS-->
     <link rel="stylesheet" href="https://use.typekit.net/ltx2luq.css">
 
     <title>MI PERFIL</title>
@@ -45,6 +45,7 @@
     </form>
     </header>
 
+
     <!-- CUERPO -->
 
     <div class="contenedor-fondo" id="contenedor-fondo">
@@ -67,25 +68,84 @@
         <div class="contenedor-datos-perfil" id="contenedor-datos-perfil">
             <h1 class="titulo-perfil" id="titulo-perfil">MI PERFIL</h1>
 
+            <div class="cambio-foto-y-nombre" id="cambio-foto-y-nombre">
+                <a href="#">Cambiar foto de perfil<span></span></a> <!--Link a foto de perfil (primera iteración)-->
+                <a href="#">Cambiar nombre<span></span></a> <!--Link a cambio de nombre (primera iteración)-->
+            </div>
+
+
             <div class="mi-perfil" id="mi-perfil">
+
                 <div class="mi-perfil-titulos" id="mi-perfil-titulos">
                     <p>Identificación:</p>
                     <p>Correo electrónico:</p>
                     <p>Fecha de nacimiento:</p>
                     <p>Residencia:</p>
                 </div>
-                <div class="mi-perfil-datos" id="mi-perfil-datos">
-                    <p>1-2345-6789</p> <!--Cambiar datos quemados por reales con la base de datos-->
-                    <p>alejandralopez@gmail.com</p>
-                    <p>18-08-2002</p>
-                    <p>San José, Desamparados</p>
-                </div>
+                <form action="#" class="mi-perfil-datos" id="formulario">
+                    <!--Cambiar datos quemados por reales con la base de datos-->
 
+                    <!--GRUPO DE IDENTIFICACION-->
+                    <div class="formulario-grupo" id="grupo-identificacion">
+                        <div class="formulario-grupo-input">
+                            <input type="text" class="formulario-input" name="identificacion" id="identificacion"
+                                placeholder="1-2345-6789">
+                        </div>
+                        <p class="formulario-input-error">La identificación debe tener mínimo
+                            9 caracteres y máximo 14, solo se admiten números y guiones.
+                        </p>
+                    </div>
+
+                    <!--GRUPO DE EMAIL-->
+                    <div class="formulario-grupo" id="grupo-correo">
+                        <div class="formulario-grupo-input">
+                            <input type="email" class="formulario-input" name="correo" id="correo"
+                                placeholder="correo@correo.com">
+                        </div>
+                        <p class="formulario-input-error">El correo deber tener mínimo 5 caracteres y
+                            solo se admiten números, letras y guión bajo.
+                        </p>
+                    </div>
+
+                    <!--GRUPO DE FECHA NACIMIENTO-->
+                    <div class="formulario-grupo" id="grupo-fechanacimiento">
+                        <div class="formulario-grupo-input">
+                            <input type="text" class="formulario-input" name="fechanacimiento" id="fechanacimiento"
+                                placeholder="22-02-2002">
+                        </div>
+                        <p class="formulario-input-error">El formato de la fecha es día, mes, año; utilizando
+                            guiones como separación (ejemplo: 15-08-2005).
+                        </p>
+                    </div>
+
+                    <!--GRUPO DE RESIDENCIA-->
+                    <div class="formulario-grupo" id="grupo-residencia">
+                        <div class="formulario-grupo-input">
+                            <input type="text" class="formulario-input" name="residencia" id="residencia"
+                                placeholder="San José, Desamparados">
+                        </div>
+                        <p class="formulario-input-error">La dirección debe tener mínimo 6 caracteres,
+                            debe incluir provincia y cantón, en ese orden.
+                        </p>
+
+                    </div>
+
+                    <!--BOTÓN CANCELAR-->
+                    <div class="btnCancelar" id="btnCancelar">
+                        <a href="PerfilUsuario.html">Cancelar<span></span></a> <!--Link a página editar perfil-->
+                    </div>
+
+                    <!--BOTÓN GUARDAR CAMBIOS-->
+                    <div class="btnEnviar"> <!--   CONFIGURAR BOTÓN   -->
+                        <p class="formulario-mensaje-exito" id="formulario-mensaje-exito">Cambios guardados
+                            correctamente</p>
+                        <input type="submit" class="formulario-btn-enviar" value="Guardar cambios">
+                    </div>
+
+                </form>
 
             </div>
-            <div class="btnEditar" id="btnEditar">
-                <a href="ConfigPerfilUsuario.html">Editar perfil<span></span></a> <!--Link a página editar perfil-->
-            </div>
+
         </div>
     </div>
 
@@ -112,6 +172,10 @@
             <p>© 2024 Tropical Developers. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+
+    <script src='ConfigPerfilUsuario.js'></script> <!--JAVA SCRIPT-->
+
 </body>
 
 </html>
