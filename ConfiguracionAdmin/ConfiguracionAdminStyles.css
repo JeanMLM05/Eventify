@@ -1,0 +1,190 @@
+/* Fondo animado y tipografía */
+body {
+    font-family: "coolvetica", sans-serif;
+    font-weight: 400;
+    font-size: 1.200rem;
+    color: rgb(255, 255, 255);
+    letter-spacing: 0.063rem;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #81ecec, #74b9ff, #a29bfe);
+    background-size: 300% 300%;
+    animation: gradient-animation 10s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    justify-content: space-between;
+    margin-top: 1%;
+    
+}
+
+.header-logo {
+    height: 8vw; /* La altura se adapta al ancho de la pantalla */
+    margin-left: 5%;
+    margin-top: -4%;
+    margin-bottom: 1%;;
+    transition: .3s ease;
+}
+
+.header-logo:hover {
+    transform: scale(1.05);
+}
+
+.header-right {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    border-radius: 2em;
+    height: 3vw;
+    width: 90%;
+    padding: 0.3em ;
+    margin-top: 0.3rem;
+    margin-right: 5%;
+}
+
+.header-right a {
+    padding: 0 1.5vw;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    align-content: center;
+    font-family:  "coolvetica", sans-serif;
+    font-size: 1.100em;
+    font-weight: 700;
+    letter-spacing: 0.063rem;
+    border-radius: 1.875rem;
+    transition: color .2s ease, transform .3s ease-out;
+}
+
+.header-right a:hover {
+    color: #cccccc;
+    transform: scale(1.03);
+}
+
+
+/* Contenedor de Configuración */
+.config-container {
+    max-width: 800px;
+    width: 90%;
+    background-color: #000;
+    color: #fff;
+    margin: 5vh auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+
+.config-container h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+
+.config-container label {
+    display: block;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.config-container input[type="text"],
+.config-container select {
+    width: 97%;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.config-container input[type="text"]::placeholder {
+    color: #000000;
+}
+
+.config-container button {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 2rem;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.config-container button:hover {
+    background-color: #555;
+}
+
+/* Footer */
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 2vh 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 2vw;
+}
+
+.footer-left .footer-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.footer-center a, .footer-right a {
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-right a {
+    background-color: #444;
+    border-radius: 0.5rem;
+}
+
+.footer-right a:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+.footer-bottom {
+    border-top: 0.1rem solid #444;
+    margin-top: 1vh;
+    padding-top: 1vh;
+    font-size: 0.8rem;
+    color: #ccc;
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
