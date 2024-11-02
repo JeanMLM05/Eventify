@@ -119,6 +119,10 @@ footer {
     font-size: 14px;
 }
 
+.footer-center a:hover {
+    color: #cccccc;
+}
+
 .footer-right a {
     color: #ffffff;
     background-color: #444;
