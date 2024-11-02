@@ -27,88 +27,49 @@ header {
     align-items: center;
     padding: 0 5%;
     justify-content: space-between;
-    margin-top: 1%;
-   
+    margin-top: -1%;
 }
-
-
-.header-left{
-    margin-left: -2%;
-
-
-}
-
 
 .header-logo {
     height: 8vw; /* La altura se adapta al ancho de la pantalla */
-    margin-top: 4%;
-    margin-bottom: 1%;;
-    transition: .3s ease;
+    margin-left: 5%;
+    margin-top: -4%;
+    margin-bottom: 1%;
+    transition: transform .2s ease;
 }
-
 
 .header-logo:hover {
     transform: scale(1.05);
 }
 
-
 .header-right {
     display: flex;
-    justify-content: space-around;
-    align-content: center;
-    align-items: center;
+    justify-content: space-between;
     background-color: black;
-    z-index: 10;
     border-radius: 2em;
     height: 3vw;
-    width: 90%;
-    padding: 0.3em ;
-    padding-right: 0.9em;
-    margin-right: 5%;
-    margin-left: 3%; /*agregar al de admin*/
+    padding: 0.3em 0;
+    margin-top: -2%;
+    margin-right: 5vw;
 }
-
-
-.sub-menu-header {
-    display: none;
-    position: absolute;
-    top: 118%; /* Coloca el submenú justo debajo de "EVENTOS" */
-    left: 50%; /* Alinea el submenú al centro de "EVENTOS" */
-    transform: translateX(-51%); /* Centra el submenú */
-    background-color: #000000;
-    padding: 0.9375rem 1.25rem;
-    width: 16.25rem;
-    border-radius: 1.875rem;
-    text-align: center;
-    border-color: rgb(233, 222, 255);
-    border-style: solid;
-    border-width: 0.3125rem;
-   
-
-
-}
-
 
 .header-right a {
     padding: 0 1.5vw;
     text-decoration: none;
-    color: rgb(255, 255, 255);
+    color: white;
     align-content: center;
     font-family:  "coolvetica", sans-serif;
-    font-size: 1.100em;
+    font-size: 3vh;
     font-weight: 700;
     letter-spacing: 0.063rem;
     border-radius: 1.875rem;
     transition: color .2s ease, transform .3s ease-out;
 }
 
-
 .header-right a:hover {
     color: #cccccc;
     transform: scale(1.03);
 }
-
-
 
 
 /* Estilo de los enlaces del menú */
