@@ -14,7 +14,7 @@ body {
     text-decoration: none;
 }
 
-/*HEADER*/
+/* HEADER */
 header {
     display: flex;
     align-items: center;
@@ -22,7 +22,6 @@ header {
     justify-content: space-between;
     margin-top: -1%;
 }
-
 
 .header-logo {
     height: 8vw; /* La altura se adapta al ancho de la pantalla */
@@ -32,11 +31,9 @@ header {
     transition: transform .2s ease;
 }
 
-
 .header-logo:hover {
     transform: scale(1.05);
 }
-
 
 .header-right {
     display: flex;
@@ -46,9 +43,8 @@ header {
     height: 3vw;
     padding: 0.3em 0;
     margin-top: -2%;
-    margin-right: 5%;
+    margin-right: 5vw;
 }
-
 
 .header-right a {
     padding: 0 1.5vw;
@@ -56,20 +52,17 @@ header {
     color: white;
     align-content: center;
     font-family:  "coolvetica", sans-serif;
-    font-size: 1.1em;
+    font-size: 3vh;
     font-weight: 700;
     letter-spacing: 0.063rem;
     border-radius: 1.875rem;
     transition: color .2s ease, transform .3s ease-out;
 }
 
-
 .header-right a:hover {
     color: #cccccc;
     transform: scale(1.03);
 }
-
-/*fin header*/
 
 
 /*CUERPO*/
