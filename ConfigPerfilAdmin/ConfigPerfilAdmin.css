@@ -14,22 +14,21 @@ body {
     text-decoration: none;
 }
 
-/*HEADER*/
+/* HEADER */
 header {
     display: flex;
     align-items: center;
     padding: 0 5%;
     justify-content: space-between;
-    margin-top: 1%;
-    
+    margin-top: -1%;
 }
 
 .header-logo {
     height: 8vw; /* La altura se adapta al ancho de la pantalla */
     margin-left: 5%;
     margin-top: -4%;
-    margin-bottom: 1%;;
-    transition: .3s ease;
+    margin-bottom: 1%;
+    transition: transform .2s ease;
 }
 
 .header-logo:hover {
@@ -42,10 +41,9 @@ header {
     background-color: black;
     border-radius: 2em;
     height: 3vw;
-    width: 90%;
     padding: 0.3em 0;
     margin-top: -2%;
-    margin-right: 5%;
+    margin-right: 5vw;
 }
 
 .header-right a {
@@ -54,7 +52,7 @@ header {
     color: white;
     align-content: center;
     font-family:  "coolvetica", sans-serif;
-    font-size: 1.100em;
+    font-size: 3vh;
     font-weight: 700;
     letter-spacing: 0.063rem;
     border-radius: 1.875rem;
