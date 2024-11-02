@@ -123,7 +123,7 @@ $formulario.addEventListener("submit", (e) => {
         document.getElementById("formulario--mensaje-exito").classList.add("formulario--mensaje-exito-activo");
 
         setTimeout(() => {
-            window.location.href = 'iniciarsesion.html';
+            window.location.href = '..IniciarSesion/iniciarsesion.html';
             // location.reload();
         }, 2000);
     } else {
