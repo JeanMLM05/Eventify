@@ -1,0 +1,224 @@
+body {
+    font-family: "coolvetica", sans-serif;
+    font-weight: 400;
+    font-size: 1.200rem;
+    color: rgb(255, 255, 255);
+    letter-spacing: 0.063rem;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #81ecec, #74b9ff, #a29bfe);
+    background-size: 300% 300%;
+    animation: gradient-animation 10s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    justify-content: space-between;
+    margin-top: 1%;
+    
+}
+
+.header-logo {
+    height: 8vw; /* La altura se adapta al ancho de la pantalla */
+    margin-left: 5%;
+    margin-top: -4%;
+    margin-bottom: 1%;;
+    transition: .3s ease;
+}
+
+.header-logo:hover {
+    transform: scale(1.05);
+}
+
+.header-right {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    border-radius: 2em;
+    height: 3vw;
+    width: 90%;
+    padding: 0.3em ;
+    margin-top: 0.3rem;
+    margin-right: 5%;
+}
+
+.header-right a {
+    padding: 0 1.5vw;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    align-content: center;
+    font-family:  "coolvetica", sans-serif;
+    font-size: 1.100em;
+    font-weight: 700;
+    letter-spacing: 0.063rem;
+    border-radius: 1.875rem;
+    transition: color .2s ease, transform .3s ease-out;
+}
+
+.header-right a:hover {
+    color: #cccccc;
+    transform: scale(1.03);
+}
+
+/* Contenedor Principal del Dashboard */
+.dashboard-container {
+    max-width: 90%;
+    width: 800px;
+    margin: 5vh auto;
+    text-align: center;
+}
+
+/* Bloques de Información */
+.info-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 2vw;
+    margin-bottom: 3vh;
+}
+
+.info-block {
+    background-color: #000;
+    border-radius: 1rem;
+    padding: 3vh 2vw;
+    width: 30%;
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.info-block h3, .info-block p {
+    color: #ffffff;
+}
+
+.info-block p {
+    font-size: 2rem;
+    margin: 1vh 0;
+}
+
+/* Botones de Acción */
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 2vw;
+    margin-bottom: 5vh;
+}
+
+.button-container button {
+    padding: 1rem 2rem;
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #000;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+    background-color: #535353;
+}
+
+/* Gestión de Usuarios */
+.user-management {
+    background-color: #000;
+    border-radius: 1rem;
+    padding: 3vh 2vw;
+    color: #fff;
+    width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.3);
+}
+
+.user-management h3 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 1vh;
+}
+
+.user-management table {
+    width: 100%;
+    margin-top: 2vh;
+    border-collapse: collapse;
+    color: #fff;
+    border-radius: 0.5 rem;
+}
+
+.user-management th, .user-management td {
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #ffffff;
+}
+
+.user-management th {
+    background-color: #000000;
+    font-weight: bold;
+}
+
+.user-management td {
+    background-color: #000000;
+}
+
+/* Footer */
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 2vh 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 2vw;
+}
+
+.footer-left .footer-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.footer-center a, .footer-right a {
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-right a {
+    background-color: #444;
+    border-radius: 0.5rem;
+}
+
+.footer-right a:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+.footer-bottom {
+    border-top: 0.1rem solid #444;
+    margin-top: 1vh;
+    padding-top: 1vh;
+    font-size: 0.8rem;
+    color: #ccc;
+    text-align: center;
+}
