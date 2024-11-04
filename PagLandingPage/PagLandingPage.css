@@ -1,11 +1,10 @@
-/*css del header*/
-
 * {
     margin: 0;
     padding: 0;
     
 }
 
+/*css del header*/
 body {
     font-family: "coolvetica", sans-serif;
     font-weight: 700;
@@ -16,11 +15,6 @@ body {
     border-radius: 1.875rem; /* Aproximadamente 30px */
     text-decoration: none;
 }
-
-
-
-
-
 
 header {
     display: flex;
@@ -70,8 +64,6 @@ header {
     color: #cccccc;
     transform: scale(1.03);
 }
-
-
 
 
 /* Estilo de los enlaces del menú */
@@ -173,8 +165,13 @@ header {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/*fin css del header*/
 
+
+
+/*fin
+
+
+css del header*/
 /*BODY*/
 
 /* SECCIÓN DE BIENVENIDA */
