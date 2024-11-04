@@ -8,7 +8,7 @@ header {
 }
 
 .header-logo {
-    height: 8vw; /* La altura se adapta al ancho de la pantalla */
+    height: 8vw; 
     margin-left: 5%;
     margin-top: -4%;
     margin-bottom: 1%;
@@ -227,6 +227,15 @@ main{
     border: .3vh solid black;
 }
 
+.core-final div{
+    align-content: center;
+}
+
+.core-final div textarea{
+    height: 6vh;
+    width: 18vw;
+}
+
 .core-main .time{
     width: 4.5vw;
 }
@@ -241,11 +250,6 @@ main{
     font-size: 3.2vh;
 }
 
-.core-final input{
-    width: 28vw;
-    border-radius:1vh;
-    border:.3vh solid black ;
-}
 
 .main-bottom{
     display: flex;

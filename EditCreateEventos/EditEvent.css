@@ -1,3 +1,4 @@
+/*------HEADER-----*/
 header {
     display: flex;
     align-items: center;
@@ -124,129 +125,222 @@ footer {
 
 main{
     display: flex;
-}
-
-.main-title{
-    margin-left: 9vw;
-    margin-top: -2.7%;
-    background: none;
-    font-family:  "coolvetica", sans-serif;
-    font-size: 1em;
-    font-weight: 700;
-    letter-spacing: 0.04rem;
-}
-
-.buttons{
-    display: inline-block;
-    margin-top: 0.8%;
-    margin-left: -12%;
-    justify-content: space-between;
-    width: 16%; 
-    height: 10%;
-    font-size: 2.4vh;
-}
-
-.buttons button{
-    padding: 2% 3%;
-    margin: 0px 0.4vw;
-    background-color: #000;
-    border: none;
-    font-family:  "coolvetica", sans-serif;
-    font-size: 2vh;
-    font-weight: 700;
-    letter-spacing: 0.04rem;
-    transition: color .2s ;
-    border-radius: 8px;
-    color: #fff;
-}
-
-.buttons button:hover{
-    background-color:#333;
-}
-
-.buttons button:active{
-    background-color: #555;
-}
-
-.container-table {
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    margin-top: 7vh;
-    background-color: black;
-    height: 55vh; 
-    border-radius: 1.875rem;
-    margin-bottom: 6vh;
-    width: 77vw;
-    margin-left: -42vh;
-    padding: 0.9vw;
-    box-sizing: border-box; 
-}
-
-.user-search {
-    align-self: flex-start;
-    width: 80%;
-    margin-bottom: 2vh;
-    margin-left: 5vw;
-}
-
-.user-search input{
-    margin: 5px 0;
-    width: 15%;
-    border: none;
-    text-align: center;
-}
-
-.bx-search{
-    color: #fff;
-    align-content: center;
-}
-
-.user-table {
-    width: 70%;
-    border-collapse: collapse;
-   
-}
-
-.user-table th, .user-table td {
-    padding: 0.3em;
-    text-align: left;
-    border-bottom: 1px solid #ffffff;
     font-family:  "coolvetica", sans-serif;
     font-size: 1.1em;
     font-weight: 700;
     letter-spacing: 0.063rem;
-    color: #fff;
 }
 
-.user-table td{
-    font-weight: 100;
+.left-main{
+    margin-left: 7vw;
+    width: auto;
+    justify-items: center;
+    
+}
+
+.left-main h2{
+    justify-self: center;
+    font-size: 4vh;
+    margin-bottom: 30px;
+    margin-left: 7vh;
+}
+
+.file-left{
+    display: flex;
+    margin: 4vh;
+    margin-left: 7vh;
+    background-color: #333;
+    width: 34.5vw;
+    height: 35vh;
+    flex-direction: column;
+    border-radius: 1.3vh;
+    align-items: center;
+    justify-items: center;
+    border: 1.5vh solid black;
+}
+
+.file-left button{
+    align-self: center;
+    margin: auto;
     font-size: 2vh;
-}
-
-.user-table td button{
-    margin-left: 2vw;
-    margin-right: -2vw;
-    color: #fff;
-    background-color: #000;
     border: none;
-    transform: scale(1.2);
+    color: #444;
+    border-radius: 1vh;
+    font-size: 2vh;
+    cursor: pointer;
 }
 
-.user-table td button:hover{
-    color: #aaa;
+.file-left button:active{
+    background-color: #000;
+    color: #fff;
 }
 
-.user-table td button:active{
-    color:#888 ;
+.right-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+}   
+
+.title{
+    display: flex;
+    flex-direction: row;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+.title h3{
+    margin-right: 1vw;
+    margin-left: -10vw;
+    font-size: 3.5vh;
+    align-self: center;
+}
+
+.title input{
+    height: 4vh;
+    width: 14vw;
+    align-self: center;
+    border-radius: 1vh;
+    border: .3vh solid black;
+}
+
+.title input, .core-main input::placeholder{
+    text-align: center;
+    font-size: 2.2vh;
+}
+
+.core-main{
+    margin-left: 2vw;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    font-size: 2.7vh;
+}
+
+.core-main input{
+    align-self: center;
+    margin-right: 2vw;
+    margin-left: 1vh;
+    height: 4vh;
+    width: 8vw;
+    border-radius: 1vh;
+    border: .3vh solid black;
+}
+
+.core-final div{
+    align-content: center;
+}
+
+.core-final div textarea{
+    height: 6vh;
+    width: 18vw;
+}
+
+.core-main .time{
+    width: 4.5vw;
+}
+
+.core-final{
+    display: flex;
+    flex-direction: row;
+}
+
+.core-final h3{
+    margin-right: 1vw;
+    font-size: 3.2vh;
 }
 
 
+.main-bottom{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vh;
+}
 
+.tickets{
+    border: none;
+    border-radius: 2vh;
+    margin-top: 1vh;
+    background-color: #fff;
+    width: 7vw;
+    height:12vh;
+    margin-left: 1vw;
+}
 
+.tickets button{
+    border-radius: 2vh;
+    border: 0.3vh solid black;
+    height: 3.05vh;
+    font-size: 1.94vh;
+}
 
+.zero{
+    font-size: 2.5vh;
+    margin-left: 0.1vw;
+}
 
+.tickets button:active{
+    background-color:#bbb;
+}
 
+.tickets h3, .counter{
+    justify-self: center;
+    margin-bottom: 1vh;
+    font-size: 2.5vh;
+}
+
+.tickets .general{
+    margin-bottom: -3vh;
+    margin-top: 1vh;
+}
+
+.rules{
+    background-color: #fff;
+    width: 12vw;
+    margin-left: 2vh;
+    margin-top: 1vh;
+    border-radius: 2vh;
+    align-content: center;
+}
+
+.rules input{
+    width: 10.6vw;
+    height: 5vh;
+    border: none;
+    background-color: #eee;
+    margin-left: 0.5vw;
+}
+
+.rules input::placeholder{
+    text-align: center;
+    font-size: 2.4vh;
+}
+
+.rules-title{
+    margin-left: 2vw;
+    align-self: center;
+    font-size: 3vh;
+}
+
+.button-bottom{
+    display: flex;
+    justify-self: center;
+    font-size: 3vh;
+    border-radius: 1.873rem;
+    border: none;
+    margin-left: 37vw;
+    margin-top: 3vh;
+    background-color: #fff;
+    margin-bottom: 14vh;
+    justify-content: center;
+    align-items: center;
+    width: 7vw;
+    height: 5vh;
+}
+
+.button-bottom:active{
+    background-color: #bbb;
+}
 
 
 
