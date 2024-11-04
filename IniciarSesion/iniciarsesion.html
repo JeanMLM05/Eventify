@@ -45,15 +45,23 @@
                     <p> <i class="fas fa-exclamation-circle"><b>ERROR:</b>Debes completar todos los campos</i>
                       </p>
                 </div>
- <!--grupo enviar-->
- <div class="formulario--grupo formulario--grupo-btn-enviar">
-    <p class="formulario--mensaje-exito" id="formulario--mensaje-exito">Inicio de sesión exitoso!</p>
-    <input type="submit" class="formulario--btn" value="Iniciar sesión">
-</div>                          
-</form>
-<p class="registrop">No tienes una cuenta? <a class="registro" href="../Registro/registro.html">Registrate</a></p>                
-                </div>
+            <!--grupo enviar-->
+            <div class="formulario--grupo formulario--grupo-btn-enviar">
+                <p class="formulario--mensaje-exito" id="formulario--mensaje-exito">Inicio de sesión exitoso!</p>
+                
+                <!-- Botón para enviar el formulario                 <input type="submit" class="formulario--btn" value="Iniciar sesión">-->
+
+            
+                <!-- Botón adicional que redirige a la landing page del usuario -->
+                <button type="button" class="formulario--btn" onclick="window.location.href='../PagLandingPageUsuario/PagLandingPageUsuario.html'">
+                    Iniciar Sesión
+                </button>
+            </div>
+                                
             </form>
+            <p class="registrop">No tienes una cuenta? <a class="registro" href="../Registro/registro.html">Registrate</a></p>                
+                            </div>
+                        </form>
         </div>
     </main>
     
@@ -78,5 +86,5 @@
           <p>© 2024 Tropical Developers. Todos los derechos reservados.</p>
         </div>
     </footer>
-    <script src="../IniciarSesion/iniciarsesion.js"></script>
+    <script src="iniciarsesion.js"></script>
 </body>
