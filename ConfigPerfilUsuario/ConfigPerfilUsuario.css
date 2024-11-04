@@ -8,7 +8,7 @@ body {
     font-weight: 500;
     font-style: normal;
     font-size: 30px;
-    color: #ffffff; 
+    color: #ffffff;
     letter-spacing: 1px;
     margin: 0;
     padding: 0;
@@ -22,7 +22,7 @@ header {
     padding: 0 5%;
     justify-content: space-between;
     margin-top: 1%;
-    
+
 }
 
 .header-left{
@@ -71,7 +71,7 @@ header {
     border-color: rgb(233, 222, 255);
     border-style: solid;
     border-width: 0.3125rem;
-    
+
 
 }
 
@@ -122,14 +122,14 @@ header {
     color: #cccccc;
     transform: scale(1.03);
     display: inline-block;
-    transition: color .2s ease, transform .3s ease-out; 
+    transition: color .2s ease, transform .3s ease-out;
 }
 
 
 /* mostrar submenú al pasar el cursor ???*/
 .opciones-menu-header:hover .sub-menu-header {
     display: block;
-    
+
 }
 
 .opciones-submenu-header {
@@ -262,7 +262,7 @@ p{
 }
 
 .cambio-foto-y-nombre a:hover{
-    font-size: 1em; 
+    font-size: 1em;
     font-weight: 410;
 }
 
@@ -272,7 +272,7 @@ p{
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1;    
+    z-index: -1;
     opacity: 0;
     transform: scale(0) translateY(50px);
     transition: .8s;
@@ -311,7 +311,7 @@ p{
 }
 
 .opciones-menu a:hover{
-    font-size: 1em; 
+    font-size: 1em;
     font-weight: 410;
 }
 
@@ -321,7 +321,7 @@ p{
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1;    
+    z-index: -1;
     opacity: 0;
     transform: scale(0) translateY(50px);
     transition: .8s;
@@ -379,13 +379,13 @@ p{
     text-align: right;
 }
 
-.mi-perfil-datos{  
+.mi-perfil-datos{
     box-sizing: border-box;
     position: relative;
     top: -11%;
     flex-grow: 1;
     width: 35%;
-    height: 80%;  
+    height: 80%;
     text-align: left;
 }
 
@@ -420,7 +420,7 @@ p{
     border-top: none;
     border-radius: 3%;
     outline: none;
-    
+
     padding: 0% 2%;
     margin: 0;
     margin-bottom: 9%;
@@ -484,24 +484,24 @@ p{
     display: block;
 }
 
-.btnCancelar{
+.btnCancelar {
     box-sizing: border-box;
     font-weight: 400;
-    font-size: 0.7em;
+    font-size: 1.5vw;
     width: fit-content;
     height: max-content;
-    padding: 2%;
-    margin: 1%;
+    padding: 1.5vh 2vw;
+    margin: 1vh 1vw;
     align-items: center;
     align-content: center;
     text-align: center;
     background-color: #ffffff;
     border: none;
-    border-radius: 1.25rem;
+    border-radius: 2vw;
     cursor: pointer;
     position: absolute;
-    top: 17.25rem;
-    left: -7.8125rem;
+    top: 36vh;
+    left: -14vw;
     transition: 1.5s;
 }
 
@@ -520,7 +520,7 @@ p{
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1;    
+    z-index: -1;
     opacity: 0;
     transform: scale(0) translateY(50px);
     transition: 1.5s;
@@ -534,25 +534,25 @@ p{
 .formulario-btn-enviar {
     box-sizing: border-box;
     font-weight: 400;
-    font-size: 0.7em;
+    font-size: 1.5vw;
     width: fit-content;
     height: max-content;
-    padding: 2%;
-    margin: 1%;
+    padding: 1.5vh 2vw;
+    margin: 1vh 1vw;
     align-items: center;
     align-content: center;
     text-align: center;
     background-color: #ffffff;
     border: none;
-    border-radius: 1.25rem;
+    border-radius: 2vw;
     cursor: pointer;
     position: absolute;
-    left: -0.125rem;
-    top: 17.25rem;
+    left: -3vw;
+    top: 36vh;
     font-family: "coolvetica", sans-serif;
     font-weight: 400;
     font-style: normal;
-    letter-spacing: 1px;
+    letter-spacing: 0.2vw;
     transition: 1s;
 }
 
@@ -566,7 +566,7 @@ p{
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1;    
+    z-index: -1;
     opacity: 0;
     transform: scale(0) translateY(50px);
     transition: 1.5s;
@@ -900,7 +900,7 @@ body{
     --x-4: 24%;
     --y-4: 7%;
     --c-4: hsla(214.44444444444443, 100%, 78%, 1);
-    ;
+;
     background-color: hsla(228.97058823529406, 100%, 84%, 1);
     background-image: radial-gradient(circle at var(--x-0) var(--y-0), var(--c-0) var(--s-start-0), transparent var(--s-end-0)), radial-gradient(circle at var(--x-1) var(--y-1), var(--c-1) var(--s-start-1), transparent var(--s-end-1)), radial-gradient(circle at var(--x-2) var(--y-2), var(--c-2) var(--s-start-2), transparent var(--s-end-2)), radial-gradient(circle at var(--x-3) var(--y-3), var(--c-3) var(--s-start-3), transparent var(--s-end-3)), radial-gradient(circle at var(--x-4) var(--y-4), var(--c-4) var(--s-start-4), transparent var(--s-end-4));
     animation: hero-gradient-animation 10s linear infinite alternate;
