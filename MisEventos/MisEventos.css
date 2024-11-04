@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     
 }
 
@@ -16,11 +15,6 @@ body {
     border-radius: 1.875rem; /* Aproximadamente 30px */
     text-decoration: none;
 }
-
-
-
-
-
 
 header {
     display: flex;
