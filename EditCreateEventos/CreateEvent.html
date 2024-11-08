@@ -16,7 +16,7 @@
       <img src="Eventify.png" alt="Eventify Logo" class="header-logo">
     </a>
     <div class="header-right">
-      <a href="#">DASHBOARD</a>
+      <a href="../PagInicioAdmin/PagInicioAdmin.html">DASHBOARD</a>
       <a href="../AdminEventoss/AdminEventos.html">EVENTOS</a>
       <a href="../AdminUsers/AdminUser.html">USUARIOS</a>
       <a href="../ConfiguracionAdmin/ConfiguracionAdmin.html">CONFIGURACIÓN</a>
@@ -33,17 +33,18 @@
       </div>
     </div>
 
+    <form>
     <div class="right-main">
       <div class="title">
-        <h3>Titulo:</h3> <input type="text" name="" id="" placeholder="Evento">
+        <h3>Titulo:</h3> <input type="text" name="" id="" placeholder="Evento" required>
       </div>
       <div class="core-main">
-        <h3>Fecha:</h3> <input type="date" name="" id="" placeholder="Evento">
-        <h3>Lugar:</h3> <input type="text" name="" id="" placeholder="Evento">
-        <h3>Hora:</h3> <input type="time" name="" id="" placeholder="Evento" class="time">
+        <h3>Fecha:</h3> <input type="date" name="" id="" placeholder="Evento" required>
+        <h3>Lugar:</h3> <input type="text" name="" id="" placeholder="Evento" required>
+        <h3>Hora:</h3> <input type="time" name="" id="" placeholder="Evento" class="time" required>
       </div>
       <div class="core-final">
-        <h3>Descripcion:</h3> <div><textarea name="" id=""></textarea></div>
+        <h3>Descripcion:</h3> <div><textarea name="" id="" required>Descripcion</textarea></div>
       </div>
       <div class="main-bottom">
         <div class="tickets">
@@ -66,14 +67,13 @@
         </div>
         <h3 class="rules-title">Reglas: </h3>
         <div class="rules">
-          <input type="text" placeholder="...">
+          <input type="text" placeholder="..." required>
         </div>
       </div>
     </div>
   </main>
-
-  <button class="button-bottom">Guardar</button>
-
+  <input type="submit" class="button-bottom"></input>
+</form>
 
   <footer>
     <div class="footer-container">
@@ -98,5 +98,3 @@
   </footer>
 
 </body>
-
-</html>
