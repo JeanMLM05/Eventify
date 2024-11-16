@@ -130,6 +130,16 @@ app.get('/ConfiguracionGeneral',(req, res)=>{
     res.render("ConfiguracionAdmin.html")
 });
 
+//Página Mis Eventos
+app.get('/MisEventos',(req, res)=>{
+    res.render("MisEventos.html")
+});
+
+//Página compra final / checkout
+app.get('/Checkout',(req, res)=>{
+    res.render("PagCompraFinal.html")
+});
+
 
 //FOOTER
 //Página términos y condiciones
