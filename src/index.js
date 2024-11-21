@@ -35,7 +35,7 @@ IMPORTANTE --> LOS NOMBRES DE LAS RUTAS VAN CON MAYÚSCULA.  ej: /MiPerfil
 
 
 
-//Landing Page
+//Landing Page (cuando no ha iniciado sesión)
 app.get('/',(req, res)=>{
     res.render("PagLandingPage.html")
 });
@@ -53,6 +53,11 @@ app.get('/Registro',(req, res)=>{
 //Inicio de sesión
 app.get('/IniciarSesion',(req, res)=>{
     res.render("iniciarsesion.html")
+});
+
+//Página principal (después de haber iniciado sesión) / página de inicio
+app.get('/InicioU',(req, res)=>{
+    res.render("PagLandinPageUSuario.html")
 });
 
 //Página de información de un evento (detalles del evento)
@@ -111,7 +116,7 @@ app.get('/EventosFiestas',(req, res)=>{
 });
 
 //Página Inicio Admin
-app.get('/Inicio',(req, res)=>{
+app.get('/InicioA',(req, res)=>{
     res.render("PagInicioAdmin.html")
 });
 
