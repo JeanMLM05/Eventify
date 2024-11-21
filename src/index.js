@@ -57,7 +57,7 @@ app.get('/IniciarSesion',(req, res)=>{
 
 //Página principal (después de haber iniciado sesión) / página de inicio
 app.get('/InicioU',(req, res)=>{
-    res.render("PagLandinPageUSuario.html")
+    res.render("PagLandingPageUSuario.html")
 });
 
 //Página de información de un evento (detalles del evento)

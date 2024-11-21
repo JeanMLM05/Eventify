@@ -65,7 +65,7 @@ $formulario.addEventListener("submit", (e) => {
         document.getElementById("formulario--mensaje-exito").classList.add("formulario--mensaje-exito-activo");
 
         setTimeout(() => {
-            window.location.href = "../PagLandingPageUsuario/PagLandingPageUsuario.html";
+            window.location.href = "/InicioU";
             // location.reload();
         }, 4000);
     } else {
