@@ -17,7 +17,7 @@
     <!-- HEADER -->
     <header>
         <a href="/" class="header-left">
-            <img src="../IMG/eventify-logo.png" alt="Eventify Logo" class="header-logo">
+            <img src="IMG/eventify-logo.png" alt="Eventify Logo" class="header-logo">
         </a>
 
         <div class="header-right">
@@ -54,10 +54,9 @@
         <div class="contenedor-menu" id="contenedor-menu"> <!-- Añadir imagen de usuario -->
             <div class="nombre-y-foto" id="nombre-y-foto">
                 <img src="IMG/foto-de-perfil.png" width="50%" alt="foto de perfil">
-                <p class="nombre-txt" id="nombre-txt">Alejandra López</p>
             </div>
             <div class="opciones-menu" id="opciones-menu">
-                <a href="/MisEventos.html">Mis eventos<span></span></a> <!--Link pantalla mis eventos-->
+                <a href="/MisEventos">Mis eventos<span></span></a> <!--Link pantalla mis eventos-->
                 <a href="/MetodosDePago">Mis métodos de pago<span></span></a>
                 <!--Link pantalla de métodos de pago(listado de tarjetas)-->
                 <a href="/">Cerrar sesión<span></span></a>
@@ -71,13 +70,13 @@
 
             <div class="cambio-foto-y-nombre" id="cambio-foto-y-nombre">
                 <a href="#">Cambiar foto de perfil<span></span></a> <!--Link a foto de perfil (primera iteración)-->
-                <a href="#">Cambiar nombre<span></span></a> <!--Link a cambio de nombre (primera iteración)-->
             </div>
 
 
             <div class="mi-perfil" id="mi-perfil">
 
                 <div class="mi-perfil-titulos" id="mi-perfil-titulos">
+                    <p>Nombre:</p>
                     <p>Identificación:</p>
                     <p>Correo electrónico:</p>
                     <p>Fecha de nacimiento:</p>
@@ -86,14 +85,25 @@
                 <form action="#" class="mi-perfil-datos" id="formulario">
                     <!--Cambiar datos quemados por reales con la base de datos-->
 
+                    <!--GRUPO DE NOMBRE-->
+                    <div class="formulario-grupo" id="grupo-nombre">
+                        <div class="formulario-grupo-input">
+                            <input type="text" class="formulario-input" name="nombre" id="nombre"
+                                placeholder="Alejandra López">
+                        </div>
+                        <p class="formulario-input-error">El nombre debe tener mínimo 8 caracteres y 
+                            debe estar compuesto por su nombre y apellido.
+                        </p>
+                    </div>
+
                     <!--GRUPO DE IDENTIFICACION-->
                     <div class="formulario-grupo" id="grupo-identificacion">
                         <div class="formulario-grupo-input">
                             <input type="text" class="formulario-input" name="identificacion" id="identificacion"
-                                placeholder="1-2345-6789">
+                                placeholder="123456789">
                         </div>
                         <p class="formulario-input-error">La identificación debe tener mínimo
-                            9 caracteres y máximo 14, solo se admiten números y guiones.
+                            9 caracteres y máximo 14, solo se admiten números.
                         </p>
                     </div>
 

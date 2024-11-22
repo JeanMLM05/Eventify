@@ -232,9 +232,6 @@ p{
 }
 
 .cambio-foto-y-nombre{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1%;
     box-sizing: border-box;
     align-items: center;
     align-content: center;
@@ -338,11 +335,10 @@ p{
 .contenedor-datos-perfil{
     box-sizing: border-box;
     width: 50%;
-    height: 75%;
+    height: 83%;
     padding: 2%;
     margin-left: 12%;
     margin-top: 1rem; /* REVISAR LUEGO DEL HEADER */
-    margin-bottom: 0;
     position: relative;
     background-color: #000000;
     border-radius: 3.4375rem;
@@ -356,6 +352,9 @@ p{
     position: relative;
     bottom: 3%;
     margin-top: 3%;
+    align-items: center;
+    align-content: center;
+    text-align: center;
 }
 
 .mi-perfil{
@@ -409,7 +408,7 @@ p{
 
 .formulario-input{
     box-sizing: border-box;
-    width: 90%;
+    width: 85%;
     height: 200%;
     color: #000000;
     background: #ffffff;
@@ -418,7 +417,7 @@ p{
     border-left: none;
     border-right: none;
     border-top: none;
-    border-radius: 3%;
+    border-radius: 3.4375rem;
     outline: none;
 
     padding: 0% 2%;
@@ -477,7 +476,7 @@ p{
     width: max-content;
     position: absolute;
     top: 140%;
-    left: -39%;
+    left: -37%;
     z-index: 50;
     display: none;
 }
@@ -503,7 +502,7 @@ p{
     border-radius: 2vw;
     cursor: pointer;
     position: absolute;
-    top: 36vh;
+    top: 43vh;
     left: -14vw;
     transition: 1.5s;
 }
@@ -551,7 +550,7 @@ p{
     cursor: pointer;
     position: absolute;
     left: -3vw;
-    top: 36vh;
+    top: 43vh;
     font-family: "coolvetica", sans-serif;
     font-weight: 400;
     font-style: normal;

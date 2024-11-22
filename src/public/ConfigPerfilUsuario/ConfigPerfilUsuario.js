@@ -6,7 +6,8 @@ const $inputs = document.querySelectorAll('#formulario input') //contiene todos 
 
 //crear expresiones
 const expresiones = {
-    identificacion: /^[0-9\-]{9,14}$/,
+    nombre: /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ,.\s]{8,50}$/,
+    identificacion: /^[0-9]{9,14}$/,
     correo: /^[a-zA-Z0-9,.\_]+@[a-zA-Z]+\.[a-zA-Z]+$/,
     fechanacimiento: /^[0-9\-]{10}$/,
     residencia: /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ,.\s]{6,50}$/
@@ -14,6 +15,7 @@ const expresiones = {
 
 //crear campos
 const campos = {
+    nombre: false,
     identificacion: false,
     correo: false,
     fechanacimiento: false,
@@ -27,6 +29,9 @@ const campos = {
 //validarFormulario --> clasifica en cuál input vamos a trabajar
 const validarFormulario = (e) => {
     switch (e.target.name) {
+        case "nombre":
+            validarCampo(expresiones.nombre, e.target, "nombre");
+            break;
         case "identificacion":
             validarCampo(expresiones.identificacion, e.target, "identificacion");
             break;
@@ -79,12 +84,13 @@ $formulario.addEventListener("submit", (e) => {
     e.preventDefault();
 
 
-    if (campos.identificacion && campos.correo && campos.fechanacimiento && campos.residencia) {
+    if (campos.nombre && campos.identificacion && campos.correo && campos.fechanacimiento && campos.residencia) {
         document.getElementById("formulario-mensaje-exito").classList.add("formulario-mensaje-exito-activo");
 
         setTimeout(() => {
-            location.reload();
-        }, 5000)
+            window.location.href = "/MiPerfilU";
+            //location.reload();
+        }, 10000)
     } else {
         location.reload();
     }

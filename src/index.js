@@ -82,7 +82,7 @@ app.get('/ConfiguracionDePerfilU',(req, res)=>{
 
 //Configuración del perfil del administrador
 app.get('/ConfiguracionDePerfilA',(req, res)=>{
-    res.render("ConfigPerfilAdmin .html")
+    res.render("ConfigPerfilAdmin.html")
 });
 
 //Página Nosotros
