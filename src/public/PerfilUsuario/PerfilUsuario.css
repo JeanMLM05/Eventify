@@ -289,7 +289,7 @@ p{
 .contenedor-datos-perfil{
     box-sizing: border-box;
     width: 50%;
-    height: 75%;
+    height: 80%;
     padding: 2%;
     margin-left: 12%;
     margin-top: 1rem; /* REVISAR LUEGO DEL HEADER */
@@ -363,7 +363,7 @@ p{
     padding: 1.5vh 2vw;
     position: absolute;
     left: 13vw;
-    top: 59vh;
+    top: 66vh;
     background-color: #ffffff;
     border: none;
     border-radius: 2vw;
