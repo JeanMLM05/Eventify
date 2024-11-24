@@ -149,9 +149,12 @@ header {
 footer {
     background-color: #000;
     color: #fff;
-    padding: 2vh 0;
+    padding: 2rem 0; /* Ajuste a rems */
     text-align: center;
-    margin-top: auto;
+    position: fixed; /* Fijar el footer al fondo */
+    bottom: 0; /* Alineación al borde inferior */
+    left: 0;
+    width: 100%; /* Asegurar que ocupe todo el ancho */
 }
 
 .footer-container {
@@ -160,11 +163,11 @@ footer {
     align-items: center;
     max-width: 90%;
     margin: 0 auto;
-    padding: 0 2vw;
+    padding: 0 2rem; /* Ajuste a rems */
 }
 
 .footer-left .footer-logo {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Mantener en rems */
     font-weight: bold;
     color: #fff;
     text-transform: uppercase;
@@ -172,7 +175,7 @@ footer {
 
 .footer-center a, .footer-right a {
     color: #ffffff;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem; /* Ajuste a rems */
     text-decoration: none;
     font-size: 0.9rem;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -189,9 +192,9 @@ footer {
 }
 
 .footer-bottom {
-    border-top: 0.1rem solid #444;
-    margin-top: 1vh;
-    padding-top: 1vh;
+    border-top: 0.1rem solid #444; /* Ajuste a rems */
+    margin-top: 1rem; /* Ajuste a rems */
+    padding-top: 1rem; /* Ajuste a rems */
     font-size: 0.8rem;
     color: #ccc;
     text-align: center;
