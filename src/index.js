@@ -26,7 +26,7 @@ app.listen(3000, ()=>{
 
 /*
 
-IMPORTANTE --> LOS NOMBRES DE LAS RUTAS VAN CON MAYÚSCULA.  ej: /MiPerfil  
+IMPORTANTE --> LOS NOMBRES DE LAS RUTAS VAN CON MAYÚSCULA.  ej: /MiPerfil
 
 
                 Por favor fíjense que no haya dos direcciones con el mismo nombre :)
@@ -155,6 +155,11 @@ app.get('/TerminosCondiciones',(req, res)=>{
 //Página opciones de soporte
 app.get('/Soporte',(req, res)=>{
     res.render("OpcionesSoporteUsuario.html")
+});
+
+//Pagina Reportar Problema
+app.get('/ReportarProblema',(req, res)=>{
+    res.render("OpcSopReportarProblema.html")
 });
 
 //Página política de privacidad
