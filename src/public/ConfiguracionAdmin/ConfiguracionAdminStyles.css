@@ -1,4 +1,4 @@
-/* Fondo animado y tipografía */
+/* Fondo animado y tipografía */ 
 body {
     font-family: "coolvetica", sans-serif;
     font-weight: 400;
@@ -28,7 +28,6 @@ header {
     padding: 0 5%;
     justify-content: space-between;
     margin-top: 1%;
-    
 }
 
 .header-logo {
@@ -60,7 +59,7 @@ header {
     text-decoration: none;
     color: rgb(255, 255, 255);
     align-content: center;
-    font-family:  "coolvetica", sans-serif;
+    font-family: "coolvetica", sans-serif;
     font-size: 1.100em;
     font-weight: 700;
     letter-spacing: 0.063rem;
@@ -72,7 +71,6 @@ header {
     color: #cccccc;
     transform: scale(1.03);
 }
-
 
 /* Contenedor de Configuración */
 .config-container {
@@ -93,42 +91,58 @@ header {
     margin-bottom: 2rem;
 }
 
+/* Ajustes para entradas y etiquetas */
 .config-container label {
     display: block;
     font-weight: bold;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .config-container input[type="text"],
 .config-container select {
-    width: 97%;
+    width: 100%; /* Usar ancho completo dentro del contenedor */
     padding: 0.8rem;
-    margin-top: 0.5rem;
-    border: none;
+    margin-top: 0.3rem;
+    margin-bottom: 1rem; /* Espaciado uniforme entre los elementos */
+    border: 1px solid #ccc; /* Ligeros bordes para consistencia */
     border-radius: 0.5rem;
-    background-color: #ffffff;
+    background-color: #f9f9f9; /* Color más claro para contraste */
     color: #000000;
+    font-size: 1rem; /* Tamaño de fuente uniforme */
+    box-sizing: border-box; /* Asegura el ancho correcto */
 }
 
+/* Placeholder para entradas */
 .config-container input[type="text"]::placeholder {
-    color: #000000;
+    color: #666;
 }
 
+/* Botón */
 .config-container button {
     width: 100%;
     padding: 1rem;
     margin-top: 2rem;
-    background-color: #ffffff;
+    background-color: #ffffff; /* Color azul para un mejor contraste */
     color: #000000;
     border: none;
     border-radius: 0.5rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .config-container button:hover {
-    background-color: #555;
+    background-color: #ffffff;
+    transform: scale(1.02);
+}
+
+/* Alinear texto y entradas */
+.config-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Espaciado uniforme entre todos los elementos */
 }
 
 /* Footer */
