@@ -2,9 +2,9 @@
 body {
     font-family: "coolvetica", sans-serif;
     font-weight: 400;
-    font-size: 1.2rem; /* Ajuste para que el tamaño sea moderado */
+    font-size: 1.2vw; /* Texto adaptable */
     color: rgb(255, 255, 255);
-    letter-spacing: 0.05rem;
+    letter-spacing: 0.05vw; /* Separación proporcional */
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -24,14 +24,14 @@ body {
 /* Header */
 header {
     display: flex;
-    align-items: center; /* Centra verticalmente los elementos */
-    padding: 0 3%; /* Ajuste de padding general */
+    align-items: center;
+    padding: 0 3vw; /* Espaciado adaptable */
     justify-content: space-between;
-    height: 5rem; /* Altura consistente para alinear botones */
+    height: 10vh; /* Altura relativa a la ventana */
 }
 
 .header-logo {
-    height: 8rem; /* Tamaño moderado para el logo */
+    height: 8vh; /* Logo ajustable */
     margin: 0;
     transition: 0.3s ease;
 }
@@ -43,21 +43,21 @@ header {
 .header-right {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Centra verticalmente los enlaces */
+    align-items: center;
     background-color: black;
-    border-radius: 1.5em;
-    height: 3rem; /* Altura ajustada para los enlaces */
-    width: 85%;
-    padding: 0.5rem 1rem; /* Espaciado interno moderado */
+    border-radius: 2vw; /* Bordes redondeados escalables */
+    height: 5vh; /* Altura de la barra */
+    width: 70vw; /* Ancho proporcional */
+    padding: 0.5vh 1vw; /* Espaciado interno */
 }
 
 .header-right a {
-    padding: 0 1rem; /* Espaciado interno ajustado */
+    padding: 0 1vw;
     text-decoration: none;
     color: rgb(255, 255, 255);
-    font-size: 1rem; /* Tamaño de texto equilibrado */
+    font-size: 1.2vw; /* Tamaño adaptable */
     font-weight: 600;
-    border-radius: 1.5rem;
+    border-radius: 1vw;
     transition: color 0.2s ease, transform 0.3s ease-out;
 }
 
@@ -68,47 +68,46 @@ header {
 
 /* Contenedor de Configuración */
 .config-container {
-    max-width: 700px; /* Ajuste del ancho máximo */
+    max-width: 50vw; /* Ancho máximo en viewport */
     width: 90%;
     background-color: #000;
     color: #fff;
-    margin: 5vh auto; /* Centrado vertical moderado */
-    padding: 2rem; /* Espaciado interno ajustado */
-    border-radius: 1rem;
-    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.3);
+    margin: 5vh auto; /* Centrado vertical */
+    padding: 3vw; /* Espaciado interno */
+    border-radius: 1vw;
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.3);
     text-align: left;
 }
 
 .config-container h2 {
     text-align: center;
-    font-size: 1.5rem; /* Tamaño moderado */
-    margin-bottom: 1.5rem;
+    font-size: 2vw; /* Tamaño adaptable */
+    margin-bottom: 2vh;
 }
 
 /* Ajustes para entradas y etiquetas */
 .config-container label {
     display: block;
     font-weight: bold;
-    margin-top: 1.2rem; /* Espaciado superior ajustado */
-    margin-bottom: 0.5rem;
-    font-size: 1rem; /* Tamaño de texto moderado */
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+    font-size: 1.2vw; /* Tamaño adaptable */
 }
 
 .config-container input[type="text"],
 .config-container select {
     width: 100%;
-    padding: 0.8rem; /* Espaciado interno ajustado */
-    margin-top: 0.3rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
+    padding: 1vh; /* Espaciado adaptable */
+    margin-top: 0.5vh;
+    margin-bottom: 1.5vh;
+    border: 0.1vw solid #ccc; /* Bordes proporcionales */
+    border-radius: 0.5vw;
     background-color: #f9f9f9;
     color: #000000;
-    font-size: 1rem;
+    font-size: 1.2vw; /* Texto escalable */
     box-sizing: border-box;
 }
 
-/* Placeholder para entradas */
 .config-container input[type="text"]::placeholder {
     color: #666;
 }
@@ -116,15 +115,15 @@ header {
 /* Botón */
 .config-container button {
     width: 100%;
-    padding: 1rem; /* Tamaño ajustado */
-    margin-top: 1.5rem;
+    padding: 1.5vh;
+    margin-top: 2vh;
     background-color: #ffffff;
     color: #000000;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 0.5vw;
     font-weight: bold;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.2vw; /* Texto escalable */
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -134,17 +133,16 @@ header {
 }
 
 /* Footer */
-/* Footer */
 footer {
     background-color: #000;
     color: #fff;
-    padding: 1rem 0; /* Espaciado ajustado */
+    padding: 2vh 0; /* Espaciado adaptable */
     text-align: center;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    font-size: 0.9rem; /* Tamaño de texto moderado */
+    font-size: 1vw; /* Tamaño adaptable */
 }
 
 .footer-container {
@@ -153,26 +151,26 @@ footer {
     align-items: center;
     max-width: 90%;
     margin: 0 auto;
-    padding: 0 1rem; /* Espaciado interno ajustado */
+    padding: 0 2vw; /* Espaciado interno */
 }
 
 .footer-left .footer-logo {
-    font-size: 1.2rem;
+    font-size: 1.5vw; /* Tamaño escalable */
     font-weight: bold;
     color: #fff;
 }
 
 .footer-center a, .footer-right a {
     color: #ffffff;
-    padding: 0.5rem 1rem; /* Espaciado interno ajustado */
+    padding: 0.5vh 1vw; /* Espaciado adaptable */
     text-decoration: none;
-    font-size: 0.9rem; /* Tamaño de texto ajustado */
+    font-size: 1vw; /* Tamaño adaptable */
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .footer-right a {
     background-color: #444;
-    border-radius: 0.3rem;
+    border-radius: 0.5vw; /* Bordes proporcionales */
 }
 
 .footer-right a:hover {
@@ -181,17 +179,25 @@ footer {
 
 /* Línea divisora */
 .footer-divider {
-    border-top: 1px solid #444; /* Línea gris divisora */
-    margin: 1rem 0; /* Espaciado arriba y abajo de la línea */
+    border-top: 0.1vw solid #444; /* Línea divisora adaptable */
+    margin: 1vh 0; /* Márgenes proporcionales */
 }
 
 /* Derechos reservados */
 .footer-bottom {
-    font-size: 0.8rem; /* Tamaño reducido */
+    font-size: 0.9vw; /* Texto reducido */
     color: #ccc;
     text-align: center;
-    padding-top: 0.5rem; /* Espaciado superior */
+    padding-top: 0.5vh;
 }
+
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
 
 
 .error-message {
