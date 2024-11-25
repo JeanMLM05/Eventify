@@ -350,8 +350,8 @@ p{
 }
 
 .event-image img{
-    width: 28.5rem;
-    height: 20rem;
+    width: 23vw;
+    height: 34vh;
     border-radius: 1rem;
     margin: 0 auto 1rem auto; /* Esto centra la imagen */
 }
