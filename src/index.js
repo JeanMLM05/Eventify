@@ -115,6 +115,11 @@ app.get('/EventosFiestas',(req, res)=>{
     res.render("fiestas.html")
 });
 
+//Página de Métodos de pago usuario
+app.get('/MetodosDePago',(req, res)=>{
+    res.render("metodosdepago.html")        /* CAMBIAR EL LINK AL HTML !!!!!!! */
+});
+
 //Página Inicio Admin
 app.get('/InicioA',(req, res)=>{
     res.render("PagInicioAdmin.html")
@@ -122,12 +127,27 @@ app.get('/InicioA',(req, res)=>{
 
 //Página de administración de eventos
 app.get('/AdministrarEventos',(req, res)=>{
-    res.render("AdmminEventos.html")
+    res.render("AdminEventos.html")
 });
 
 //Página de administración de usuarios
 app.get('/AdministrarUsuarios',(req, res)=>{
     res.render("AdminUsers.html")
+});
+
+//Página de editar eventos administrador
+app.get('/EditarEvento',(req, res)=>{
+    res.render("EditEvent.html")
+});
+
+//Página de estadísticas administrador
+app.get('/Estadistica',(req, res)=>{
+    res.render("Estadistica.html")
+});
+
+//Página de crear eventos administrador
+app.get('/CrearEvento',(req, res)=>{
+    res.render("CreateEvent.html")
 });
 
 //Configuración general del sitio web
