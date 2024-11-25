@@ -231,6 +231,7 @@ p{
     position: relative;
     height: 110vh;
     display: flex;
+    border-radius: 1.875rem;
     
 }
 
@@ -274,6 +275,7 @@ p{
 .opciones-menu{
     position: relative;
     top: 3%;
+    border-radius: 1.875rem;
 }
 
 
