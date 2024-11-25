@@ -93,7 +93,6 @@ footer {
     color: #fff;
     padding: 2rem 0; /* Ajuste a rems */
     text-align: center;
-    position: fixed; /* Fijar el footer al fondo */
     bottom: 0; /* Alineación al borde inferior */
     left: 0;
     width: 100%; /* Asegurar que ocupe todo el ancho */
