@@ -229,7 +229,7 @@ p{
     align-self: center;
     align-content: center;
     position: relative;
-    height: 100vh;
+    height: 110vh;
     display: flex;
     
 }
@@ -247,7 +247,7 @@ p{
 .contenedor-menu{
     box-sizing: border-box;
     max-width: 75%;
-    height: 80%;
+    height: 80vh;
     margin: 4rem 1rem;
     margin-bottom: 2%;
     padding: 2%;
