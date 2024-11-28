@@ -117,7 +117,7 @@ app.get('/EventosFiestas',(req, res)=>{
 
 //Página de Métodos de pago usuario
 app.get('/MetodosDePago',(req, res)=>{
-    res.render("metodosdepago.html")        /* CAMBIAR EL LINK AL HTML !!!!!!! */
+    res.render("MetodoPago.html")        /* CAMBIAR EL LINK AL HTML !!!!!!! */
 });
 
 //Página Inicio Admin
