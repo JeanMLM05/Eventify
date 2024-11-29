@@ -1,6 +1,9 @@
 const express = require('express');
-
+const mongoose = require('mongoose'); // Para conectarte a MongoDB
 const app = express();
+
+const rutasUsuarios = require('./rutas/rutasUsuarios'); // Rutas de usuarios
+const rutasAdmins = require('./rutas/rutasAdmins'); // Rutas de administradores
 
 const path = require('path'); //unifica elementos
 app.set('views', path.join(__dirname, 'views'));
@@ -9,8 +12,12 @@ app.engine('html',require('ejs').renderFile);
 app.set('view engine', 'ejs')
 
 //Archivos estáticos, saber cómo llegar a la carpeta public
+//Middleware
+app.use(express.json()); // Para manejar datos JSON en solicitudes
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/usuarios', rutasUsuarios); // Rutas de usuarios
+app.use('/admins', rutasAdmins); // Rutas de administradores
 
 app.listen(3000, ()=>{
     console.log("Se conectó al puerto")
