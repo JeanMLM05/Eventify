@@ -2,9 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose'); // Para conectarte a MongoDB
 const app = express();
 
-const rutasUsuarios = require('./rutas/rutasUsuarios'); // Rutas de usuarios
-const rutasAdmins = require('./rutas/rutasAdmins'); // Rutas de administradores
-
 const path = require('path'); //unifica elementos
 app.set('views', path.join(__dirname, 'views'));
 
@@ -20,27 +17,13 @@ app.use('/usuarios', rutasUsuarios); // Rutas de usuarios
 app.use('/admins', rutasAdmins); // Rutas de administradores
 
 app.listen(3000, ()=>{
-    console.log("Se conectó al puerto")
-}) //puerto, acción
+    console.log("Se conectó al puerto",3000)
+})
 
-/***********************************************************************************************************/
-/***********************************************************************************************************/
 /***********************************************************************************************************/
 
 
 //RUTAS --> (importante: hacer una para cada página!!)
-
-
-/*
-
-IMPORTANTE --> LOS NOMBRES DE LAS RUTAS VAN CON MAYÚSCULA.  ej: /MiPerfil
-
-
-                Por favor fíjense que no haya dos direcciones con el mismo nombre :)
-
-*/
-
-
 
 //Landing Page (cuando no ha iniciado sesión)
 app.get('/',(req, res)=>{
@@ -124,7 +107,7 @@ app.get('/EventosFiestas',(req, res)=>{
 
 //Página de Métodos de pago usuario
 app.get('/MetodosDePago',(req, res)=>{
-    res.render("MetodoPago.html")        /* CAMBIAR EL LINK AL HTML !!!!!!! */
+    res.render("MetodoPago.html")
 });
 
 //Página Inicio Admin
@@ -172,11 +155,10 @@ app.get('/Checkout',(req, res)=>{
     res.render("PagCompraFinal.html")
 });
 
-
 //FOOTER
 //Página términos y condiciones
 app.get('/TerminosCondiciones',(req, res)=>{
-    res.render("Terminos.html")                         /* REVISAR QUE LOS HTML TENGAN EL MISMO NOMBRE AL CREAR LAS PÁGINAS */
+    res.render("Terminos.html")
 });
 
 //Página opciones de soporte
@@ -199,3 +181,7 @@ app.get('/Contactos',(req, res)=>{
     res.render("Contacto.html")
 });
 
+
+//BASE DE DATOS -->
+
+//Conexión a la base de datos
