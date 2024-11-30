@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoose = require('mongoose'); // Para conectarte a MongoDB
+
 const app = express();
 
 const path = require('path'); //unifica elementos
@@ -12,9 +12,6 @@ app.set('view engine', 'ejs')
 //Middleware
 app.use(express.json()); // Para manejar datos JSON en solicitudes
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/usuarios', rutasUsuarios); // Rutas de usuarios
-app.use('/admins', rutasAdmins); // Rutas de administradores
 
 app.listen(3000, ()=>{
     console.log("Se conectó al puerto",3000)
@@ -182,6 +179,10 @@ app.get('/Contactos',(req, res)=>{
 });
 
 
-//BASE DE DATOS -->
+//BASE DE DATOS
 
-//Conexión a la base de datos
+
+
+//LLamar modelos
+const usuario = require('../models/usuarios.js');
+const administrador = require('../models/administradores.js');
