@@ -184,7 +184,7 @@ app.get('/ReportarProblema',(req, res)=>{
 
 //Página política de privacidad
 app.get('/PoliticaPrivacidad',(req, res)=>{
-    res.render("PoliticaPriv.html")
+    res.render("PoliticaPrivacidad.html")
 });
 
 //Página contáctanos
