@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoose = require('mongoose'); // Para conectarte a MongoDB
+
 const app = express();
 
 const path = require('path'); //unifica elementos
