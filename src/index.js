@@ -9,13 +9,11 @@ app.engine('html',require('ejs').renderFile);
 app.set('view engine', 'ejs')
 
 //Archivos estáticos, saber cómo llegar a la carpeta public
-//Middleware
-app.use(express.json()); // Para manejar datos JSON en solicitudes
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(3000, ()=>{
-    console.log("Se conectó al puerto",3000)
-})
+    console.log("Se conectó al puerto")
+}) //puerto, acción
 
 /***********************************************************************************************************/
 
@@ -170,7 +168,7 @@ app.get('/ReportarProblema',(req, res)=>{
 
 //Página política de privacidad
 app.get('/PoliticaPrivacidad',(req, res)=>{
-    res.render("PoliticaPriv.html")
+    res.render("PoliticaPrivacidad.html")
 });
 
 //Página contáctanos

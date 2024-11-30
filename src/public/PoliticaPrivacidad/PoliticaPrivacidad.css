@@ -1,384 +1,107 @@
 /*------HEADER-----*/
 header {
-    margin-top:2vh;
     display: flex;
     align-items: center;
     padding: 0 5%;
     justify-content: space-between;
+    height: 7vw;
 }
 
 .header-logo {
-    height: 8vw; /* La altura se adapta al ancho de la pantalla */
-    margin-left: 5%;
+    height: 8vw; 
     margin-top: -4%;
     margin-bottom: 1%;
     transition: transform .2s ease;
+    position: fixed;
+
 }
 
 .header-logo:hover {
     transform: scale(1.05);
 }
 
-.header-right {
-    display: flex;
-    justify-content: space-between;
-    background-color: black;
-    border-radius: 2em;
-    height: 3vw;
-    padding: 0.3em 0;
-    margin-top: -2%;
-    margin-right: 4%;
-}
-
-.header-right a {
-    padding: 0 1.5vw;
-    text-decoration: none;
-    color: white;
-    align-content: center;
-    font-family:  "coolvetica", sans-serif;
-    font-size: 1.3em;
-    font-weight: 700;
-    letter-spacing: 0.063rem;
-    border-radius: 1.875rem;
-    transition: color .2s ease, transform .3s ease-out;
-}
-
-.header-right a:hover {
-    color: #cccccc;
-    transform: scale(1.03);
-}
-
 /*------FOOTER-----*/
 
 body {
     font-family: 'Coolvetica', Arial, sans-serif;
-}
-
-footer {
-    background-color: #000;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    border-top: 1px solid #444;
-    font-family: 'Coolvetica', Arial, sans-serif;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    flex-wrap: wrap;
-}
-
-.footer-left .footer-logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
-    text-transform: uppercase;
-}
-
-.footer-center a {
-    color: #ffffff;
-    margin: 0 10px;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.footer-center a:hover {
-    text-decoration: underline;
-}
-
-.footer-right a {
-    color: #ffffff;
-    background-color: #444;
-    padding: 8px 15px;
-    border-radius: 5px;
-    margin-left: 10px;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.footer-right a:hover {
-    background-color: #333;
-}
-
-.footer-bottom {
-    border-top: 1px solid #444;
-    margin-top: 10px;
-    padding-top: 10px;
-    font-size: 12px;
-    color: #ccc;
-    text-align: center;
-}
-
-.footer-bottom p {
     margin: 0;
+    background-color: black;
+    color: black;
 }
 
 main{
     display: flex;
-    font-family:  "coolvetica", sans-serif;
+    justify-items: center;
+    flex-direction: row;
+    margin-bottom: 15vw
+}
+
+.Indice{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    margin: 3vw 0 0 12vw;
+    position: fixed;
+    border-radius: 1vw;
+    padding: 1em;
+}
+
+.Indice a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    margin: 1.15vh;
     font-size: 1.1em;
     font-weight: 700;
-    letter-spacing: 0.063rem;
-    margin-top:6vh;
 }
 
-.left-main{
-    margin-left: 7vw;
-    width: auto;
-    justify-items: center;
-    
-}
-
-.left-main h2{
-    justify-self: center;
-    font-size: 4vh;
-    margin-bottom: 30px;
-    margin-left: 7vh;
-}
-
-.file-left{
+.PoliticaPrivacidad{
     display: flex;
-    margin: 4vh;
-    margin-left: 7vh;
-    background-color: #333;
-    width: 34.5vw;
-    height: 35vh;
+    margin: 3vw 0 0 40vw;
     flex-direction: column;
-    border-radius: 1.3vh;
-    align-items: center;
-    justify-items: center;
-    border: 1.5vh solid black;
 }
 
-.file-left button{
-    align-self: center;
-    margin: auto;
-    font-size: 2vh;
-    border: none;
-    color: #444;
-    border-radius: 1vh;
-    font-size: 2vh;
-    cursor: pointer;
+.PP{
+    font-size: 3vw;
 }
 
-.file-left button:active{
-    background-color: #000;
-    color: #fff;
+.Subtitulos{
+    margin: 6vw 0 2vw 0 ;
+    font-size:2vw ;
+    scroll-margin-top: 15vw;
 }
 
-.right-main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: auto;
-}   
-
-.title{
-    display: flex;
-    flex-direction: row;
-    margin-top: 3vh;
-    margin-bottom: 3vh;
+.Descripcion{
+    width: 40vw;
+    font-size: 1vw;
+    font-weight: 700;
+    text-align: justify;
+    margin-bottom: -1vw;
 }
 
-.title h3{
-    margin-right: 1vw;
-    margin-left: -10vw;
-    font-size: 3.5vh;
-    align-self: center;
+.minititulos{
+    margin: 4vw 0 0vw 0 ;
+    font-size:1.5vw;
 }
 
-.title input{
-    height: 4vh;
-    width: 14vw;
-    align-self: center;
-    align-items: center;
-    border-radius: 1vh;
-    border: .3vh solid black;
-    background-color:black;
-    color:white;
+.Lista{
+    margin: 2vw 0 -2vw 0 ;
 }
 
-.core-main input::placeholder{
-    font-size: 2.2vh;
-    color:white;
-    align-self:center;
+.Lista li{
+    margin: 1vw 0 0 0 ;
+    font-size:0.92vw;
+    font-weight: 600;
+    width: 38vw;
 }
 
-.title input::placeholder{
-    font-size: 2.2vh;
-    color:white;
-}
-
-.core-main{
-    margin-left: 2vw;
-    display: flex;
-    flex-direction: row;
-    width: auto;
-    font-size: 2.7vh;
-}
-
-.core-main input{
-    align-self: center;
-    margin-right: 2vw;
-    margin-left: 1vh;
-    height: 4vh;
-    width: 8vw;
-    border-radius: 1vh;
-    border: .3vh solid black;
-    color:white;
-    background-color:black;
-}
-
-.core-final div{
-    align-content: center;
-}
-
-.core-final div textarea{
-    height: 6vh;
-    width: 18vw;
-    color:white;
-    background-color:black;
-    border-radius: 0.7vh;
-}
-
-.core-main .time{
-    width: 4.5vw;
-}
-
-.time{
-    color:white;
-}
-
-.date{
-    font-size:1.8vh;
-}
-
-.core-final{
-    display: flex;
-    flex-direction: row;
-}
-
-.core-final h3{
-    margin-right: 1vw;
-    font-size: 3.2vh;
-}
-
-
-.main-bottom{
-    display: flex;
-    flex-direction: row;
-    margin-top: 2vh;
-}
-
-.tickets{
-    border: none;
-    border-radius: 2vh;
-    margin-top: 1vh;
-    width: 7vw;
-    height:12vh;
-    margin-left: 1vw;
-    background-color:black;
-    color:white;
-}
-
-.tickets button{
-    border-radius: 2vh;
-    border: 0.3vh solid black;
-    height: 3.05vh;
-    font-size: 1.94vh;
-    width:3.1vh;
-}
-
-.zero{
-    font-size: 2.5vh;
-    margin-left: 0.1vw;
-}
-
-.tickets button:active{
-    background-color:#bbb;
-}
-
-.tickets h3, .counter{
-    justify-self: center;
-    margin-bottom: 1vh;
-    font-size: 2.5vh;
-}
-
-.tickets .general{
-    margin-bottom: -3vh;
-    margin-top: 1vh;
-}
-
-.rules{
-    background-color: #000000;
-    width: 18vw;
-    margin-left: 2vh;
-    margin-top: 1vh;
-    border-radius: 2vh;
-    align-items: center;
-    display: flex;
-}
-
-.rules input{
-    width: 5vw;
-    height: 5vh;
-    border: none;
-    background-color: #eee;
-    margin-left: 0.5vw;
-    background-color: #000;
-    color: white;
-}
-
-.rules input::placeholder{
-    font-size: 2.4vh;
-    color: white;
-    text-align: center;
-}
-
-.rules-title{
-    margin-left: 2vw;
-    align-self: center;
-    font-size: 3vh;
-}
-
-.button-bottom{
-    display: flex;
-    justify-self: center;
-    font-size: 3vh;
-    border-radius: 1.873rem;
-    border: none;
-    margin-left: 37vw;
-    margin-top: 3vh;
-    background-color: #000;
-    margin-bottom: 14vh;
-    justify-content: center;
-    align-items: center;
-    width: 7vw;
-    height: 5vh;
-    color: #fff;
-}
-
-.button-bottom:active{
-    background-color: #444;
+html{
+    scroll-behavior: smooth;
 }
 
 
 
 
-
-
-
-
+/* FONDO */
 @keyframes hero-gradient-animation {
     0% {
         --x-0: 85%;
@@ -587,7 +310,7 @@ main{
     initial-value: hsla(214.44444444444443, 100%, 78%, 1)
 }
 
-body {
+body{
     --x-0: 85%;
     --c-0: hsla(338.04878048780483, 100%, 91%, 1);
     --y-0: 80%;
@@ -607,5 +330,5 @@ body {
     background-color: hsla(228.97058823529406, 100%, 84%, 1);
     background-image: radial-gradient(circle at var(--x-0) var(--y-0), var(--c-0) var(--s-start-0), transparent var(--s-end-0)), radial-gradient(circle at var(--x-1) var(--y-1), var(--c-1) var(--s-start-1), transparent var(--s-end-1)), radial-gradient(circle at var(--x-2) var(--y-2), var(--c-2) var(--s-start-2), transparent var(--s-end-2)), radial-gradient(circle at var(--x-3) var(--y-3), var(--c-3) var(--s-start-3), transparent var(--s-end-3)), radial-gradient(circle at var(--x-4) var(--y-4), var(--c-4) var(--s-start-4), transparent var(--s-end-4));
     animation: hero-gradient-animation 10s linear infinite alternate;
-    background-blend-mode: normal, normal, normal, normal,normal;
+    background-blend-mode: normal, normal, normal, normal, normal;
 }

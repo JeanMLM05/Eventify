@@ -5,7 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Creacion de eventos</title>
+
   <link rel="stylesheet" href="EditCreateEventos/CreateEvent.css">
+
   <link rel="stylesheet" href="https://use.typekit.net/ltx2luq.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -14,6 +16,7 @@
   <header>
     <a href="/InicioA" class="header-left">
       <img src='IMG/eventify-logo.png' alt="Eventify Logo" class="header-logo">
+
     </a>
     <div class="header-right">
       <a href='/InicioA'>DASHBOARD</a>
@@ -26,25 +29,24 @@
 
   <main>
     <div class="left-main">
-      <h2>CREAR EVENTO</h2>
+      <h2>EDITAR EVENTO</h2>
 
       <div class="file-left">
         <button>Adjuntar imagen <i class='bx bx-file-blank'></i></button>
       </div>
     </div>
 
-    <form>
     <div class="right-main">
       <div class="title">
-        <h3>Titulo:</h3> <input type="text" name="" id="" placeholder="Evento" required>
+        <h3>Titulo:</h3> <input type="text" name="" id="" placeholder="Evento">
       </div>
       <div class="core-main">
-        <h3>Fecha:</h3> <input type="date" name="" id="" placeholder="Evento" required>
-        <h3>Lugar:</h3> <input type="text" name="" id="" placeholder="Evento" required>
-        <h3>Hora:</h3> <input type="time" name="" id="" placeholder="Evento" class="time" required>
+        <h3>Fecha:</h3> <input type="date" name="" id="" placeholder="Evento">
+        <h3>Lugar:</h3> <input type="text" name="" id="" placeholder="Evento">
+        <h3>Hora:</h3> <input type="time" name="" id="" placeholder="Evento" class="time">
       </div>
       <div class="core-final">
-        <h3>Descripcion:</h3> <div><textarea name="" id="" required>Descripcion</textarea></div>
+        <h3>Descripcion:</h3> <div><textarea name="" id=""></textarea></div>
       </div>
       <div class="main-bottom">
         <div class="tickets">
@@ -67,13 +69,13 @@
         </div>
         <h3 class="rules-title">Reglas: </h3>
         <div class="rules">
-          <input type="text" placeholder="..." required>
+          <input type="text" placeholder="...">
         </div>
       </div>
     </div>
   </main>
-  <input type="submit" class="button-bottom"></input>
-</form>
+
+  <button class="button-bottom">Guardar</button>
 
   <footer>
     <div class="footer-container">
