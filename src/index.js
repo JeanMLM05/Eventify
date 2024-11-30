@@ -17,7 +17,6 @@ app.listen(3000, ()=>{
 
 /***********************************************************************************************************/
 
-
 //RUTAS --> (importante: hacer una para cada página!!)
 
 //Landing Page (cuando no ha iniciado sesión)
