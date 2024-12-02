@@ -229,8 +229,9 @@ p{
     align-self: center;
     align-content: center;
     position: relative;
-    height: 100vh;
+    height: 110vh;
     display: flex;
+    border-radius: 1.875rem;
     
 }
 
@@ -247,7 +248,7 @@ p{
 .contenedor-menu{
     box-sizing: border-box;
     max-width: 75%;
-    height: 80%;
+    height: 80vh;
     margin: 4rem 1rem;
     margin-bottom: 2%;
     padding: 2%;
@@ -274,6 +275,7 @@ p{
 .opciones-menu{
     position: relative;
     top: 3%;
+    border-radius: 1.875rem;
 }
 
 
@@ -350,8 +352,8 @@ p{
 }
 
 .event-image img{
-    width: 28.5rem;
-    height: 20rem;
+    width: 23vw;
+    height: 34vh;
     border-radius: 1rem;
     margin: 0 auto 1rem auto; /* Esto centra la imagen */
 }

@@ -109,57 +109,40 @@ body {
 footer {
     background-color: #000;
     color: #fff;
-    padding: 2vh 0;
+    padding: 2rem 0; /* Ajuste a rems */
     text-align: center;
-    margin-top: auto;
+    bottom: 0; /* Alineación al borde inferior */
+    left: 0;
+    width: 100%; /* Asegurar que ocupe todo el ancho */
 }
 
 .footer-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 90%;
     margin: 0 auto;
-    padding: 0 2vw;
-    gap: 10px;
+    padding: 0 2rem; /* Ajuste a rems */
 }
 
 .footer-left .footer-logo {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Mantener en rems */
     font-weight: bold;
     color: #fff;
     text-transform: uppercase;
 }
 
-.footer-center {
-    display: flex;
-    gap: 1.5rem;
-}
-
-.footer-center a {
+.footer-center a, .footer-right a {
     color: #ffffff;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.3s;
-}
-
-.footer-center a:hover {
-    color: #cccccc;
-}
-
-.footer-right {
-    display: flex;
-    gap: 1rem;
-}
-
-.footer-right a {
-    color: #ffffff;
-    background-color: #444;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
+    padding: 0.5rem 1rem; /* Ajuste a rems */
     text-decoration: none;
     font-size: 0.9rem;
     transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-right a {
+    background-color: #444;
+    border-radius: 0.5rem;
 }
 
 .footer-right a:hover {
@@ -168,9 +151,9 @@ footer {
 }
 
 .footer-bottom {
-    border-top: 1px solid #444;
-    margin-top: 1vh;
-    padding-top: 1vh;
+    border-top: 0.1rem solid #444; /* Ajuste a rems */
+    margin-top: 1rem; /* Ajuste a rems */
+    padding-top: 1rem; /* Ajuste a rems */
     font-size: 0.8rem;
     color: #ccc;
     text-align: center;

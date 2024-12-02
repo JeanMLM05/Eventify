@@ -1,14 +1,14 @@
 /*------HEADER-----*/
 header {
+    margin-top:2vh;
     display: flex;
     align-items: center;
     padding: 0 5%;
     justify-content: space-between;
-    margin-top: -1%;
 }
 
 .header-logo {
-    height: 8vw; 
+    height: 8vw; /* La altura se adapta al ancho de la pantalla */
     margin-left: 5%;
     margin-top: -4%;
     margin-bottom: 1%;
@@ -27,7 +27,7 @@ header {
     height: 3vw;
     padding: 0.3em 0;
     margin-top: -2%;
-    margin-right: 5%;
+    margin-right: 4%;
 }
 
 .header-right a {
@@ -36,7 +36,7 @@ header {
     color: white;
     align-content: center;
     font-family:  "coolvetica", sans-serif;
-    font-size: 1.1em;
+    font-size: 1.3em;
     font-weight: 700;
     letter-spacing: 0.063rem;
     border-radius: 1.875rem;
@@ -129,6 +129,7 @@ main{
     font-size: 1.1em;
     font-weight: 700;
     letter-spacing: 0.063rem;
+    margin-top:6vh;
 }
 
 .left-main{
@@ -200,13 +201,22 @@ main{
     height: 4vh;
     width: 14vw;
     align-self: center;
+    align-items: center;
     border-radius: 1vh;
     border: .3vh solid black;
+    background-color:black;
+    color:white;
 }
 
-.title input, .core-main input::placeholder{
-    text-align: center;
+.core-main input::placeholder{
     font-size: 2.2vh;
+    color:white;
+    align-self:center;
+}
+
+.title input::placeholder{
+    font-size: 2.2vh;
+    color:white;
 }
 
 .core-main{
@@ -225,6 +235,8 @@ main{
     width: 8vw;
     border-radius: 1vh;
     border: .3vh solid black;
+    color:white;
+    background-color:black;
 }
 
 .core-final div{
@@ -234,10 +246,21 @@ main{
 .core-final div textarea{
     height: 6vh;
     width: 18vw;
+    color:white;
+    background-color:black;
+    border-radius: 0.7vh;
 }
 
 .core-main .time{
     width: 4.5vw;
+}
+
+.time{
+    color:white;
+}
+
+.date{
+    font-size:1.8vh;
 }
 
 .core-final{
@@ -261,10 +284,11 @@ main{
     border: none;
     border-radius: 2vh;
     margin-top: 1vh;
-    background-color: #fff;
     width: 7vw;
     height:12vh;
     margin-left: 1vw;
+    background-color:black;
+    color:white;
 }
 
 .tickets button{
@@ -272,6 +296,7 @@ main{
     border: 0.3vh solid black;
     height: 3.05vh;
     font-size: 1.94vh;
+    width:3.1vh;
 }
 
 .zero{
@@ -295,25 +320,29 @@ main{
 }
 
 .rules{
-    background-color: #fff;
-    width: 12vw;
+    background-color: #000000;
+    width: 18vw;
     margin-left: 2vh;
     margin-top: 1vh;
     border-radius: 2vh;
-    align-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .rules input{
-    width: 10.6vw;
+    width: 5vw;
     height: 5vh;
     border: none;
     background-color: #eee;
     margin-left: 0.5vw;
+    background-color: #000;
+    color: white;
 }
 
 .rules input::placeholder{
-    text-align: center;
     font-size: 2.4vh;
+    color: white;
+    text-align: center;
 }
 
 .rules-title{
@@ -330,24 +359,18 @@ main{
     border: none;
     margin-left: 37vw;
     margin-top: 3vh;
-    background-color: #fff;
+    background-color: #000;
     margin-bottom: 14vh;
     justify-content: center;
     align-items: center;
     width: 7vw;
     height: 5vh;
+    color: #fff;
 }
 
 .button-bottom:active{
-    background-color: #bbb;
+    background-color: #444;
 }
-
-
-
-
-
-
-
 
 
 
