@@ -22,7 +22,6 @@ const campos = {
     residencia: false
 }
 
-//--------------------- VARIABLES INICIALES READY ----------------------//
 
 //------- FUNCIONES -------//
 
@@ -89,8 +88,7 @@ $formulario.addEventListener("submit", (e) => {
 
         setTimeout(() => {
             window.location.href = "/MiPerfilU";
-            //location.reload();
-        }, 10000)
+        }, 5000)
     } else {
         location.reload();
     }

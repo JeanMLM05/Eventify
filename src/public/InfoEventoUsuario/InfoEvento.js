@@ -1,6 +1,39 @@
-const $formulario = document.getElementById('#formulario') // contiene todos los elementos dentro del form, con id="formulario"
-const $entradas = document.querySelectorAll('.cantEntradas');
-const $btnFinalizarCompra = document.querySelector("#btn-FinalizarCompra");
+document.getElementById('formulario-evento').addEventListener('submit', function (e) {
+    e.preventDefault(); // Previene el envío del formulario hasta validar
+
+    // Obtener los selects de las entradas
+    const entradas = document.querySelectorAll('.cantEntradas');
+    let alMenosUnaEntrada = false;
+
+    // Verificar que al menos un select tenga un valor mayor a 0
+    entradas.forEach((entrada) => {
+        if (parseInt(entrada.value) > 0) {
+            alMenosUnaEntrada = true;
+        }
+    });
+
+    // Verificar que el checkbox de términos esté marcado
+    const terminos = document.getElementById('terminos');
+    const terminosAceptados = terminos.checked;
+
+    // Validación final
+    if (alMenosUnaEntrada && terminosAceptados) {
+        alert('Redirigiendo a checkout...');
+        setTimeout(() => {
+            window.location.href = "/Checkout"; // Redirigir si todo es válido
+        }, 3000);
+    } else {
+        alert('Debe seleccionar al menos una entrada y aceptar los términos y condiciones.');
+    }
+});
+
+
+
+
+/*
+const $formulario = document.getElementById('formulario') // contiene todos los elementos dentro del form, con id="formulario"
+const $entradas = document.querySelectorAll('#cantEntradas');
+const $btnFinalizarCompra = document.querySelector("btn-FinalizarCompra");
 const $checkboxTerminos = document.getElementById('#terminos');
 
 // Crear campos de validación
@@ -37,7 +70,7 @@ $entradas.forEach((entrada) => {
 $checkboxTerminos.addEventListener("change", validarTerminos);
 
 // Validar el envío de los datos
-$formulario.addEventListener("submit", (e) => {
+$formulario.addEventListener("submitForm", (e) => {
     e.preventDefault();
 
     validarEntradas(); // Validar entradas antes de enviar
@@ -52,3 +85,4 @@ $formulario.addEventListener("submit", (e) => {
         alert("Debes seleccionar al menos una entrada y aceptar los términos y condiciones para continuar.");
     }
 });
+*/
