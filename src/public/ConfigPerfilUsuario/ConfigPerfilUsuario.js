@@ -85,7 +85,7 @@ $formulario.addEventListener("submit", (e) => {
 
 
     if (campos.nombre && campos.identificacion && campos.correo && campos.fechanacimiento && campos.residencia) {
-        document.getElementById("formulario-mensaje-exito").classList.add("formulario-mensaje-exito-activo");
+        document.getElementById("formulario-mensaje-exito-activo").classList.add("formulario-mensaje-exito-activo");
 
         setTimeout(() => {
             window.location.href = "/MiPerfilU";
