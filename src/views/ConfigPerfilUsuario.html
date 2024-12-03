@@ -77,10 +77,12 @@
 
                 <div class="mi-perfil-titulos" id="mi-perfil-titulos">
                     <p>Nombre:</p>
+                    <p>Apellidos:</p>
                     <p>Identificación:</p>
                     <p>Correo electrónico:</p>
                     <p>Fecha de nacimiento:</p>
-                    <p>Residencia:</p>
+                    <p>Provincia:</p>
+                    <p>Cantón:</p>
                 </div>
                 <form action="#" class="mi-perfil-datos" id="formulario">
                     <!--Cambiar datos quemados por reales con la base de datos-->
@@ -89,10 +91,19 @@
                     <div class="formulario-grupo" id="grupo-nombre">
                         <div class="formulario-grupo-input">
                             <input type="text" class="formulario-input" name="nombre" id="nombre"
-                                placeholder="Alejandra López">
+                                placeholder="Nombre">
                         </div>
-                        <p class="formulario-input-error">El nombre debe tener mínimo 8 caracteres y 
-                            debe estar compuesto por su nombre y apellido.
+                        <p class="formulario-input-error">El nombre debe tener de 3 a 40 caracteres.
+                        </p>
+                    </div>
+
+                    <!--GRUPO DE APELLIDOS-->
+                    <div class="formulario-grupo" id="grupo-apellido">
+                        <div class="formulario-grupo-input">
+                            <input type="text" class="formulario-input" name="apellido" id="apellido"
+                                placeholder="Apellidos">
+                        </div>
+                        <p class="formulario-input-error">El apellido debe tener de 3 a 40 caracteres.
                         </p>
                     </div>
 
@@ -103,7 +114,7 @@
                                 placeholder="123456789">
                         </div>
                         <p class="formulario-input-error">La identificación debe tener mínimo
-                            9 caracteres y máximo 14, solo se admiten números.
+                            8 caracteres y máximo 10, solo se admiten números.
                         </p>
                     </div>
 
@@ -121,22 +132,31 @@
                     <!--GRUPO DE FECHA NACIMIENTO-->
                     <div class="formulario-grupo" id="grupo-fechanacimiento">
                         <div class="formulario-grupo-input">
-                            <input type="text" class="formulario-input" name="fechanacimiento" id="fechanacimiento"
-                                placeholder="22-02-2002">
+                            <input type="date" class="formulario-input" name="fechanacimiento" id="fechanacimiento">
                         </div>
-                        <p class="formulario-input-error">El formato de la fecha es día, mes, año; utilizando
-                            guiones como separación (ejemplo: 15-08-2005).
+                        <p class="formulario-input-error">El formato de la fecha es: año, mes, día (AAAA-MM-DD).
                         </p>
                     </div>
 
-                    <!--GRUPO DE RESIDENCIA-->
-                    <div class="formulario-grupo" id="grupo-residencia">
+
+                    <!--GRUPO DE PROVINCIA-->
+                    <div class="formulario-grupo" id="grupo-provincia">
                         <div class="formulario-grupo-input">
-                            <input type="text" class="formulario-input" name="residencia" id="residencia"
-                                placeholder="San José, Desamparados">
+                            <input type="text" class="formulario-input" name="provincia" id="provincia"
+                                placeholder="Provincia">
                         </div>
-                        <p class="formulario-input-error">La dirección debe tener mínimo 6 caracteres,
-                            debe incluir provincia y cantón, en ese orden.
+                        <p class="formulario-input-error">Ingrese una provincia válida.
+                        </p>
+
+                    </div>
+
+                    <!--GRUPO DE CANTÓN-->
+                    <div class="formulario-grupo" id="grupo-canton">
+                        <div class="formulario-grupo-input">
+                            <input type="text" class="formulario-input" name="canton" id="canton"
+                                placeholder="Cantón">
+                        </div>
+                        <p class="formulario-input-error">Ingrese un cantón válido.
                         </p>
 
                     </div>
@@ -152,7 +172,7 @@
                         <p class="formulario-mensaje-exito" id="formulario-mensaje-exito">Cambios guardados
                             correctamente</p>
                         <input type="submit" class="formulario-btn-enviar" value="Guardar cambios">
-                    </div>
+                    </div>                
 
                 </form>
 
