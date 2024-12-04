@@ -175,6 +175,25 @@ app.get('/Contactos',(req, res)=>{
     res.render("Contacto.html")
 });
 
+//Pagina de Preguntas Frecuentes
+app.get('/PreguntasFrecuentes',(req, res)=>{
+    res.render("PreguntasFrecuentes.html")
+});
+
+//Pagina de Solicitud de Evento
+app.get('/SolicitudEvento',(req, res)=>{
+    res.render("SolicitudEvento.html")
+});
+
+//Pagina de Solicitud Reembolso
+app.get('/SolicitudReembolso',(req, res)=>{
+    res.render("SolicitudReembolso.html")
+});
+
+//Pagina de Actualizacion de Eventos
+app.get('/ActualizacionEventos',(req, res)=>{
+    res.render("ActualizacionEventos.html")
+});
 
 //BASE DE DATOS
 
