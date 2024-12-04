@@ -34,6 +34,7 @@ body {
 .help-container h2 {
     font-size: 2rem;
     margin-bottom: 20px;
+    flex: 1;
 }
 
 .search-bar {
