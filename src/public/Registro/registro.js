@@ -108,28 +108,30 @@ $inputs.forEach((input) => {
 });
 
 //------- Validar el envío de los datos / solo frontend
+/*const validarForm = () => {
 
-$formulario.addEventListener("submit", (e) => {
-    e.preventDefault(); // Evita que se recargue la página
+    $formulario.addEventListener("submit", (e) => {
+        e.preventDefault(); // Evita que se recargue la página
 
-    const $terminos = document.getElementById("terminos");
+        const $terminos = document.getElementById("terminos");
 
-    // Imprimir el estado de cada campo
-    console.log(campos);
-    console.log($terminos.checked);
+        // Imprimir el estado de cada campo
+        console.log(campos);
+        console.log($terminos.checked);
 
-    if (campos.nombre && campos.apellidos && campos.correo && campos.password && campos.idd && campos.nacimiento && campos.tipoid && campos.provincia && campos.canton && $terminos.checked) {
-        document.getElementById("formulario--mensaje").classList.remove("formulario--mensaje-activo");
-        document.getElementById("formulario--mensaje-exito").classList.add("formulario--mensaje-exito-activo");
+        if (campos.nombre && campos.apellidos && campos.correo && campos.password && campos.idd && campos.nacimiento && campos.tipoid && campos.provincia && campos.canton && $terminos.checked) {
+            document.getElementById("formulario--mensaje").classList.remove("formulario--mensaje-activo");
+            document.getElementById("formulario--mensaje-exito").classList.add("formulario--mensaje-exito-activo");
 
-        setTimeout(() => {
-            window.location.href = '/IniciarSesion';
-            // location.reload();
-        }, 2000);
-    } else {
-        document.getElementById("formulario--mensaje").classList.add("formulario--mensaje-activo");
-    }
-});
+            setTimeout(() => {
+                
+                location.reload();
+            }, 8000);
+        } else {
+            document.getElementById("formulario--mensaje").classList.add("formulario--mensaje-activo");
+        }
+    })
+};*/
 
 $(document).ready(function () {
     // Obtener provincias al cargar la página
