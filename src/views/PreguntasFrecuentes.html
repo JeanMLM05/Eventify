@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preguntas Frecuentes</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <link rel="stylesheet" href="https://use.typekit.net/ltx2luq.css">
     <link rel="stylesheet" href='NosotrosPag/Nosotros.css'>
+    <title>Preguntas Frecuentes</title>
 </head>
+
 <body>
 
 <!-- HEADER -->
 <header>
     <a href="/InicioU" class="header-left">
-        <img src='IMG/eventify-logo.png' alt="Eventify Logo" class="header-logo">
+        <img src="IMG/eventify-logo.png" alt="Eventify Logo" class="header-logo">
     </a>
 
     <div class="header-right">
@@ -24,12 +27,10 @@
                 <li class="opciones-submenu-header"><a href="/EventosConciertos">CONCIERTOS</a></li>
                 <li class="opciones-submenu-header"><a href="/EventosExposiciones">EXPOSICIONES</a></li>
                 <li class="opciones-submenu-header"><a href="/EventosGastronomia">GASTRONOMÍA</a></li>
-
             </ul>
         </li>
         <a href="/Nosotros">NOSOTROS</a>
         <a href="/MiPerfilU">MI PERFIL</a>
-
     </div>
 
     <form>
@@ -40,28 +41,46 @@
     </form>
 </header>
 
-<!-- Formulario de Reporte de Problema -->
-<div class="help-container report-problem-container">
-    <h2>Solicitud de Evento</h2>
+<!-- CONTENIDO -->
+<div class="contenedor-fondo" id="contenedor-fondo">
+    <div class="info-eventify">
+        <h1>Preguntas Frecuentes</h1>
 
-    <!-- Botón Volver -->
-    <button onclick="location.href='/Soporte'" class="volver-button">Volver</button>
+        <h2>1. ¿Cómo puedo registrarme en la plataforma?</h2>
+        <p>
+            Puedes registrarte haciendo clic en el botón "Registrarse" en el menú superior de la página y completando el formulario con tus datos personales.
+        </p>
 
-    <form id="reportForm" class="report-form" novalidate>
-        <label for="name">Nombre completo</label>
-        <input type="text" id="name" name="name" placeholder="Ingresa tu nombre completo" required>
+        <h2>2. ¿Cómo contacto al equipo de soporte?</h2>
+        <p>
+            Puedes contactar al equipo de soporte desde la sección de contáctanos en las opciones de la parte inferior de la página, donde encontrarás opciones para Reportar un problema o contactarnos directamnete.
+        </p>
 
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
+        <h2>3. ¿Qué métodos de pago aceptan?</h2>
+        <p>
+            Tenemos una política que nos limita a solo aceptar tarjetas de crédito VISA, MasterCard y American Express.
+        </p>
 
-        <label for="description">Descripción del Evento</label>
-        <textarea id="description" name="description" rows="4" placeholder="Describe el Evento, indicanos el nombre y una descripción detallada. Incluye Lugar y fecha. " required></textarea>
+        <h2>4. ¿Puedo solicitar un reembolso?</h2>
+        <p>
+            Sí, en caso de cancelación de un evento o problemas con el servicio, puedes solicitar un reembolso desde nuestra página de Reembolsos a la cual logras acceder desde la página principal de Ayuda.
+        </p>
 
-        <label for="file">Adjuntar archivo (opcional)</label>
-        <input type="file" id="file" name="file">
+        <h2>5. ¿Cómo puedo actualizar mi perfil?</h2>
+        <p>
+            Para actualizar tu perfil, dirígete a la sección "Mi Perfil" en el menú superior, donde podrás editar tus datos personales.
+        </p>
 
-        <button type="submit">Enviar Solicitud</button>
-    </form>
+        <h2>6. ¿Qué hago si mi evento ha sido cancelado?</h2>
+        <p>
+            Si tu evento fue cancelado, recibirás una notificación por correo electrónico con los pasos a seguir para un posible reembolso o reprogramación.
+        </p>
+
+        <h2>7. ¿Cómo puedo publicar un evento?</h2>
+        <p>
+            Para mandar una solicitud de evento directamente a los administradores debes elegir la dicha opción en la página principal de ayuda.
+        </p>
+    </div>
 </div>
 
 <!-- FOOTER -->
@@ -82,13 +101,8 @@
             <a href="https://www.twitter.com" target="_blank" class="social">Twitter</a>
         </div>
     </div>
-
-    <!-- Línea divisora -->
-    <div class="footer-divider"></div>
-
-    <!-- Derechos reservados -->
     <div class="footer-bottom">
-        <p>©️ 2024 Tropical Developers. Todos los derechos reservados.</p>
+        <p>© 2024 Tropical Developers. Todos los derechos reservados.</p>
     </div>
 </footer>
 
