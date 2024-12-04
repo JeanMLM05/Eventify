@@ -18,14 +18,14 @@
         <div class="container">
             <header>Registro</header>
             <!--FORMULARIO-->
-            <form action="#" class="formulario" id="formulario">
+            <form action="/registrarUsuario" method="post" class="formulario" id="formulario">
 
                 <div class="fields">
                     <!--GRUPO DE NOMBRE-->
                     <div class="formulario-grupo" id="grupo-nombre">
                         <label class="formulario--label">Nombre</label>
                         <div class="formulario--grupo-input">
-                            <input type="text" class="formulario--input" name="nombre" id="nombre" placeholder="Nicole">
+                            <input type="text" class="formulario--input" name="nombre" id="nombre" placeholder="Nombre">
                             <i class="formulario--validacion-estado fas fa-times-circle"></i>
                         </div>
                         <p class="formulario--input-error">Debe tener min 3 caracteres
@@ -38,7 +38,7 @@
                         <label class="formulario--label">Apellidos</label>
                         <div class="formulario--grupo-input">
                             <input type="text" class="formulario--input" name="apellidos" id="apellidos"
-                                placeholder="Masco">
+                                placeholder="Apellido">
                             <i class="formulario--validacion-estado fas fa-times-circle"></i>
                         </div>
                         <p class="formulario--input-error">Debe tener min 3 caracteres
@@ -52,7 +52,7 @@
                         <label class="formulario--label">Correo electrónico</label>
                         <div class="formulario--grupo-input">
                             <input type="email" class="formulario--input" name="correo" id="correo"
-                                placeholder="nicole@gmail.com">
+                                placeholder="correo@correo.com">
                             <i class="formulario--validacion-estado fas fa-times-circle"></i>
                         </div>
                         <p class="formulario--input-error">
@@ -91,7 +91,7 @@
                     <div class="formulario--grupo" id="grupo-idd">
                         <label class="formulario--label">ID</label>
                         <div class="formulario--grupo-input">
-                            <input type="number" class="formulario--input" name="idd" id="idd" placeholder="00000000">
+                            <input type="number" class="formulario--input" name="idd" id="idd" placeholder="123456789">
                             <i class="formulario--validacion-estado fas fa-times-circle"></i>
                         </div>
                         <p class="formulario--input-error">
@@ -165,7 +165,7 @@
                 <div class="formulario--grupo formulario--grupo-btn-enviar">
                     <p class="formulario--mensaje-exito" id="formulario--mensaje-exito">El registro se completó
                         correctamente!</p>
-                    <input type="submit" class="formulario--btn" value="Registrarse">
+                    <input type="submit" onclick="validarForm()" class="formulario--btn" value="Registrarse">
                 </div>
             </form>
             <p class="iniciar-sesionp">Tienes una cuenta? <a class="iniciar-sesion" href="/IniciarSesion">Iniciar

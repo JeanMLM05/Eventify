@@ -11,6 +11,11 @@ app.set('view engine', 'ejs')
 //Archivos estáticos, saber cómo llegar a la carpeta public
 app.use(express.static(path.join(__dirname, 'public')));
 
+//BODY PARSER
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
+
 app.listen(3000, ()=>{
     console.log("Se conectó al puerto")
 }) //puerto, acción
@@ -176,10 +181,38 @@ app.get('/Contactos',(req, res)=>{
 });
 
 
-//BASE DE DATOS
-
-
+/* BASE DE DATOS */
 
 //LLamar modelos
 const usuario = require('../models/usuarios.js');
 const administrador = require('../models/administradores.js');
+
+//Métodos POST
+
+//Registro de usuarios - post
+app.post('/registrarUsuario',(req,res)=>{
+    let data = new usuario({
+        nombre:req.body.nombre,
+        apellido:req.body.apellidos,
+        correo:req.body.correo,
+        fechaNacimiento:req.body.nacimiento,
+        tipoId:req.body.tipoid,
+        numId:req.body.idd,
+        provincia:req.body.provincia,
+        canton:req.body.canton,
+        constrasenna:req.body.password
+    })
+
+    data.save()
+        .then(()=>{
+            console.log("El usuario se ha registrado correctamente")
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    
+    res.redirect('/IniciarSesion')
+});
+
+
+//Métodos GET
