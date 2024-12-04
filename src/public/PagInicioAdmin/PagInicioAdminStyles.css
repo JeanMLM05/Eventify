@@ -70,6 +70,7 @@ header {
     max-width: 90%;
     width: 800px;
     margin: 5vh auto;
+    flex: 1;
     text-align: center;
 }
 
