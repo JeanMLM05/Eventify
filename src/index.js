@@ -1,5 +1,5 @@
 const express = require('express');
-
+const mongoose = require('mongoose');
 const app = express();
 
 const path = require('path'); //unifica elementos
@@ -205,6 +205,8 @@ app.get('/ActualizacionEventos', (req, res) => {
 //LLamar modelos
 const usuario = require('../models/usuarios.js');
 const administrador = require('../models/administradores.js');
+const compraModel = require('../models/compras.js');
+
 
 //Métodos POST
 
@@ -342,6 +344,44 @@ app.post('/actualizarPerfilUser', async (req, res) => {
         }
     } catch (err) {
         console.error("Error al actualizar el usuario:", err);
+    }
+});
+
+
+// Update de datos en PagCompraFinal - post
+app.post('/registrarCompra', async (req, res) => {
+    try {
+        // Crear el objeto de compra
+        const nuevaCompra = new compraModel({
+            productos: req.body.productos,
+            total: req.body.total,
+            telefono: req.body.telefono, // Número de teléfono del comprador
+            tarjetaCredito: { // Detalles de la tarjeta de crédito
+                nombre: req.body.tarjetaCredito.nombre,
+                numero: req.body.tarjetaCredito.numero,
+                expiracion: req.body.tarjetaCredito.expiracion,
+                cvc: req.body.tarjetaCredito.cvc,
+            },
+            fecha: new Date(),
+        });
+
+        // Guardar la compra en la base de datos
+        const resultado = await nuevaCompra.save();
+        console.log('Compra registrada correctamente:', resultado);
+
+        // Responder con éxito
+        res.status(201).send({
+            mensaje: 'Compra registrada con éxito.',
+            compra: resultado
+        });
+    } catch (err) {
+        console.error('Error al registrar la compra:', err);
+
+        // Responder con error
+        res.status(500).send({
+            mensaje: 'Error al registrar la compra.',
+            error: err.message
+        });
     }
 });
 

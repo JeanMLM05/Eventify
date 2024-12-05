@@ -1,3 +1,30 @@
+// Enviar datos de compra al servidor
+async function enviarCompraAlServidor(compra) {
+    try {
+        const respuesta = await fetch('/registrarCompra', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(compra),
+        });
+
+        if (respuesta.ok) {
+            const datos = await respuesta.json();
+            console.log('Compra registrada en el servidor:', datos);
+            alert('¡Compra guardada exitosamente en la base de datos!');
+        } else {
+            const error = await respuesta.json();
+            console.error('Error al registrar la compra:', error);
+            alert('Error al guardar la compra. Intenta nuevamente.');
+        }
+    } catch (err) {
+        console.error('Error al enviar la compra:', err);
+        alert('Error al conectar con el servidor.');
+    }
+}
+
+//VALIDACION PRINCIPAL
 document.getElementById("checkout-form").addEventListener("submit", function(event) {
     event.preventDefault();
     let isValid = true;
@@ -94,7 +121,25 @@ document.getElementById("checkout-form").addEventListener("submit", function(eve
 
     // Si todas las validaciones son correctas, se procede con la compra
     if (isValid) {
-        alert("Compra finalizada con éxito.");
+        // Leer datos del resumen de compra desde localStorage
+        const resumenCompra = JSON.parse(localStorage.getItem('resumenCompra'));
+        if (resumenCompra) {
+            const compra = {
+                productos: resumenCompra.productos,
+                total: resumenCompra.total,
+                telefono: phone.value,
+                tarjetaCredito: {
+                    nombre: cardName.value,
+                    numero: cardNumber.value.replace(/\s/g, ''),
+                    expiracion: `${expiryMonth}/${expiryYear}`,
+                    cvc: cvc.value,
+                }
+            };
+
+            // Llama a la función para enviar la compra al servidor
+            enviarCompraAlServidor(compra);
+            alert("Compra finalizada con éxito.");
+        }
     }
 });
 
@@ -140,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+//FINAL VALIDACION PRINCIPAL
 
 //VENTAS TOTALES
 //VENTAS TOTALES
@@ -148,3 +194,4 @@ if (resumenCompra && resumenCompra.total) {
     // Marcar que hay una nueva compra lista para procesar en el Dashboard
     localStorage.setItem('nuevaVenta', 'true');
 }
+
