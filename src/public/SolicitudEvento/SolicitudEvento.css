@@ -1,0 +1,474 @@
+body {
+    font-family: "coolvetica", sans-serif;
+    font-weight: 400;
+    font-size: 1.200rem;
+    color: rgb(255, 255, 255);
+    letter-spacing: 0.063rem;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #81ecec, #74b9ff, #a29bfe);
+    background-size: 300% 300%;
+    animation: gradient-animation 4s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Header */
+/*css del header*/
+body {
+    font-family: "coolvetica", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.875rem; /* Aproximadamente 30px */
+    color: #ffffff;
+    letter-spacing: 0.063rem; /* Aproximadamente 1px */
+    border-radius: 1.875rem; /* Aproximadamente 30px */
+    text-decoration: none;
+}
+
+
+
+
+
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    justify-content: space-between;
+    margin-top: 1%;
+   
+}
+
+
+.header-left{
+    margin-left: -2%;
+
+
+}
+
+
+.header-logo {
+    height: 8vw; /* La altura se adapta al ancho de la pantalla */
+    margin-top: 4%;
+    margin-bottom: 1%;;
+    transition: .3s ease;
+}
+
+
+.header-logo:hover {
+    transform: scale(1.05);
+}
+
+
+.header-right {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    background-color: black;
+    z-index: 10;
+    border-radius: 2em;
+    height: 3vw;
+    width: 90%;
+    padding: 0.3em ;
+    padding-right: 0.9em;
+    margin-right: 5%;
+    margin-left: 3%; /*agregar al de admin*/
+}
+
+
+.sub-menu-header {
+    display: none;
+    position: absolute;
+    top: 118%; /* Coloca el submenú justo debajo de "EVENTOS" */
+    left: 50%; /* Alinea el submenú al centro de "EVENTOS" */
+    transform: translateX(-51%); /* Centra el submenú */
+    background-color: #000000;
+    padding: 0.9375rem 1.25rem;
+    width: 16.25rem;
+    border-radius: 1.875rem;
+    text-align: center;
+    border-color: rgb(233, 222, 255);
+    border-style: solid;
+    border-width: 0.3125rem;
+   
+
+
+}
+
+
+.header-right a {
+    padding: 0 1.5vw;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    align-content: center;
+    font-family:  "coolvetica", sans-serif;
+    font-size: 1.100em;
+    font-weight: 700;
+    letter-spacing: 0.063rem;
+    border-radius: 1.875rem;
+    transition: color .2s ease, transform .3s ease-out;
+}
+
+
+.header-right a:hover {
+    color: #cccccc;
+    transform: scale(1.03);
+}
+
+
+
+
+/* Estilo de los enlaces del menú */
+.opciones-menu-header {
+    padding-left: 0.8rem ;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    align-content: center;
+    font-family:  "coolvetica", sans-serif;
+    font-size: 1.020em;
+    font-weight: 700;
+    letter-spacing: 0.063rem;
+    border-radius: 1.875rem;
+    transition: color .2s ease, transform .3s ease-out;
+    list-style: none;
+}
+
+
+.opciones-menu-header:hover{
+    color: #cccccc;
+    transform: scale(1.03);
+}
+.opciones-menu-header .enlace-menu-header {
+    color: white;
+    text-decoration: none;
+}
+
+
+.opciones-menu-header .enlace-menu-header:hover {
+    color: #cccccc;
+    transform: scale(1.03);
+    display: inline-block;
+    transition: color .2s ease, transform .3s ease-out;
+}
+
+
+
+
+/* mostrar submenú al pasar el cursor ???*/
+.opciones-menu-header:hover .sub-menu-header {
+    display: block;
+   
+}
+
+
+.opciones-submenu-header {
+    padding: 10px 0px;
+    color: #ffffff;
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+
+
+}
+
+
+.opciones-submenu-header:hover {
+    color: #cccccc;
+    transform: scale(1.03);
+}
+
+
+/* estilo de barra de búsqueda */
+.search {
+
+
+    width: 12.5;
+    display: flex;
+    align-items: center;
+    padding: 0.1em ;
+    border-radius: 2em;
+    background: #000000;
+    transition: box-shadow 0.25s;
+    padding-left: 1.875rem;
+}
+
+
+.search-input {
+    font-family: "coolvetica", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.875rem;
+    color: #ffffff;
+    letter-spacing: 0.063rem;
+    margin-left: 1rem;
+    margin-right: 2rem;
+    margin: 0.6rem;
+    text-align: center;
+
+
+    outline: none;
+    border: none;
+    background: transparent;
+    width: 9vw;
+    flex: 1;
+}
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+
+
+
+/*fin
+
+
+css del header*/
+
+
+/* Help Container */
+.help-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    text-align: center;
+    color: #fff;
+}
+
+.help-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.search-bar input[type="text"] {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #444;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: #000000;
+}
+
+.help-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.help-card {
+    background-color: #000000;
+    border-radius: 10px;
+    padding: 30px;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.help-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.help-card p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    min-height: 60px; /* Asegura altura uniforme */
+}
+
+.help-card button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #000000;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.help-card button:hover {
+    background-color: #666;
+}
+
+/* Footer */
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 2vh 0; /* Espaciado adaptable */
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 1vw; /* Tamaño adaptable */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 2vw; /* Espaciado interno */
+}
+
+.footer-left .footer-logo {
+    font-size: 1.5vw; /* Tamaño escalable */
+    font-weight: bold;
+    color: #fff;
+}
+
+.footer-center a, .footer-right a {
+    color: #ffffff;
+    padding: 0.5vh 1vw; /* Espaciado adaptable */
+    text-decoration: none;
+    font-size: 1vw; /* Tamaño adaptable */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-right a {
+    background-color: #444;
+    border-radius: 0.5vw; /* Bordes proporcionales */
+}
+
+.footer-right a:hover {
+    background-color: #333;
+}
+
+/* Línea divisora */
+.footer-divider {
+    border-top: 0.1vw solid #444; /* Línea divisora adaptable */
+    margin: 1vh 0; /* Márgenes proporcionales */
+}
+
+/* Derechos reservados */
+.footer-bottom {
+    font-size: 0.9vw; /* Texto reducido */
+    color: #ccc;
+    text-align: center;
+    padding-top: 0.5vh;
+}
+
+/* Estilo del contenedor de reporte de problema */
+.report-problem-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #000000; /* Fondo oscuro para el contenedor */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Título en blanco */
+.report-problem-container h2 {
+    font-size: 1.8rem;
+    color: #fff; /* Título en blanco */
+    margin-bottom: 20px;
+}
+
+/* Etiquetas del formulario */
+.report-form label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #ffffff; /* Color negro para etiquetas */
+}
+
+/* Estilo de los campos de entrada y textarea */
+.report-form input[type="text"],
+.report-form input[type="email"],
+.report-form textarea,
+.report-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #000; /* Texto negro */
+    background-color: #fff; /* Fondo blanco */
+    box-sizing: border-box; /* Asegura que el padding y borde no sobresalgan */
+}
+
+/* Estilo del botón de envío */
+.report-form button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff; /* Fondo blanco para el botón */
+    color: #000000; /* Texto negro para el botón */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para el botón */
+}
+
+.report-form button[type="submit"]:hover {
+    background-color: #f0f0f0; /* Fondo gris claro al pasar el cursor */
+    color: #2e2e2e;
+}
+
+/* Asegura alineación y apariencia en dispositivos pequeños */
+@media (max-width: 600px) {
+    .report-problem-container {
+        padding: 20px;
+    }
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.volver-button {
+    width: 100%;
+    padding: 1rem;              /* 10px -> 1rem */
+    border: none;
+    border-radius: 0.5rem;      /* 5px -> 0.5rem */
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 1.25rem;     /* 20px -> 1.25rem */
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2); /* 2px, 4px -> 0.125rem, 0.25rem */
+}
+
+.volver-button:hover {
+    background-color: #f0f0f0;
+    color: #2e2e2e;
+}

@@ -5,12 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" media="screen" href="PoliticaPrivacidad.css">
     <title>PoliticaPrivacidad</title>
+    <script>
+      function goBack() {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          // Si no hay una página previa en el historial, redirige a una predeterminada
+          window.location.href = "/home"; // Cambia "/home" a la página predeterminada de tu aplicación
+        }
+      }
+    </script>
+    
 </head>
 <body>
     <header>
-        <a href="#" class="header-left">
-          <img src="../IMG/eventify-logo.png" alt="Eventify Logo" class="header-logo">
-        </a>
+      <a href="javascript:void(0)" onclick="goBack()" class="header-left">
+        <img src="../IMG/eventify-logo.png" alt="Eventify Logo" class="header-logo">
+      </a>
+      
         
       </header>
 

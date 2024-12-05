@@ -111,3 +111,28 @@ document.getElementById("phone").addEventListener("input", function(event) {
 document.getElementById("cvc").addEventListener("input", function(event) {
     event.target.value = event.target.value.replace(/\D/g, '').slice(0, 3);
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Selecciona el contenedor del resumen
+    const resumenProductos = document.getElementById('productos-lista');
+    const resumenTotal = document.getElementById('total-compra');
+
+    // Obtener datos del localStorage
+    const resumenCompra = JSON.parse(localStorage.getItem('resumenCompra'));
+
+    if (resumenCompra) {
+        // Construir el resumen de productos
+        const productos = resumenCompra.productos
+            .map(producto => `${producto.cantidad}x ${producto.tipo} ($${producto.precio}/c.u.)`)
+            .join('<br>');
+
+        // Actualizar los elementos del DOM
+        resumenProductos.innerHTML = `Productos: <br> ${productos}`;
+        resumenTotal.textContent = `Total: $${resumenCompra.total}`;
+    } else {
+        // Mostrar mensajes predeterminados si no hay productos
+        resumenProductos.textContent = 'Productos: No hay productos seleccionados.';
+        resumenTotal.textContent = 'Total: $0';
+    }
+});

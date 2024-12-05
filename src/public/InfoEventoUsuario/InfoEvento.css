@@ -303,8 +303,9 @@ header {
     letter-spacing: 0.063rem;
 }
 
-.num-entradas {
+.cantEntradas {
     color: #ffffff;
+    background-color: #000000;
     font-family:  "coolvetica", sans-serif;
     font-size: 0.800em;
     font-weight: 600;
@@ -312,43 +313,10 @@ header {
     margin-top: 0.050rem;
     margin-bottom: 0.025rem;
     position: relative;
-    top: 1.4rem;
-}
-
-.btn-entradas-menos1, .btn-entradas-menos2 {
-    background-color: #ffffff;
-    color: #000000;
-    margin: 0;
-    padding: 0.3rem 0.6rem;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    height: max-content;
-    width: 2.25rem;
-    font-family:  "coolvetica", sans-serif;
-    font-size: 0.800em;
-    font-weight: 500;
-    position: relative;
-    right: 1rem;
-    bottom: 0.7rem;
-}
-
-.btn-entradas-mas1, .btn-entradas-mas2 {
-    background-color: #ffffff;
-    color: #000000;
-    margin: 0;
-    padding: 0.3rem 0.6rem;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    height: max-content;
-    width: 2.25rem;
-    font-family:  "coolvetica", sans-serif;
-    font-size: 0.800em;
-    font-weight: 500;
-    position: relative;
-    left: 1rem;
-    bottom: 0.7rem;
+    top: 0.5rem;
+    border-color: #ffffff;
+    border-radius: 1.05rem;
+    padding: 0.25rem;
 }
 
 /* Requisitos */
@@ -417,10 +385,10 @@ header {
 }
 
 /* Botón finalizar compra */
-.btn-FinalizarCompra {
+.btn-FinalizarCompra button{
     display: flex;
     font-family:  "coolvetica", sans-serif;
-    font-size: 1.195rem;
+    font-size: 1.395rem;
     font-weight: 700;
     align-items: center;
     align-content: center;
@@ -428,23 +396,67 @@ header {
     width: max-content;
     height: max-content;
     margin: 1rem;
-    padding: 0.3rem 0rem;
+    padding: 0.8rem 0.5rem;
     background-color: #000000;
-    border-radius: 0.775rem;
+    border-radius: 1.175rem;
     color: #ffffff;
     position: relative;
     left: 15rem;
     bottom: 9.1rem;
 }
 
-.btn-FinalizarCompra a {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    background-color: #000000;
-    color: #ffffff;
-    border-radius: 0.5rem;
-    text-decoration: none;
+
+.formulario-input{
+    box-sizing: border-box;
+    width: 85%;
+    height: 200%;
+    color: #000000;
+    background: #ffffff;
+
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-radius: 3.4375rem;
+    outline: none;
+
+    padding: 0% 2%;
+    margin: 0;
+    margin-bottom: 9%;
+
+    transition: all 1s;
+    line-height: 14%;
+
+    font-size: 90%;
+    font-family: "coolvetica", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 1px;
 }
+
+.formulario-input-error{
+    font-size: 0.4em;
+    margin-bottom: 0;
+    width: 15rem;
+    height: 5rem;
+    position: absolute;
+    bottom: -14rem;
+    left: 74.4rem;
+    margin-bottom: 15%;
+    background-color: #000000;
+    border: 2px solid #d50606;
+    border-radius: 1.1875rem;
+    text-align: center;
+    align-content: center;
+    display: none;
+}
+
+
+/*CSS llamado por el JS*/
+.formulario-input-error-activo{
+    display: block;
+}
+
 
 /* FOOTER */
 footer {
