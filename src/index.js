@@ -283,7 +283,6 @@ app.post('/actualizarPerfilAdmin', async (req, res) => {
 
         if (!administradorExistente) {
             console.log("No se encontró un administrador con la cédula proporcionada:", idd);
-            return res.status(404).send("Administrador no encontrado.");
         }
 
         const camposActualizados = {};
@@ -296,19 +295,53 @@ app.post('/actualizarPerfilAdmin', async (req, res) => {
         if (req.body.canton) camposActualizados.canton = req.body.canton;
         if (req.body.password) camposActualizados.constrasenna = req.body.password;
 
-        // Actualizar el administrador con updateOne
+
         const resultado = await administrador.updateOne({ numId: idd }, { $set: camposActualizados });
 
         if (resultado.modifiedCount > 0) {
             console.log("Administrador actualizado correctamente:", idd);
-            res.redirect('/MiPerfilA'); // Redirige al perfil actualizado
+            res.redirect('/MiPerfilA'); 
         } else {
             console.log("No se realizaron cambios en el administrador:", idd);
-            res.status(200).send("No se realizaron cambios en el perfil.");
         }
     } catch (err) {
         console.error("Error al actualizar el administrador:", err);
-        res.status(500).send("Error al actualizar el administrador.");
+    }
+});
+
+
+
+//Update de datos en configPerfilAdmin - post
+app.post('/actualizarPerfilUser', async (req, res) => {
+    try {
+        const idd = Number(req.body.idd);
+
+        const usuarioExistente = await usuario.findOne({ numId: idd });
+
+        if (!usuarioExistente) {
+            console.log("No se encontró un usuario con la cédula proporcionada:", idd);
+        }
+
+        const camposActualizados = {};
+        if (req.body.nombre) camposActualizados.nombre = req.body.nombre;
+        if (req.body.apellido) camposActualizados.apellido = req.body.apellido;
+        if (req.body.correo) camposActualizados.correo = req.body.correo;
+        if (req.body.fechanacimiento) camposActualizados.fechaNacimiento = req.body.fechanacimiento;
+        if (req.body.tipoid) camposActualizados.tipoId = req.body.tipoid;
+        if (req.body.provincia) camposActualizados.provincia = req.body.provincia;
+        if (req.body.canton) camposActualizados.canton = req.body.canton;
+        if (req.body.password) camposActualizados.constrasenna = req.body.password;
+
+        const resultado = await usuario.updateOne({ numId: idd }, { $set: camposActualizados });
+
+        if (resultado.modifiedCount > 0) {
+            console.log("Usuario actualizado correctamente:", idd);
+            res.redirect('/MiPerfilU');
+        } else {
+            console.log("No se realizaron cambios en el usuario:", idd);
+        }
+    } catch (err) {
+        console.error("Error al actualizar el usuario:", err);
     }
 });
 
