@@ -257,10 +257,10 @@ const registrarAdmin = async () => {
 const {validarInicioSesion} = require('../servicios/serviciosUsuarios.js');
 
 app.post('/iniciarSesion', async (req, res) => {
-    const { correo, contrasenna } = req.body;
+    const { correo, password } = req.body;
 
     try {
-        const resultado = await validarInicioSesion(correo, contrasenna);
+        const resultado = await validarInicioSesion(correo, password);
 
         if (resultado.tipo === "administrador") {
             res.redirect('/InicioA');
@@ -269,7 +269,7 @@ app.post('/iniciarSesion', async (req, res) => {
         }
     } catch (error) {
         console.error(error.message);
-        res.redirect('/IniciarSesion'); // Redirigir en caso de error
+        res.redirect('/IniciarSesion');
     }
 });
 

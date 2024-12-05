@@ -4,6 +4,7 @@ const Administrador = require('../models/administradores.js');
 const validarInicioSesion = async (correo, contrasenna) => {
     try {
         const administrador = await validarAdministrador(correo, contrasenna);
+        console.log("Administrador encontrado:", administrador);  // Depuración
         return {
             tipo: "administrador",
             datos: administrador
@@ -16,6 +17,7 @@ const validarInicioSesion = async (correo, contrasenna) => {
 
     try {
         const usuario = await validarUsuario(correo, contrasenna);
+        console.log("Usuario encontrado:", usuario);  // Depuración
         return {
             tipo: "usuario",
             datos: usuario
@@ -31,8 +33,7 @@ const validarUsuario = async (correo, contrasenna) => {
         throw new Error("Correo o contraseña inválida");
     }
 
-    const contrasenaValida = await compare(contrasenna, usuario.contrasenna);
-    if (!contrasenaValida) {
+    if (usuario.contrasenna !== contrasenna) {
         throw new Error("Correo o contraseña inválida");
     }
 
@@ -45,8 +46,8 @@ const validarAdministrador = async (correo, contrasenna) => {
         throw new Error("Correo o contraseña inválida");
     }
 
-    const contrasenaValida = await compare(contrasenna, administrador.contrasenna);
-    if (!contrasenaValida) {
+    // Comparación directa sin encriptación
+    if (administrador.contrasenna !== contrasenna) {
         throw new Error("Correo o contraseña inválida");
     }
 
