@@ -210,7 +210,7 @@ app.get('/ActualizacionEventos', (req, res) => {
 const usuario = require('../models/usuarios.js');
 const administrador = require('../models/administradores.js');
 const evento = require('../models/eventos.js');
-const compraModel = require('../models/compras.js');
+const compra = require('../models/compras.js');
 
 
 //Métodos POST
@@ -355,7 +355,7 @@ app.post('/actualizarPerfilUser', async (req, res) => {
 app.post('/registrarCompra', async (req, res) => {
     try {
         // Crear el objeto de compra
-        const nuevaCompra = new compraModel({
+        const nuevaCompra = new compra({
             productos: req.body.productos,
             total: req.body.total,
             telefono: req.body.telefono, // Número de teléfono del comprador

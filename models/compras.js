@@ -19,6 +19,6 @@ const compraSchema = new mongoose.Schema({
     fecha: { type: Date, default: Date.now }
 }, { versionKey: false });
 
-const compraModel = mongoose.model('Compras', compraSchema);
+let compraModel = mongoose.model('Compras',compraSchema);
 
 module.exports = compraModel;
