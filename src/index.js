@@ -261,20 +261,85 @@ const registrarAdmin = async () => {
 
 
 //Iniciar sesión - post
-app.post('/iniciarSesion', async (req, res) => {
-    const { correo, password } = req.body;
-
+app.post('/iniciarSesion', async(req, res) => {
     try {
-        const resultado = await validarInicioSesion(correo, password);
+        let data = {
+            correo: req.body.correo,
+            contrasenna: req.body.password
+        };
 
-        if (resultado.tipo === "administrador") {
-            res.redirect('/InicioA');
-        } else if (resultado.tipo === "usuario") {
-            res.redirect('/InicioU');
+        let userBD = await administrador.findOne({ correo: data.correo });
+
+        if (userBD) {
+
+            //prueba para ver datos ingresados
+            console.log("Datos en la base de datos (Administrador):", userBD); //prueba
+
+            console.log("Correo ingresado:", data.correo);
+            console.log("Tipo de correo ingresada:", typeof data.correo);
+            console.log("Tipo de correo en la base de datos:", typeof userBD.correo);
+
+            console.log("Contraseña ingresada:", data.contrasenna);
+            console.log("Tipo de contraseña ingresada:", typeof data.contrasenna);
+            console.log("Tipo de contraseña en la base de datos:", typeof userBD.constrasenna);
+            //fin prueba1
+
+            const inputPassword = data.contrasenna.trim();
+            const dbPassword = userBD.constrasenna.trim();
+
+            console.log(`Contraseña ingresada (normalizada): [${inputPassword}]`);
+            console.log(`Contraseña en la base de datos (normalizada): [${dbPassword}]`); //prueba
+
+            // Validar contraseña
+            if (inputPassword === dbPassword) {
+                console.log("Inicio de sesión exitoso como administrador.");
+                return res.redirect('/InicioA');
+            } else {
+                console.log("Contraseña incorrecta para administrador.");
+                return res.redirect('/IniciarSesion');
+            }
         }
+
+
+        userBD = await usuario.findOne({ correo: data.correo });
+
+        if (userBD) {
+
+            console.log("Datos en la base de datos (Usuario):", userBD);//prueba
+            
+            //prueba para ver datos ingresados
+            console.log("Correo ingresado:", data.correo);
+            console.log("Tipo de correo ingresada:", typeof data.correo);
+            console.log("Tipo de correo en la base de datos:", typeof userBD.correo);
+
+            console.log("Contraseña ingresada:", data.contrasenna);
+            console.log("Tipo de contraseña ingresada:", typeof data.contrasenna);
+            console.log("Tipo de contraseña en la base de datos:", typeof userBD.constrasenna);
+            //fin prueba1
+
+            const inputPassword = data.contrasenna.trim();
+            const dbPassword = userBD.constrasenna.trim();
+
+            console.log(`Contraseña ingresada (normalizada): [${inputPassword}]`);
+            console.log(`Contraseña en la base de datos (normalizada): [${dbPassword}]`); //prueba
+
+            // Validar contraseña
+            /*if (userBD.contrasenna === data.contrasenna) {*/
+            if (inputPassword === dbPassword) {
+                console.log("Inicio de sesión exitoso como usuario.");
+                return res.redirect('/InicioU');
+            } else {
+                console.log("Contraseña incorrecta para usuario.");
+                return res.redirect('/IniciarSesion');
+            }
+        }
+
+        console.log("Correo no encontrado en administradores ni usuarios.");
+        return res.redirect('/IniciarSesion');
+
     } catch (error) {
-        console.error(error.message);
-        res.redirect('/IniciarSesion');
+        console.error("Error al iniciar sesión:", error);
+        res.status(500).send("Ocurrió un error al procesar la solicitud.");
     }
 });
 
@@ -305,7 +370,7 @@ app.post('/actualizarPerfilAdmin', async (req, res) => {
 
         if (resultado.modifiedCount > 0) {
             console.log("Administrador actualizado correctamente:", idd);
-            res.redirect('/MiPerfilA'); 
+            res.redirect('/MiPerfilA');
         } else {
             console.log("No se realizaron cambios en el administrador:", idd);
         }
@@ -313,7 +378,6 @@ app.post('/actualizarPerfilAdmin', async (req, res) => {
         console.error("Error al actualizar el administrador:", err);
     }
 });
-
 
 
 //Update de datos en configPerfilAdmin - post
