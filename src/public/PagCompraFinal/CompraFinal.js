@@ -1,3 +1,30 @@
+// Enviar datos de compra al servidor
+async function enviarCompraAlServidor(compra) {
+    try {
+        const respuesta = await fetch('/registrarCompra', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(compra),
+        });
+
+        if (respuesta.ok) {
+            const datos = await respuesta.json();
+            console.log('Compra registrada en el servidor:', datos);
+            alert('¡Compra guardada exitosamente en la base de datos!');
+        } else {
+            const error = await respuesta.json();
+            console.error('Error al registrar la compra:', error);
+            alert('Error al guardar la compra. Intenta nuevamente.');
+        }
+    } catch (err) {
+        console.error('Error al enviar la compra:', err);
+        alert('Error al conectar con el servidor.');
+    }
+}
+
+//VALIDACION PRINCIPAL
 document.getElementById("checkout-form").addEventListener("submit", function(event) {
     event.preventDefault();
     let isValid = true;
@@ -89,9 +116,30 @@ document.getElementById("checkout-form").addEventListener("submit", function(eve
         isValid = false;
     }
 
+    
+
+
     // Si todas las validaciones son correctas, se procede con la compra
     if (isValid) {
-        alert("Compra finalizada con éxito.");
+        // Leer datos del resumen de compra desde localStorage
+        const resumenCompra = JSON.parse(localStorage.getItem('resumenCompra'));
+        if (resumenCompra) {
+            const compra = {
+                productos: resumenCompra.productos,
+                total: resumenCompra.total,
+                telefono: phone.value,
+                tarjetaCredito: {
+                    nombre: cardName.value,
+                    numero: cardNumber.value.replace(/\s/g, ''),
+                    expiracion: `${expiryMonth}/${expiryYear}`,
+                    cvc: cvc.value,
+                }
+            };
+
+            // Llama a la función para enviar la compra al servidor
+            enviarCompraAlServidor(compra);
+            alert("Compra finalizada con éxito.");
+        }
     }
 });
 
@@ -114,7 +162,7 @@ document.getElementById("cvc").addEventListener("input", function(event) {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Selecciona el contenedor del resumen
+    // Selección de contenedores
     const resumenProductos = document.getElementById('productos-lista');
     const resumenTotal = document.getElementById('total-compra');
 
@@ -122,17 +170,28 @@ document.addEventListener('DOMContentLoaded', function () {
     const resumenCompra = JSON.parse(localStorage.getItem('resumenCompra'));
 
     if (resumenCompra) {
-        // Construir el resumen de productos
-        const productos = resumenCompra.productos
-            .map(producto => `${producto.cantidad}x ${producto.tipo} ($${producto.precio}/c.u.)`)
-            .join('<br>');
+        // Crear una lista HTML para los productos
+        const productosHTML = resumenCompra.productos
+            .map(producto => `<li>${producto.cantidad}x ${producto.tipo} ($${producto.precio}/c.u.)</li>`)
+            .join('');
 
-        // Actualizar los elementos del DOM
-        resumenProductos.innerHTML = `Productos: <br> ${productos}`;
+        // Actualizar el DOM con la lista y el total
+        resumenProductos.innerHTML = `Productos: <ul>${productosHTML}</ul>`;
         resumenTotal.textContent = `Total: $${resumenCompra.total}`;
     } else {
-        // Mostrar mensajes predeterminados si no hay productos
+        // Mensajes predeterminados si no hay productos
         resumenProductos.textContent = 'Productos: No hay productos seleccionados.';
         resumenTotal.textContent = 'Total: $0';
     }
 });
+
+//FINAL VALIDACION PRINCIPAL
+
+//VENTAS TOTALES
+//VENTAS TOTALES
+const resumenCompra = JSON.parse(localStorage.getItem('resumenCompra'));
+if (resumenCompra && resumenCompra.total) {
+    // Marcar que hay una nueva compra lista para procesar en el Dashboard
+    localStorage.setItem('nuevaVenta', 'true');
+}
+

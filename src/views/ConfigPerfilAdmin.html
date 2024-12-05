@@ -61,7 +61,7 @@
                     <p>Provincia:</p>
                     <p>Cantón:</p>
                 </div>
-                <form action="#" class="mi-perfil-datos" id="formulario">
+                <form action="/actualizarPerfilAdmin" method="post" class="mi-perfil-datos" id="formulario">
                     <!--Cambiar datos quemados por reales con la base de datos-->
 
                     <!--GRUPO DE NOMBRE-->
@@ -85,9 +85,9 @@
                     </div>
 
                     <!--GRUPO DE IDENTIFICACION-->
-                    <div class="formulario-grupo" id="grupo-identificacion">
+                    <div class="formulario-grupo" id="grupo-idd">
                         <div class="formulario-grupo-input">
-                            <input type="text" class="formulario-input" name="identificacion" id="identificacion"
+                            <input type="number" class="formulario-input" name="idd" id="idd"
                                 placeholder="123456789">
                         </div>
                         <p class="formulario-input-error">La identificación debe tener mínimo

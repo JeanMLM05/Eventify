@@ -1,5 +1,5 @@
 const express = require('express');
-
+const mongoose = require('mongoose');
 const app = express();
 
 const path = require('path'); //unifica elementos
@@ -200,11 +200,17 @@ app.get('/ActualizacionEventos', (req, res) => {
     res.render("ActualizacionEventos.html")
 });
 
+
+
+
 /* BASE DE DATOS */
 
 //LLamar modelos
 const usuario = require('../models/usuarios.js');
 const administrador = require('../models/administradores.js');
+const evento = require('../models/eventos.js');
+const compraModel = require('../models/compras.js');
+
 
 //Métodos POST
 
@@ -254,8 +260,6 @@ const registrarAdmin = async () => {
 
 
 //Iniciar sesión - post
-const {validarInicioSesion} = require('../servicios/serviciosUsuarios.js');
-
 app.post('/iniciarSesion', async (req, res) => {
     const { correo, password } = req.body;
 
@@ -274,5 +278,120 @@ app.post('/iniciarSesion', async (req, res) => {
 });
 
 
+//Update de datos en configPerfilAdmin - post
+app.post('/actualizarPerfilAdmin', async (req, res) => {
+    try {
+        const idd = Number(req.body.idd);
+
+        const administradorExistente = await administrador.findOne({ numId: idd });
+
+        if (!administradorExistente) {
+            console.log("No se encontró un administrador con la cédula proporcionada:", idd);
+        }
+
+        const camposActualizados = {};
+        if (req.body.nombre) camposActualizados.nombre = req.body.nombre;
+        if (req.body.apellido) camposActualizados.apellido = req.body.apellido;
+        if (req.body.correo) camposActualizados.correo = req.body.correo;
+        if (req.body.fechanacimiento) camposActualizados.fechaNacimiento = req.body.fechanacimiento;
+        if (req.body.tipoid) camposActualizados.tipoId = req.body.tipoid;
+        if (req.body.provincia) camposActualizados.provincia = req.body.provincia;
+        if (req.body.canton) camposActualizados.canton = req.body.canton;
+        if (req.body.password) camposActualizados.constrasenna = req.body.password;
+
+
+        const resultado = await administrador.updateOne({ numId: idd }, { $set: camposActualizados });
+
+        if (resultado.modifiedCount > 0) {
+            console.log("Administrador actualizado correctamente:", idd);
+            res.redirect('/MiPerfilA'); 
+        } else {
+            console.log("No se realizaron cambios en el administrador:", idd);
+        }
+    } catch (err) {
+        console.error("Error al actualizar el administrador:", err);
+    }
+});
+
+
+
+//Update de datos en configPerfilAdmin - post
+app.post('/actualizarPerfilUser', async (req, res) => {
+    try {
+        const idd = Number(req.body.idd);
+
+        const usuarioExistente = await usuario.findOne({ numId: idd });
+
+        if (!usuarioExistente) {
+            console.log("No se encontró un usuario con la cédula proporcionada:", idd);
+        }
+
+        const camposActualizados = {};
+        if (req.body.nombre) camposActualizados.nombre = req.body.nombre;
+        if (req.body.apellido) camposActualizados.apellido = req.body.apellido;
+        if (req.body.correo) camposActualizados.correo = req.body.correo;
+        if (req.body.fechanacimiento) camposActualizados.fechaNacimiento = req.body.fechanacimiento;
+        if (req.body.tipoid) camposActualizados.tipoId = req.body.tipoid;
+        if (req.body.provincia) camposActualizados.provincia = req.body.provincia;
+        if (req.body.canton) camposActualizados.canton = req.body.canton;
+        if (req.body.password) camposActualizados.constrasenna = req.body.password;
+
+        const resultado = await usuario.updateOne({ numId: idd }, { $set: camposActualizados });
+
+        if (resultado.modifiedCount > 0) {
+            console.log("Usuario actualizado correctamente:", idd);
+            res.redirect('/MiPerfilU');
+        } else {
+            console.log("No se realizaron cambios en el usuario:", idd);
+        }
+    } catch (err) {
+        console.error("Error al actualizar el usuario:", err);
+    }
+});
+
+
+// Update de datos en PagCompraFinal - post
+app.post('/registrarCompra', async (req, res) => {
+    try {
+        // Crear el objeto de compra
+        const nuevaCompra = new compraModel({
+            productos: req.body.productos,
+            total: req.body.total,
+            telefono: req.body.telefono, // Número de teléfono del comprador
+            tarjetaCredito: { // Detalles de la tarjeta de crédito
+                nombre: req.body.tarjetaCredito.nombre,
+                numero: req.body.tarjetaCredito.numero,
+                expiracion: req.body.tarjetaCredito.expiracion,
+                cvc: req.body.tarjetaCredito.cvc,
+            },
+            fecha: new Date(),
+        });
+
+        // Guardar la compra en la base de datos
+        const resultado = await nuevaCompra.save();
+        console.log('Compra registrada correctamente:', resultado);
+
+        // Responder con éxito
+        res.status(201).send({
+            mensaje: 'Compra registrada con éxito.',
+            compra: resultado
+        });
+    } catch (err) {
+        console.error('Error al registrar la compra:', err);
+
+        // Responder con error
+        res.status(500).send({
+            mensaje: 'Error al registrar la compra.',
+            error: err.message
+        });
+    }
+});
+
 
 //Métodos GET
+
+
+
+
+//MetodoPago Rutas 
+
