@@ -41,7 +41,7 @@ document.getElementById('formulario-evento').addEventListener('submit', function
     // Redirigir a la página de checkout
     alert('Redirigiendo a checkout...');
     setTimeout(() => {
-        window.location.href = "../PagCompraFinal/PagCompraFinal.html";
+        window.location.href = "/Checkout";
     }, 1000);
 });
 
