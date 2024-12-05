@@ -51,7 +51,7 @@ $inputs.forEach((input) => {
 
 //------- Validar el envío de los datos
 
-$formulario.addEventListener("submit", (e) => {
+/*$formulario.addEventListener("submit", (e) => {
     e.preventDefault(); // Evita que se recargue la página
 
     const $terminos = document.getElementById("terminos");
@@ -71,4 +71,4 @@ $formulario.addEventListener("submit", (e) => {
     } else {
         document.getElementById("formulario--mensaje").classList.add("formulario--mensaje-activo");
     }
-});
+});*/
