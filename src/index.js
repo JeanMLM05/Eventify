@@ -1,6 +1,8 @@
 const express = require('express');
 
 const app = express();
+const cors = require('cors');
+const path = require('path');
 
 const path = require('path'); //unifica elementos
 app.set('views', path.join(__dirname, 'views'));
@@ -347,3 +349,65 @@ app.post('/actualizarPerfilUser', async (req, res) => {
 
 
 //Métodos GET
+
+
+
+
+//MetodoPago Rutas 
+
+// Importar el modelo de tarjeta
+const Tarjeta = require('./models/Tarjeta');
+// Middleware
+app.use(express.json()); // Para analizar cuerpos JSON
+app.use(cors()); // Para habilitar CORS
+
+// Rutas
+
+// Ruta para agregar una tarjeta (POST)
+app.post('/api/tarjetas', async (req, res) => {
+    const { nombreCompleto, numeroTarjeta, tipoTarjeta, mesExpiracion, anioExpiracion } = req.body;
+
+    try {
+        // Crear una nueva tarjeta
+        const tarjeta = new Tarjeta({
+            nombreCompleto,
+            numeroTarjeta,
+            tipoTarjeta,
+            mesExpiracion,
+            anioExpiracion
+        });
+
+        // Guardar la tarjeta en la base de datos
+        await tarjeta.save();
+        res.status(201).json(tarjeta); // Enviar la tarjeta recién creada como respuesta
+    } catch (error) {
+        res.status(500).json({ error: 'Error al guardar la tarjeta' });
+    }
+});
+
+// Ruta para obtener todas las tarjetas (GET)
+app.get('/api/tarjetas', async (req, res) => {
+    try {
+        const tarjetas = await Tarjeta.find(); // Obtener todas las tarjetas
+        res.status(200).json(tarjetas); // Devolver las tarjetas
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener las tarjetas' });
+    }
+});
+
+// Ruta para eliminar una tarjeta (DELETE)
+app.delete('/api/tarjetas/:id', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const tarjeta = await Tarjeta.findByIdAndDelete(id); // Eliminar tarjeta por ID
+
+        if (!tarjeta) {
+            return res.status(404).json({ error: 'Tarjeta no encontrada' });
+        }
+
+        res.status(200).json({ message: 'Tarjeta eliminada correctamente' });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al eliminar la tarjeta' });
+    }
+});
