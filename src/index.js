@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+const nodemailer = require('nodemailer');
 
 const path = require('path'); //unifica elementos
 app.set('views', path.join(__dirname, 'views'));
@@ -384,6 +385,59 @@ app.post('/registrarCompra', async (req, res) => {
             mensaje: 'Error al registrar la compra.',
             error: err.message
         });
+    }
+});
+
+//Envío de correos electrónicos
+// Configuración del transporte
+const transporter = nodemailer.createTransport({
+    service: 'gmail', // O el servicio de correo que uses
+    auth: {
+        user: 'eventifybytd@gmail.com', // Correo de la empresa
+        pass: 'ccfpuitqylvtzcke' // Contraseña o contraseña de aplicación
+    }
+});
+
+// Función para enviar correo
+async function enviarCorreo({ asunto, remitente, replyTo, mensaje }) {
+    try {
+        const info = await transporter.sendMail({
+            from: '"Eventify Notificaciones" <eventifybytd@gmail.com>', // Correo de la empresa
+            to: 'eventifybytd@gmail.com', // Siempre enviar al correo de la empresa
+            subject: asunto, // Asunto
+            replyTo: replyTo, // El correo ingresado por el usuario para responder
+            html: mensaje, // Mensaje en formato HTML
+        });
+        console.log('Correo enviado correctamente:', info.messageId);
+    } catch (err) {
+        console.error('Error al enviar el correo:', err);
+    }
+}
+//ENVIAR CORREO
+app.post('/enviarCorreo', async (req, res) => {
+    const { tipoFormulario, nombre, correo, descripcion } = req.body;
+
+    try {
+        // Construir el mensaje del correo
+        const mensajeHTML = `
+            <h1>${tipoFormulario}</h1>
+            <p><strong>Nombre:</strong> ${nombre}</p>
+            <p><strong>Correo:</strong> ${correo}</p>
+            <p><strong>Descripción:</strong> ${descripcion}</p>
+        `;
+
+        // Enviar el correo
+        await enviarCorreo({
+            asunto: `${tipoFormulario} - ${nombre}`,
+            remitente: 'eventifybytd@gmail.com', // Siempre es el correo de la empresa
+            replyTo: correo, // El correo ingresado por el usuario
+            mensaje: mensajeHTML,
+        });
+
+        res.status(200).send({ mensaje: 'Correo enviado correctamente.' });
+    } catch (err) {
+        console.error('Error al procesar el formulario:', err);
+        res.status(500).send({ mensaje: 'Error al enviar el correo.', error: err.message });
     }
 });
 
