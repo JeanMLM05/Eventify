@@ -2,31 +2,48 @@ document.getElementById('formulario-evento').addEventListener('submit', function
     e.preventDefault(); // Previene el envío del formulario hasta validar
 
     // Obtener los selects de las entradas
-    const entradas = document.querySelectorAll('.cantEntradas');
-    let alMenosUnaEntrada = false;
+    const entradasGeneral = parseInt(document.getElementById('cantEntradas1').value) || 0;
+    const entradasVIP = parseInt(document.getElementById('cantEntradas2').value) || 0;
+    const precioGeneral = 20;
+    const precioVIP = 35;
 
-    // Verificar que al menos un select tenga un valor mayor a 0
-    entradas.forEach((entrada) => {
-        if (parseInt(entrada.value) > 0) {
-            alMenosUnaEntrada = true;
-        }
-    });
+    // Calcular el total
+    const total = (entradasGeneral * precioGeneral) + (entradasVIP * precioVIP);
 
-    // Verificar que el checkbox de términos esté marcado
-    const terminos = document.getElementById('terminos');
-    const terminosAceptados = terminos.checked;
-
-    // Validación final
-    if (alMenosUnaEntrada && terminosAceptados) {
-        alert('Redirigiendo a checkout...');
-        setTimeout(() => {
-            window.location.href = "/Checkout"; // Redirigir si todo es válido
-        }, 3000);
-    } else {
-        alert('Debe seleccionar al menos una entrada y aceptar los términos y condiciones.');
+    // Verificar que se haya seleccionado al menos una entrada
+    if (total === 0) {
+        alert('Debe seleccionar al menos una entrada para continuar.');
+        return;
     }
-});
 
+    // Verificar que se acepten los términos
+    const terminos = document.getElementById('terminos');
+    if (!terminos.checked) {
+        alert('Debe aceptar los términos y condiciones para continuar.');
+        return;
+    }
+
+    // Guardar datos en localStorage
+    const resumenCompra = {
+        productos: [],
+        total: total
+    };
+
+    if (entradasGeneral > 0) {
+        resumenCompra.productos.push({ tipo: 'General', cantidad: entradasGeneral, precio: precioGeneral });
+    }
+    if (entradasVIP > 0) {
+        resumenCompra.productos.push({ tipo: 'VIP', cantidad: entradasVIP, precio: precioVIP });
+    }
+
+    localStorage.setItem('resumenCompra', JSON.stringify(resumenCompra));
+
+    // Redirigir a la página de checkout
+    alert('Redirigiendo a checkout...');
+    setTimeout(() => {
+        window.location.href = "../PagCompraFinal/PagCompraFinal.html";
+    }, 1000);
+});
 
 
 
