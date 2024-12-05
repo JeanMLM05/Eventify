@@ -274,5 +274,82 @@ app.post('/iniciarSesion', async (req, res) => {
 });
 
 
+//Update de datos en configPerfilAdmin - post
+app.post('/actualizarPerfilAdmin', async (req, res) => {
+    try {
+        const idd = Number(req.body.idd);
+
+        const administradorExistente = await administrador.findOne({ numId: idd });
+
+        if (!administradorExistente) {
+            console.log("No se encontró un administrador con la cédula proporcionada:", idd);
+        }
+
+        const camposActualizados = {};
+        if (req.body.nombre) camposActualizados.nombre = req.body.nombre;
+        if (req.body.apellido) camposActualizados.apellido = req.body.apellido;
+        if (req.body.correo) camposActualizados.correo = req.body.correo;
+        if (req.body.fechanacimiento) camposActualizados.fechaNacimiento = req.body.fechanacimiento;
+        if (req.body.tipoid) camposActualizados.tipoId = req.body.tipoid;
+        if (req.body.provincia) camposActualizados.provincia = req.body.provincia;
+        if (req.body.canton) camposActualizados.canton = req.body.canton;
+        if (req.body.password) camposActualizados.constrasenna = req.body.password;
+
+
+        const resultado = await administrador.updateOne({ numId: idd }, { $set: camposActualizados });
+
+        if (resultado.modifiedCount > 0) {
+            console.log("Administrador actualizado correctamente:", idd);
+            res.redirect('/MiPerfilA'); 
+        } else {
+            console.log("No se realizaron cambios en el administrador:", idd);
+        }
+    } catch (err) {
+        console.error("Error al actualizar el administrador:", err);
+    }
+});
+
+
+
+//Update de datos en configPerfilAdmin - post
+app.post('/actualizarPerfilUser', async (req, res) => {
+    try {
+        const idd = Number(req.body.idd);
+
+        const usuarioExistente = await usuario.findOne({ numId: idd });
+
+        if (!usuarioExistente) {
+            console.log("No se encontró un usuario con la cédula proporcionada:", idd);
+        }
+
+        const camposActualizados = {};
+        if (req.body.nombre) camposActualizados.nombre = req.body.nombre;
+        if (req.body.apellido) camposActualizados.apellido = req.body.apellido;
+        if (req.body.correo) camposActualizados.correo = req.body.correo;
+        if (req.body.fechanacimiento) camposActualizados.fechaNacimiento = req.body.fechanacimiento;
+        if (req.body.tipoid) camposActualizados.tipoId = req.body.tipoid;
+        if (req.body.provincia) camposActualizados.provincia = req.body.provincia;
+        if (req.body.canton) camposActualizados.canton = req.body.canton;
+        if (req.body.password) camposActualizados.constrasenna = req.body.password;
+
+        const resultado = await usuario.updateOne({ numId: idd }, { $set: camposActualizados });
+
+        if (resultado.modifiedCount > 0) {
+            console.log("Usuario actualizado correctamente:", idd);
+            res.redirect('/MiPerfilU');
+        } else {
+            console.log("No se realizaron cambios en el usuario:", idd);
+        }
+    } catch (err) {
+        console.error("Error al actualizar el usuario:", err);
+    }
+});
+
 
 //Métodos GET
+
+
+
+
+//MetodoPago Rutas 
+

@@ -89,6 +89,9 @@ document.getElementById("checkout-form").addEventListener("submit", function(eve
         isValid = false;
     }
 
+    
+
+
     // Si todas las validaciones son correctas, se procede con la compra
     if (isValid) {
         alert("Compra finalizada con éxito.");
@@ -114,7 +117,7 @@ document.getElementById("cvc").addEventListener("input", function(event) {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Selecciona el contenedor del resumen
+    // Selección de contenedores
     const resumenProductos = document.getElementById('productos-lista');
     const resumenTotal = document.getElementById('total-compra');
 
@@ -122,17 +125,26 @@ document.addEventListener('DOMContentLoaded', function () {
     const resumenCompra = JSON.parse(localStorage.getItem('resumenCompra'));
 
     if (resumenCompra) {
-        // Construir el resumen de productos
-        const productos = resumenCompra.productos
-            .map(producto => `${producto.cantidad}x ${producto.tipo} ($${producto.precio}/c.u.)`)
-            .join('<br>');
+        // Crear una lista HTML para los productos
+        const productosHTML = resumenCompra.productos
+            .map(producto => `<li>${producto.cantidad}x ${producto.tipo} ($${producto.precio}/c.u.)</li>`)
+            .join('');
 
-        // Actualizar los elementos del DOM
-        resumenProductos.innerHTML = `Productos: <br> ${productos}`;
+        // Actualizar el DOM con la lista y el total
+        resumenProductos.innerHTML = `Productos: <ul>${productosHTML}</ul>`;
         resumenTotal.textContent = `Total: $${resumenCompra.total}`;
     } else {
-        // Mostrar mensajes predeterminados si no hay productos
+        // Mensajes predeterminados si no hay productos
         resumenProductos.textContent = 'Productos: No hay productos seleccionados.';
         resumenTotal.textContent = 'Total: $0';
     }
 });
+
+
+//VENTAS TOTALES
+//VENTAS TOTALES
+const resumenCompra = JSON.parse(localStorage.getItem('resumenCompra'));
+if (resumenCompra && resumenCompra.total) {
+    // Marcar que hay una nueva compra lista para procesar en el Dashboard
+    localStorage.setItem('nuevaVenta', 'true');
+}
