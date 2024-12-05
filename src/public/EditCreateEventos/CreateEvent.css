@@ -130,6 +130,7 @@ main{
     font-weight: 700;
     letter-spacing: 0.063rem;
     margin-top:6vh;
+    margin-bottom: 10vw;
 }
 
 .left-main{
@@ -160,20 +161,23 @@ main{
     border: 1.5vh solid black;
 }
 
-.file-left button{
-    align-self: center;
-    margin: auto;
-    font-size: 2vh;
-    border: none;
-    color: #444;
-    border-radius: 1vh;
-    font-size: 2vh;
-    cursor: pointer;
+input[type="file"] {
+    display: none;
 }
 
-.file-left button:active{
-    background-color: #000;
-    color: #fff;
+.custom-file-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2vw;
+}
+
+.custom-file-button:hover {
+    background-color: #0056b3;
 }
 
 .right-main{
@@ -187,25 +191,25 @@ main{
     display: flex;
     flex-direction: row;
     margin-top: 3vh;
-    margin-bottom: 3vh;
+    margin-bottom: 1vw;
 }
 
 .title h3{
     margin-right: 1vw;
-    margin-left: -10vw;
-    font-size: 3.5vh;
+    font-size: 1.8vw;
     align-self: center;
 }
 
 .title input{
-    height: 4vh;
-    width: 14vw;
+    height: 2.3vw;
+    width: 10vw;
     align-self: center;
     align-items: center;
     border-radius: 1vh;
     border: .3vh solid black;
     background-color:black;
     color:white;
+    font-size: 1.1vw;
 }
 
 .core-main input::placeholder{
@@ -224,43 +228,67 @@ main{
     display: flex;
     flex-direction: row;
     width: auto;
-    font-size: 2.7vh;
+    font-size: 1.3vw;
 }
 
 .core-main input{
     align-self: center;
     margin-right: 2vw;
     margin-left: 1vh;
-    height: 4vh;
+    height: 2.2vw;
     width: 8vw;
     border-radius: 1vh;
     border: .3vh solid black;
-    color:white;
-    background-color:black;
+    color:#ffffff;
+    background-color:rgb(0, 0, 0);
+    font-size: 1vw;
+}
+
+.core-main div{
+    align-content: center;
+}
+
+.bx-calendar{
+    position: absolute;
+    pointer-events: none;
+    transform: translateX(-3.95vw) translateY(1vh);
+    color: #fff;
+}
+
+.bx-time{
+    position: absolute;
+    pointer-events: none;
+    color: #fff;
+    transform: translateX(-3.95vw) translateY(1vh);
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator{
+    margin-right: .4vw;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator{
+    margin-right: .4vw;
+}
+
+.core-final{
+    margin-top: .2vw;
 }
 
 .core-final div{
     align-content: center;
 }
 
-.core-final div textarea{
+.core-final div input{
     height: 6vh;
     width: 18vw;
     color:white;
     background-color:black;
     border-radius: 0.7vh;
+    border: none;
 }
 
 .core-main .time{
-    width: 4.5vw;
-}
-
-.time{
-    color:white;
-}
-
-.date{
-    font-size:1.8vh;
+    width: 5.1vw;
 }
 
 .core-final{
@@ -270,7 +298,7 @@ main{
 
 .core-final h3{
     margin-right: 1vw;
-    font-size: 3.2vh;
+    font-size: 1.5vw;
 }
 
 
@@ -291,27 +319,28 @@ main{
     color:white;
 }
 
-.tickets button{
-    border-radius: 2vh;
-    border: 0.3vh solid black;
-    height: 3.05vh;
-    font-size: 1.94vh;
-    width:3.1vh;
-}
-
-.zero{
-    font-size: 2.5vh;
-    margin-left: 0.1vw;
-}
-
-.tickets button:active{
-    background-color:#bbb;
-}
-
 .tickets h3, .counter{
     justify-self: center;
     margin-bottom: 1vh;
     font-size: 2.5vh;
+}
+
+.counter input{
+    width:3vw;
+    background-color: #444;
+    border: none;
+    color: white;
+    border-radius: .2vw;
+    text-align: center;
+}
+
+.counter input:hover{
+    border: #999 solid 2px;
+    border-radius: .2vw;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    margin-left: -.9vw;
 }
 
 .tickets .general{
@@ -337,6 +366,8 @@ main{
     margin-left: 0.5vw;
     background-color: #000;
     color: white;
+    font-size: 1.4vw;
+    text-align: center;
 }
 
 .rules input::placeholder{
@@ -348,7 +379,7 @@ main{
 .rules-title{
     margin-left: 2vw;
     align-self: center;
-    font-size: 3vh;
+    font-size: 1.5vw;
 }
 
 .button-bottom{
@@ -357,10 +388,8 @@ main{
     font-size: 3vh;
     border-radius: 1.873rem;
     border: none;
-    margin-left: 37vw;
-    margin-top: 3vh;
+    margin-top: 2vw;
     background-color: #000;
-    margin-bottom: 14vh;
     justify-content: center;
     align-items: center;
     width: 7vw;

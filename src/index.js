@@ -121,7 +121,7 @@ app.get('/AdministrarEventos', (req, res) => {
 
 //Página de administración de usuarios
 app.get('/AdministrarUsuarios', (req, res) => {
-    res.render("AdminUsers.html")
+    res.render("AdminUser.html")
 });
 
 //Página de editar eventos administrador

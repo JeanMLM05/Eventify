@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edicion de eventos</title>
+  <title>Edicion de Evento</title>
   <link rel="stylesheet" href="EditCreateEventos/CreateEvent.css">
   <link rel="stylesheet" href="https://use.typekit.net/ltx2luq.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -30,40 +30,38 @@
       <h2>EDITAR EVENTO</h2>
 
       <div class="file-left">
-        <button>Adjuntar imagen <i class='bx bx-file-blank'></i></button>
+        
       </div>
+      <input type="file" class="files" id="fileInput">
+      <label for="fileInput" class="custom-file-button">Subir archivo</label>
     </div>
 
     <div class="right-main">
       <div class="title">
-        <h3>Titulo:</h3> <input type="text" name="" id="" placeholder="Evento">
+        <h3>Titulo:</h3> <input type="text" name="" id="" >
       </div>
       <div class="core-main">
-        <h3>Fecha:</h3> <input type="date" name="" id="" placeholder="Evento">
-        <h3>Lugar:</h3> <input type="text" name="" id="" placeholder="Evento">
-        <h3>Hora:</h3> <input type="time" name="" id="" placeholder="Evento" class="time">
+        <h3>Fecha:</h3> <div><input type="date" name="" id=""  class="date"> <i class='bx bx-calendar'></i></div>
+        <h3>Lugar:</h3> <input type="text" name="" id=""> 
+        <h3>Hora:</h3> <div><input type="time" name="" id="" placeholder="Evento" class="time"> <i class='bx bx-time'></i></div>
       </div>
       <div class="core-final">
         <h3>Descripcion:</h3>
-        <div><textarea name="" id=""></textarea></div>
+        <div><input type="text"></div>
       </div>
       <div class="main-bottom">
         <div class="tickets">
           <h3 class="general">General</h3>
           <h3>$--</h3>
           <div class="counter">
-            <button class="counter-button">-</button>
-            <span class="zero">0</span>
-            <button class="counter-button"><span class="plus">+</span></button>
+            <input type="number" pattern="[0-9]+" min="0">
           </div>
         </div>
         <div class="tickets">
-          <h3 class="general">General</h3>
+          <h3 class="general">VIP</h3>
           <h3>$--</h3>
           <div class="counter">
-            <button class="counter-button">-</button>
-            <span class="zero">0</span>
-            <button class="counter-button"><span class="plus">+</span></button>
+            <input type="number" pattern="[0-9]+" min="0">
           </div>
         </div>
         <h3 class="rules-title">Reglas: </h3>
@@ -73,11 +71,10 @@
           <input type="text" placeholder="...">
         </div>
       </div>
+      <input type="submit" class="button-bottom" value="Guardar">
+  </form>
     </div>
   </main>
-
-  <input type="submit" class="button-bottom">
-</form>
 
   <footer>
     <div class="footer-container">
@@ -102,5 +99,3 @@
   </footer>
 
 </body>
-
-</html>
