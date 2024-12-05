@@ -18,7 +18,7 @@ const expresiones = {
 const campos = {
     nombre: false,
     apellido: false,
-    identificacion: false,
+    idd: false,
     correo: false,
     fechanacimiento: false,
     provincia: false,
@@ -36,8 +36,8 @@ const validarFormulario = (e) => {
         case "apellido":
             validarCampo(expresiones.apellido, e.target, "apellido");
             break;
-        case "identificacion":
-            validarCampo(expresiones.identificacion, e.target, "identificacion");
+        case "idd":
+            validarCampo(expresiones.identificacion, e.target, "idd");
             break;
         case "correo":
             validarCampo(expresiones.correo, e.target, "correo");
@@ -78,12 +78,12 @@ $inputs.forEach((input) => {
 });
 
 // Validar el envío del formulario
-$formulario.addEventListener("submit", (e) => {
+/* $formulario.addEventListener("submit", (e) => {
     e.preventDefault();
     if (
         campos.nombre &&
         campos.apellido &&
-        campos.identificacion &&
+        campos.idd &&
         campos.correo &&
         campos.fechanacimiento &&
         campos.provincia &&
@@ -94,4 +94,4 @@ $formulario.addEventListener("submit", (e) => {
             window.location.href = "/MiPerfilA"; // Redirigir a la página del perfil tras guardar
         }, 4000);
     }
-});
+}); */
