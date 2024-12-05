@@ -1,8 +1,6 @@
 const express = require('express');
 
 const app = express();
-const cors = require('cors');
-const path = require('path');
 
 const path = require('path'); //unifica elementos
 app.set('views', path.join(__dirname, 'views'));
