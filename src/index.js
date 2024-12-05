@@ -200,11 +200,15 @@ app.get('/ActualizacionEventos', (req, res) => {
     res.render("ActualizacionEventos.html")
 });
 
+
+
+
 /* BASE DE DATOS */
 
 //LLamar modelos
 const usuario = require('../models/usuarios.js');
 const administrador = require('../models/administradores.js');
+const evento = require('../models/eventos.js');
 const compraModel = require('../models/compras.js');
 
 
@@ -256,8 +260,6 @@ const registrarAdmin = async () => {
 
 
 //Iniciar sesión - post
-const {validarInicioSesion} = require('../servicios/serviciosUsuarios.js');
-
 app.post('/iniciarSesion', async (req, res) => {
     const { correo, password } = req.body;
 
