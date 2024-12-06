@@ -305,9 +305,18 @@ app.get('/SolicitudReembolso', (req, res) => {
     res.render("SolicitudReembolso.html")
 });
 
-//Pagina de Actualizacion de Eventos
-app.get('/ActualizacionEventos', (req, res) => {
-    res.render("ActualizacionEventos")
+// Página de Actualización de Eventos
+app.get('/ActualizacionEventos', async (req, res) => {
+    try {
+        // Obtener eventos desde la base de datos
+        const eventos = await eventoModel.find();
+
+        // Renderizar la página y enviar los eventos al EJS
+        res.render("ActualizacionEventos", { eventos });
+    } catch (error) {
+        console.error("Error al obtener los eventos:", error);
+        res.status(500).send("Hubo un error al cargar la lista de eventos.");
+    }
 });
 
 
