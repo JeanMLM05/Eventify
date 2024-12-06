@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const nodemailer = require('nodemailer');
+const usuarioModel = require('../models/usuarios.js');
+const eventoModel = require('../models/eventos.js');
+
 
 const path = require('path'); //unifica elementos
 app.set('views', path.join(__dirname, 'views'));
@@ -511,35 +514,35 @@ app.post('/enviarCorreo', async (req, res) => {
 // Obtener todos los usuarios registrados
 app.get('/obtenerUsuarios', async (req, res) => {
     try {
-        // Consultar la base de datos para obtener los usuarios
         const usuarios = await usuarioModel.find({});
         console.log("Usuarios obtenidos correctamente.");
-        res.status(200).send(usuarios);
+        res.status(200).json(usuarios); // Asegúrate de enviar un array JSON
     } catch (err) {
         console.error("Error al obtener los usuarios:", err);
-        res.status(500).send({
+        res.status(500).json({
             mensaje: "Error al obtener los usuarios.",
-            error: err.message
+            error: err.message,
         });
     }
 });
+
 
 
 // Obtener todos los eventos activos
 app.get('/obtenerEventosActivos', async (req, res) => {
     try {
-        // Consultar la base de datos para eventos activos
-        const eventosActivos = await eventoModel.find({ activo: true });
+        const eventosActivos = await eventoModel.find({ activo: true }); // Asegúrate de que los eventos tengan este campo
         console.log("Eventos activos obtenidos correctamente.");
-        res.status(200).send(eventosActivos);
+        res.status(200).json(eventosActivos); // Asegúrate de enviar un array JSON
     } catch (err) {
         console.error("Error al obtener los eventos activos:", err);
-        res.status(500).send({
+        res.status(500).json({
             mensaje: "Error al obtener los eventos activos.",
-            error: err.message
+            error: err.message,
         });
     }
 });
+
 
 
 
