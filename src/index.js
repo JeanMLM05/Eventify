@@ -168,8 +168,17 @@ app.get('/MetodosDePago', (req, res) => {
 });
 
 //Página Inicio Admin
-app.get('/InicioA', (req, res) => {
-    res.render("PagInicioAdmin.html")
+app.get('/InicioA',(req, res) => {
+    const cantUsuarios = async()=>{
+        try {
+            const cantidad = await usuario.countDocuments(); // Cuenta los documentos en la colección
+            res.render('PagInicioAdmin', { cantidad: cantidad }); // Renderiza la vista con el conteo de usuarios
+        } catch (err) {
+            console.error("Error al contar usuarios:", err);
+            res.status(500).send("Error al contar usuarios.");
+        }
+    }
+    cantUsuarios();
 });
 
 //Página de administración de eventos
