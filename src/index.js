@@ -16,6 +16,35 @@ app.set('view engine', 'ejs')
 //Archivos estáticos, saber cómo llegar a la carpeta public
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Imagenes, cómo llegar
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Configuración de almacenamiento para Multer
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/'); // Carpeta donde se almacenarán las imágenes
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname)); // Nombre único para cada archivo
+    }
+});
+
+
+// Filtro para validar tipos de archivos
+const fileFilter = (req, file, cb) => {
+    const allowedTypes = /jpeg|jpg|png/;
+    const isValidType = allowedTypes.test(file.mimetype) && allowedTypes.test(path.extname(file.originalname).toLowerCase());
+    if (isValidType) {
+        cb(null, true);
+    } else {
+        cb(new Error("Solo se permiten imágenes JPEG, JPG o PNG."));
+    }
+};
+// Middleware de Multer
+const upload = multer({ storage: storage, fileFilter: fileFilter });
+
 //BODY PARSER
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -653,5 +682,51 @@ app.get('/obtenerEventosActivos', async (req, res) => {
             mensaje: "Error al obtener los eventos activos.",
             error: err.message,
         });
+    }
+});
+
+app.post('/crearEventoBD', upload.single('ImagenEvento'), async (req, res) => {
+    const Evento = require('../models/eventos.js');
+    try {
+        const {
+            nombreEvento,
+            FechaEvento,
+            LugarEvento,
+            HoraEvento,
+            DescripcionEvento,
+            CostoGeneral,
+            CostoVIP,
+            Regla1,
+            Regla2,
+            Regla3
+        } = req.body;
+
+        // Verificar que el archivo fue subido
+        if (!req.file) {
+            throw new Error("No se subió ninguna imagen.");
+        }
+
+        // Crear un nuevo evento
+        const nuevoEvento = new Evento({
+            titulo: nombreEvento,
+            fecha: new Date(FechaEvento),
+            lugar: LugarEvento,
+            hora: HoraEvento,
+            descripcion: DescripcionEvento,
+            precioGeneral: parseFloat(CostoGeneral),
+            precioVip: parseFloat(CostoVIP),
+            foto: req.file.filename,
+            reglas: [Regla1, Regla2, Regla3]
+        });
+
+        // Guardar el evento en la base de datos
+        await nuevoEvento.save();
+        console.log("Evento creado exitosamente:", nuevoEvento);
+
+        // Redirigir a la página de administración de eventos
+        res.redirect('/AdministrarEventos');
+    } catch (error) {
+        console.error("Error al crear el evento:", error.message);
+        res.status(500).send("Error al procesar la solicitud: " + error.message);
     }
 });
