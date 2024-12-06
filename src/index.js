@@ -5,6 +5,7 @@ const nodemailer = require('nodemailer');
 const session = require('express-session');
 const usuarioModel = require('../models/usuarios.js');
 const eventoModel = require('../models/eventos.js');
+const administradorModel = require('../models/administradores.js');
 
 
 const path = require('path'); //unifica elementos
@@ -230,9 +231,21 @@ app.get('/MetodoPago', async (req, res) => {
 });
 
 //Página Inicio Admin
-app.get('/InicioA', (req, res) => {
-    res.render("PagInicioAdmin.html")
-});
+app.get('/InicioA',(req, res) => {
+    const cantUsuarios = async()=>{
+        try {
+            const cantidad = await usuario.countDocuments(); // Cuenta los documentos en la colección
+            const eventosActivos = await evento.countDocuments();
+            const admins = await administradorModel.find({}, 'nombre correo numId');
+
+            res.render('PagInicioAdmin', { cantidad: cantidad, eventosActivos: eventosActivos, admins: admins }); // Renderiza la vista con el conteo de usuarios
+        } catch (err) {
+            console.error("Error al contar usuarios:", err);
+            res.status(500).send("Error al contar usuarios.");
+        }
+    }
+    cantUsuarios();
+})
 
 //Página de administración de eventos
 app.get('/AdministrarEventos', (req, res) => {
