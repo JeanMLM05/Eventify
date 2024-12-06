@@ -90,17 +90,6 @@ app.get('/MiPerfilU', async(req, res) => {
         res.status(500).send("Ocurrió un error al obtener los datos del usuario.");
     }
 });
-    
-    /*const datosUsuario = async()=> {
-        const users = await usuario.findOne();
-        res.render('usuarios',{users:users});
-    }      
-    
-    //datosUsuario();
-
-
-    res.render("PerfilUsuario.html")*/
-
 
 
 //Perfil del administrador
