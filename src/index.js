@@ -512,17 +512,13 @@ app.post('/enviarCorreo', async (req, res) => {
 //Métodos GET
 
 // Obtener todos los usuarios registrados
-app.get('/obtenerUsuarios', async (req, res) => {
+app.get('/contarUsuarios', async (req, res) => {
     try {
-        const usuarios = await usuarioModel.find({});
-        console.log("Usuarios obtenidos correctamente.");
-        res.status(200).json(usuarios); // Asegúrate de enviar un array JSON
+        const cantidadUsuarios = await usuarioModel.countDocuments(); // Cuenta los documentos en la colección
+        res.render('contarUsuarios', { cantidadUsuarios }); // Renderiza la vista con el conteo de usuarios
     } catch (err) {
-        console.error("Error al obtener los usuarios:", err);
-        res.status(500).json({
-            mensaje: "Error al obtener los usuarios.",
-            error: err.message,
-        });
+        console.error("Error al contar usuarios:", err);
+        res.status(500).send("Error al contar usuarios.");
     }
 });
 
