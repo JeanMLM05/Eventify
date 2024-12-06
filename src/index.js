@@ -63,8 +63,25 @@ app.get('/InicioU', (req, res) => {
 });
 
 //Página de información de un evento (detalles del evento)
-app.get('/InformacionEvento', (req, res) => {
-    res.render("InfoEvento.html")
+app.get('/InformacionEvento/:eventoNombre', async (req, res) => {
+    const eventoNombre = req.body.titulo;
+    const Evento = require('../models/eventos.js');
+
+    try {
+        // Buscar el evento usando el nombre
+        const evento = await Evento.findOne({ titulo: eventoNombre });
+
+        // Si no se encuentra el evento, devolver un error 404
+        if (!evento) {
+            return res.status(404).send("Evento no encontrado");
+        }
+
+        // Renderizar la vista con los datos del evento
+        res.render('InfoEvento', { evento: evento });
+    } catch (error) {
+        console.error("Error al obtener el evento:", error);
+        res.status(500).send("Error al obtener el evento.");
+    }
 });
 
 //Perfil del usuario final
@@ -135,6 +152,22 @@ app.get('/ConfiguracionDePerfilA', (req, res) => {
 //Página Nosotros
 app.get('/Nosotros', (req, res) => {
     res.render("Nosotros.html")
+});
+
+//EventosDisponibles
+app.get('/EventosDisponibles', async (req, res) => {
+    const Evento = require('../models/eventos.js');
+    try {
+        // Obtener todos los eventos de la base de datos
+        const eventos = await Evento.find();
+
+        // Renderizar la vista con los eventos disponibles
+        res.render('EventosUI', { eventos: eventos });
+
+    } catch (error) {
+        console.error("Error al obtener los eventos:", error);
+        res.status(500).send("Error al obtener los eventos.");
+    }
 });
 
 //Eventos - conciertos
@@ -274,7 +307,7 @@ app.get('/SolicitudReembolso', (req, res) => {
 
 //Pagina de Actualizacion de Eventos
 app.get('/ActualizacionEventos', (req, res) => {
-    res.render("ActualizacionEventos.html")
+    res.render("ActualizacionEventos")
 });
 
 
@@ -613,7 +646,3 @@ app.get('/obtenerEventosActivos', async (req, res) => {
         });
     }
 });
-
-
-
-//get
