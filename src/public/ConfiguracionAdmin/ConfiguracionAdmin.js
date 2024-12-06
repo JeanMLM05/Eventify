@@ -29,7 +29,7 @@ function limpiarErrores() {
 }
 
 // Manejo del envío del formulario
-form.addEventListener("submit", function(event) {
+form.addEventListener("submit", async function (event) {
     event.preventDefault();
     limpiarErrores();
     let esValido = true;
@@ -46,9 +46,48 @@ form.addEventListener("submit", function(event) {
         esValido = false;
     }
 
+    // Validación del selector de idioma
+    if (languageSelect.value.trim() === "") {
+        mostrarError(languageSelect, "Por favor, seleccione un idioma.");
+        esValido = false;
+    }
+
+    // Validación del selector de zona horaria
+    if (timezoneSelect.value.trim() === "") {
+        mostrarError(timezoneSelect, "Por favor, seleccione una zona horaria.");
+        esValido = false;
+    }
+
     // Enviar si todos los campos son válidos
     if (esValido) {
-        alert(`Configuración guardada:\nNombre del Sitio: ${siteNameInput.value}\nURL del Sitio: ${siteUrlInput.value}\nIdioma: ${languageSelect.value}\nZona Horaria: ${timezoneSelect.value}`);
-        form.reset();
+        const configuracion = {
+            nombre: siteNameInput.value,
+            url: siteUrlInput.value,
+            idioma: languageSelect.value,
+            zonaHoraria: timezoneSelect.value,
+        };
+
+        console.log("Configuración guardada:", configuracion);
+
+        try {
+            // Enviar configuración al servidor
+            const respuesta = await fetch('/guardarConfiguracion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(configuracion),
+            });
+
+            if (respuesta.ok) {
+                alert("Configuración guardada exitosamente.");
+                form.reset();
+            } else {
+                alert("Error al guardar la configuración.");
+            }
+        } catch (error) {
+            console.error("Error al enviar la configuración:", error);
+            alert("Hubo un problema al guardar la configuración.");
+        }
     }
 });

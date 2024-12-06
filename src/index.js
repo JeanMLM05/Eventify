@@ -626,6 +626,17 @@ app.post('/enviarCorreo', async (req, res) => {
 
 
 
+//POST DE CONFIGURACION ADMIN
+app.post('/guardarConfiguracion', (req, res) => {
+    const { nombre, url, idioma, zonaHoraria } = req.body;
+    console.log("Datos recibidos:", { nombre, url, idioma, zonaHoraria });
+
+    // Guardar los datos en la base de datos o manejarlos según sea necesario
+    res.status(200).send("Configuración guardada correctamente.");
+});
+
+
+
 //Métodos GET
 
 // Obtener todos los usuarios registrados
