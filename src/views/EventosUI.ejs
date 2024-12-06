@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIESTAS</title>
+    <title>EVENTOS</title>
     <link rel="stylesheet" type="text/css" media="screen" href="Eventos/eventos.css">
     <link rel="stylesheet" href="https://use.typekit.net/ltx2luq.css">
 
@@ -42,13 +42,13 @@
     </div>
 </form>
 </header>
-        <h1>FIESTAS</h1>
+        <h1>EVENTOS</h1>
 
         
         <div class="proximos-eventos">
             <% eventos.forEach(evento => { %>
                 <div class="container-evento">
-                    <a href="/InformacionEvento/<%= evento._id %>">
+                    <a href="/InformacionEvento/<%= evento.nombre %>">
                         <img src="/uploads/<%= evento.foto %>" alt="<%= evento.titulo %>" class="imagen-evento" width="300rem" height="380rem">
                         <h4><%= evento.titulo %></h4>
                         <div class="info-evento">
