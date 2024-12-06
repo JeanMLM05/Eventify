@@ -3,8 +3,11 @@ const mongoose = require('mongoose');
 const app = express();
 const nodemailer = require('nodemailer');
 const session = require('express-session');
+const multer = require('multer');
 const usuarioModel = require('../models/usuarios.js');
 const eventoModel = require('../models/eventos.js');
+const administradorModel = require('../models/administradores.js');
+
 
 
 const path = require('path'); //unifica elementos
@@ -27,6 +30,30 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+
+// Configuración de Multer para almacenar imágenes
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/'); // Carpeta donde se almacenarán las imágenes
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname)); // Nombre único para cada archivo
+    }
+});
+
+const upload = multer({ 
+    storage: storage,
+    fileFilter: (req, file, cb) => {
+        const fileTypes = /jpeg|jpg|png/; // Extensiones permitidas
+        const mimeType = fileTypes.test(file.mimetype);
+        const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
+        
+        if (mimeType && extname) {
+            return cb(null, true);
+        }
+        cb(new Error("Solo se permiten imágenes con formato JPEG, JPG o PNG."));
+    }
+});
 
 
 app.listen(3000, () => {
@@ -96,8 +123,30 @@ app.get('/MiPerfilU',async(req, res) => {
 
 
 //Perfil del administrador
-app.get('/MiPerfilA', (req, res) => {
-    res.render("PerfilAdmin.html")
+app.get('/MiPerfilA',async(req, res) => {
+    const administrador = require('../models/administradores.js');
+    try {
+        const correo = req.session.correo;
+
+        if (!correo) {
+            return res.redirect('/IniciarSesion');
+        }
+
+        // Buscar al usuario con el correo guardado en la sesión
+        const userBD = await administrador.findOne({ correo: correo });
+
+        if (!userBD) {
+            console.log("No se encontró el administrador en la base de datos.");
+            return res.redirect('/IniciarSesion');
+        }
+
+        // Si el usuario existe, pasar los datos a la vista
+        res.render('PerfilAdmin', { admin:userBD });
+        
+    } catch (error) {
+        console.error("Error al obtener datos del administrador:", error);
+        res.status(500).send("Ocurrió un error al obtener los datos del administrador.");
+    }
 });
 
 //Configuración del perfil del usuario final
@@ -146,8 +195,20 @@ app.get('/MetodosDePago', (req, res) => {
 });
 
 //Página Inicio Admin
-app.get('/InicioA', (req, res) => {
-    res.render("PagInicioAdmin.html")
+app.get('/InicioA',(req, res) => {
+    const cantUsuarios = async()=>{
+        try {
+            const cantidad = await usuario.countDocuments(); // Cuenta los documentos en la colección
+            const eventosActivos = await evento.countDocuments();
+            const admins = await administradorModel.find({}, 'nombre correo numId');
+
+            res.render('PagInicioAdmin', { cantidad: cantidad, eventosActivos: eventosActivos, admins: admins }); // Renderiza la vista con el conteo de usuarios
+        } catch (err) {
+            console.error("Error al contar usuarios:", err);
+            res.status(500).send("Error al contar usuarios.");
+        }
+    }
+    cantUsuarios();
 });
 
 //Página de administración de eventos
@@ -212,8 +273,8 @@ app.get('/PoliticaPrivacidad', (req, res) => {
 });
 
 //Página contáctanos
-app.get('/Contactos', (req, res) => {
-    res.render("Contacto.html")
+app.get('/Contacto', (req, res) => {
+    res.render("contactanos.html")
 });
 
 //Pagina de Preguntas Frecuentes
@@ -291,9 +352,6 @@ const registrarAdmin = async () => {
 
     const resultado = await admin.save();
 }
-
-/*llamar al método --> registrarAdmin();*/
-
 
 //Iniciar sesión - post
 app.post('/iniciarSesion', async(req, res) => {
@@ -451,6 +509,48 @@ app.post('/actualizarPerfilUser', async (req, res) => {
 });
 
 
+//Crear Evento - método post
+app.post('/crearEventoBD', upload.single('ImagenEvento'), async (req, res) => {
+    try {
+        const {
+            nombreEvento,
+            FechaEvento,
+            LugarEvento,
+            HoraEvento,
+            DescripcionEvento,
+            CostoGeneral,
+            CostoVIP,
+            Regla1,
+            Regla2,
+            Regla3
+        } = req.body;
+
+        // Crear un nuevo evento
+        const nuevoEvento = new Evento({
+            titulo: nombreEvento,
+            fecha: FechaEvento,
+            lugar: LugarEvento,
+            hora: HoraEvento,
+            descripcion: DescripcionEvento,
+            precioGeneral: CostoGeneral,
+            precioVip: CostoVIP,
+            imagen: req.file.filename,
+            reglas: [Regla1, Regla2, Regla3]
+        });
+
+        // Guardar el evento en la base de datos
+        await nuevoEvento.save();
+        console.log("Evento creado exitosamente:", nuevoEvento);
+
+        // Redirigir a la página de administración de eventos
+        res.redirect('/AdministrarEventos');
+    } catch (error) {
+        console.error("Error al crear el evento:", error);
+        res.status(500).send("Error al procesar la solicitud.");
+    }
+});
+
+
 // Update de datos en PagCompraFinal - post
 app.post('/registrarCompra', async (req, res) => {
     try {
@@ -542,23 +642,8 @@ app.post('/enviarCorreo', async (req, res) => {
 });
 
 
+
 //Métodos GET
-
-// Obtener todos los usuarios registrados
-app.get('/obtenerUsuarios', async (req, res) => {
-    try {
-        const usuarios = await usuarioModel.find({});
-        console.log("Usuarios obtenidos correctamente.");
-        res.status(200).json(usuarios); // Asegúrate de enviar un array JSON
-    } catch (err) {
-        console.error("Error al obtener los usuarios:", err);
-        res.status(500).json({
-            mensaje: "Error al obtener los usuarios.",
-            error: err.message,
-        });
-    }
-});
-
 
 
 // Obtener todos los eventos activos
@@ -575,11 +660,6 @@ app.get('/obtenerEventosActivos', async (req, res) => {
         });
     }
 });
-
-
-
-
-
 
 //MetodoPago Rutas 
 

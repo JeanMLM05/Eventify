@@ -26,7 +26,7 @@
     </div>
   </header>
 
-  <form>
+  <form action="/crearEventoBD" method="POST">
   <main>
     <div class="left-main">
       <h2>CREAR EVENTO</h2>
@@ -34,46 +34,46 @@
       <div class="file-left">
         
       </div>
-      <input type="file" class="files" id="fileInput">
+      <input type="file" class="files" id="fileInput" name="ImagenEvento">
       <label for="fileInput" class="custom-file-button">Subir archivo</label>
     </div>
 
     <div class="right-main">
       <div class="title">
-        <h3>Titulo:</h3> <input type="text" name="" id="" placeholder="Evento">
+        <h3>Titulo:</h3> <input type="text" id="" placeholder="Evento" name="nombreEvento">
       </div>
       <div class="core-main">
-        <h3>Fecha:</h3> <div><input type="date" name="" id=""  class="date"> <i class='bx bx-calendar'></i></div>
-        <h3>Lugar:</h3> <input type="text" name="" id="" placeholder="La Uruca"> 
-        <h3>Hora:</h3> <div><input type="time" name="" id="" placeholder="Evento" class="time"> <i class='bx bx-time'></i></div>
+        <h3>Fecha:</h3> <div><input type="date" name="" id=""  class="date" name="FechaEvento"> <i class='bx bx-calendar'></i></div>
+        <h3>Lugar:</h3> <input type="text" name="" id="" placeholder="La Uruca" name="LugarEvento"> 
+        <h3>Hora:</h3> <div><input type="time" name="" id="" placeholder="Evento" class="time" name="HoraEvento"> <i class='bx bx-time'></i></div>
       </div>
       <div class="core-final">
         <h3>Descripcion:</h3>
-        <div><input type="text"></div>
+        <div><input type="text" name="DescripcionEvento"></div>
       </div>
       <div class="main-bottom">
         <div class="tickets">
           <h3 class="general">GENERAL</h3>
           <h3>$--</h3>
           <div class="counter">
-            <input type="number" pattern="[0-9]+" min="0">
+            <input type="number" pattern="[0-9]+" min="0" name="CostoGeneral">
           </div>
         </div>
         <div class="tickets">
           <h3 class="general">VIP</h3>
           <h3>$--</h3>
           <div class="counter">
-            <input type="number" pattern="[0-9]+" min="0">
+            <input type="number" pattern="[0-9]+" min="0" name="CostoVIP">
           </div>
         </div>
         <h3 class="rules-title">Reglas: </h3>
         <div class="rules">
-          <input type="text" placeholder="...">
-          <input type="text" placeholder="...">
-          <input type="text" placeholder="...">
+          <input type="text" placeholder="..." name="Regla1">
+          <input type="text" placeholder="..." name="Regla2">
+          <input type="text" placeholder="..." name="Regla3">
         </div>
       </div>
-      <input type="submit" class="button-bottom" value="Guardar">
+      <input type="submit" class="button-bottom" value="Guardar" onclick="location.reload()">
   </form>
     </div>
   </main>
