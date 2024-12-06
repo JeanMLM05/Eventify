@@ -509,6 +509,48 @@ app.post('/actualizarPerfilUser', async (req, res) => {
 });
 
 
+//Crear Evento - método post
+app.post('/crearEventoBD', upload.single('ImagenEvento'), async (req, res) => {
+    try {
+        const {
+            nombreEvento,
+            FechaEvento,
+            LugarEvento,
+            HoraEvento,
+            DescripcionEvento,
+            CostoGeneral,
+            CostoVIP,
+            Regla1,
+            Regla2,
+            Regla3
+        } = req.body;
+
+        // Crear un nuevo evento
+        const nuevoEvento = new Evento({
+            titulo: nombreEvento,
+            fecha: FechaEvento,
+            lugar: LugarEvento,
+            hora: HoraEvento,
+            descripcion: DescripcionEvento,
+            precioGeneral: CostoGeneral,
+            precioVip: CostoVIP,
+            imagen: req.file.filename,
+            reglas: [Regla1, Regla2, Regla3]
+        });
+
+        // Guardar el evento en la base de datos
+        await nuevoEvento.save();
+        console.log("Evento creado exitosamente:", nuevoEvento);
+
+        // Redirigir a la página de administración de eventos
+        res.redirect('/AdministrarEventos');
+    } catch (error) {
+        console.error("Error al crear el evento:", error);
+        res.status(500).send("Error al procesar la solicitud.");
+    }
+});
+
+
 // Update de datos en PagCompraFinal - post
 app.post('/registrarCompra', async (req, res) => {
     try {
