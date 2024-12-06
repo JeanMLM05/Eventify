@@ -151,6 +151,7 @@ main{
     align-items: center;
     justify-content: center;
     padding: 3vw 0; /* Espaciado interno */
+    margin-bottom: 10vw;
 }
 
 table {

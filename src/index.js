@@ -211,6 +211,7 @@ app.get('/MetodosDePago', (req, res) => {
     res.render("MetodoPago.html")
 });
 
+
 //Página Inicio Admin
 app.get('/InicioA',(req, res) => {
     const cantUsuarios = async()=>{
