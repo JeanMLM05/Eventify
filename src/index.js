@@ -599,10 +599,5 @@ app.get('/obtenerEventosActivos', async (req, res) => {
     }
 });
 
-
-
-
-
-
 //MetodoPago Rutas 
 
