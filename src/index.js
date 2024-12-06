@@ -246,16 +246,16 @@ app.post('/registrarUsuario', (req, res) => {
 //Registro de administradores (manual)
 const registrarAdmin = async () => {
     const admin = new administrador({
-        nombre: "Sidney",
+        nombre: "Rayner",
         apellido: "Rodríguez",
-        correo: "sidney@gmail.com",
-        fechaNacimiento: 2005 - 5 - 27,
+        correo: "rayner@gmail.com",
+        fechaNacimiento: 2005 - 7 - 20,
         tipoId: "cedula",
-        numId: 119360592,
+        numId: 118870847,
         provincia: "Alajuela",
-        canton: "Central",
-        constrasenna: "Pepsi"
-    })
+        canton: "Atenas",
+        constrasenna: "Contra4"
+    }) 
 
     const resultado = await admin.save();
 }
@@ -309,7 +309,7 @@ app.post('/iniciarSesion', async(req, res) => {
         if (userBD) {
 
             console.log("Datos en la base de datos (Usuario):", userBD);//prueba
-            
+
             //prueba para ver datos ingresados
             console.log("Correo ingresado:", data.correo);
             console.log("Tipo de correo ingresada:", typeof data.correo);
