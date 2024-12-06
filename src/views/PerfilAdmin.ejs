@@ -57,13 +57,13 @@
                     <p>Cantón:</p>
                 </div>
                 <div class="mi-perfil-datos" id="mi-perfil-datos">
-                    <p>Diego</p>
-                    <p>Vargas</p>
-                    <p>198765432</p> <!--Cambiar datos quemados por reales con la base de datos-->
-                    <p>diegovargas@gmail.com</p>
-                    <p>21-03-1997</p>
-                    <p>San José</p>
-                    <p>Santa Ana</p>
+                    <p><%= admin.nombre %></p>
+                    <p><%= admin.apellido %></p>
+                    <p><%= admin.numId %></p>
+                    <p><%= admin.correo %></p>
+                    <p><%= new Date(admin.fechaNacimiento).toISOString().split('T')[0] %></p>
+                    <p><%= admin.provincia %></p>
+                    <p><%= admin.canton %></p>
                 </div>
                 
 
