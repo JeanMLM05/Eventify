@@ -96,8 +96,30 @@ app.get('/MiPerfilU',async(req, res) => {
 
 
 //Perfil del administrador
-app.get('/MiPerfilA', (req, res) => {
-    res.render("PerfilAdmin.html")
+app.get('/MiPerfilA',async(req, res) => {
+    const administrador = require('../models/administradores.js');
+    try {
+        const correo = req.session.correo;
+
+        if (!correo) {
+            return res.redirect('/IniciarSesion');
+        }
+
+        // Buscar al usuario con el correo guardado en la sesión
+        const userBD = await administrador.findOne({ correo: correo });
+
+        if (!userBD) {
+            console.log("No se encontró el administrador en la base de datos.");
+            return res.redirect('/IniciarSesion');
+        }
+
+        // Si el usuario existe, pasar los datos a la vista
+        res.render('PerfilAdmin', { admin:userBD });
+        
+    } catch (error) {
+        console.error("Error al obtener datos del administrador:", error);
+        res.status(500).send("Ocurrió un error al obtener los datos del administrador.");
+    }
 });
 
 //Configuración del perfil del usuario final

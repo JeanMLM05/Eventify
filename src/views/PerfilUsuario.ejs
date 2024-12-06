@@ -84,7 +84,7 @@
                     <p><%= usuario.apellido %></p>
                     <p><%= usuario.numId %></p>
                     <p><%= usuario.correo %></p>
-                    <p><%= usuario.fechaNacimiento %></p>
+                    <p><%= new Date(usuario.fechaNacimiento).toISOString().split('T')[0] %></p>
                     <p><%= usuario.provincia %></p>
                     <p><%= usuario.canton %></p>
                 </div>
