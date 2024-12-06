@@ -1,6 +1,11 @@
 const express = require('express');
-
+const mongoose = require('mongoose');
 const app = express();
+const nodemailer = require('nodemailer');
+const session = require('express-session');
+const usuarioModel = require('../models/usuarios.js');
+const eventoModel = require('../models/eventos.js');
+
 
 const path = require('path'); //unifica elementos
 app.set('views', path.join(__dirname, 'views'));
@@ -15,6 +20,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+//SESSION
+app.use(session({
+    secret: 'cadena secreta eventify',
+    resave: false,
+    saveUninitialized: true
+}));
+
 
 app.listen(3000, () => {
     console.log("Se conectó al puerto")
@@ -55,9 +68,32 @@ app.get('/InformacionEvento', (req, res) => {
 });
 
 //Perfil del usuario final
-app.get('/MiPerfilU', (req, res) => {
-    res.render("PerfilUsuario.html")
+app.get('/MiPerfilU',async(req, res) => {
+    const usuario = require('../models/usuarios.js');
+    try {
+        const correo = req.session.correo;
+
+        if (!correo) {
+            return res.redirect('/IniciarSesion');
+        }
+
+        // Buscar al usuario con el correo guardado en la sesión
+        const userBD = await usuario.findOne({ correo: correo });
+
+        if (!userBD) {
+            console.log("No se encontró el usuario en la base de datos.");
+            return res.redirect('/IniciarSesion');
+        }
+
+        // Si el usuario existe, pasar los datos a la vista
+        res.render('PerfilUsuario', { usuario:userBD });
+        
+    } catch (error) {
+        console.error("Error al obtener datos del usuario:", error);
+        res.status(500).send("Ocurrió un error al obtener los datos del usuario.");
+    }
 });
+
 
 //Perfil del administrador
 app.get('/MiPerfilA', (req, res) => {
@@ -121,7 +157,7 @@ app.get('/AdministrarEventos', (req, res) => {
 
 //Página de administración de usuarios
 app.get('/AdministrarUsuarios', (req, res) => {
-    res.render("AdminUsers.html")
+    res.render("AdminUser.html")
 });
 
 //Página de editar eventos administrador
@@ -200,11 +236,17 @@ app.get('/ActualizacionEventos', (req, res) => {
     res.render("ActualizacionEventos.html")
 });
 
+
+
+
 /* BASE DE DATOS */
 
 //LLamar modelos
 const usuario = require('../models/usuarios.js');
 const administrador = require('../models/administradores.js');
+const evento = require('../models/eventos.js');
+const compra = require('../models/compras.js');
+
 
 //Métodos POST
 
@@ -236,16 +278,16 @@ app.post('/registrarUsuario', (req, res) => {
 //Registro de administradores (manual)
 const registrarAdmin = async () => {
     const admin = new administrador({
-        nombre: "Sidney",
+        nombre: "Rayner",
         apellido: "Rodríguez",
-        correo: "sidney@gmail.com",
-        fechaNacimiento: 2005 - 5 - 27,
+        correo: "rayner@gmail.com",
+        fechaNacimiento: 2005 - 7 - 20,
         tipoId: "cedula",
-        numId: 119360592,
+        numId: 118870847,
         provincia: "Alajuela",
-        canton: "Central",
-        constrasenna: "Pepsi"
-    })
+        canton: "Atenas",
+        constrasenna: "Contra4"
+    }) 
 
     const resultado = await admin.save();
 }
@@ -254,22 +296,86 @@ const registrarAdmin = async () => {
 
 
 //Iniciar sesión - post
-const {validarInicioSesion} = require('../servicios/serviciosUsuarios.js');
-
-app.post('/iniciarSesion', async (req, res) => {
-    const { correo, password } = req.body;
-
+app.post('/iniciarSesion', async(req, res) => {
     try {
-        const resultado = await validarInicioSesion(correo, password);
+        let data = {
+            correo: req.body.correo,
+            contrasenna: req.body.password
+        };
 
-        if (resultado.tipo === "administrador") {
-            res.redirect('/InicioA');
-        } else if (resultado.tipo === "usuario") {
-            res.redirect('/InicioU');
+        let userBD = await administrador.findOne({ correo: data.correo });
+
+        if (userBD) {
+
+            /*prueba para ver datos ingresados
+            console.log("Datos en la base de datos (Administrador):", userBD); //prueba
+
+            console.log("Correo ingresado:", data.correo);
+            console.log("Tipo de correo ingresada:", typeof data.correo);
+            console.log("Tipo de correo en la base de datos:", typeof userBD.correo);
+
+            console.log("Contraseña ingresada:", data.contrasenna);
+            console.log("Tipo de contraseña ingresada:", typeof data.contrasenna);
+            console.log("Tipo de contraseña en la base de datos:", typeof userBD.constrasenna);
+            fin prueba1 */
+
+            const inputPassword = data.contrasenna.trim();
+            const dbPassword = userBD.constrasenna.trim();
+
+            console.log(`Contraseña ingresada (normalizada): [${inputPassword}]`);
+            console.log(`Contraseña en la base de datos (normalizada): [${dbPassword}]`); //prueba
+
+            // Validar contraseña
+            if (inputPassword === dbPassword) {
+                // Almacenar el correo del usuario en la sesión
+                req.session.correo = data.correo;
+                console.log("Inicio de sesión exitoso como administrador.");
+                return res.redirect('/InicioA');
+            } else {
+                console.log("Contraseña incorrecta para administrador.");
+                return res.redirect('/IniciarSesion');
+            }
         }
+
+
+        userBD = await usuario.findOne({ correo: data.correo });
+
+        if (userBD) {
+            /*prueba para ver datos ingresados
+            console.log("Datos en la base de datos (Usuario):", userBD);
+            console.log("Correo ingresado:", data.correo);
+            console.log("Tipo de correo ingresada:", typeof data.correo);
+            console.log("Tipo de correo en la base de datos:", typeof userBD.correo);
+
+            console.log("Contraseña ingresada:", data.contrasenna);
+            console.log("Tipo de contraseña ingresada:", typeof data.contrasenna);
+            console.log("Tipo de contraseña en la base de datos:", typeof userBD.constrasenna);
+            fin prueba1*/
+
+            const inputPassword = data.contrasenna.trim();
+            const dbPassword = userBD.constrasenna.trim();
+
+            console.log(`Contraseña ingresada (normalizada): [${inputPassword}]`);
+            console.log(`Contraseña en la base de datos (normalizada): [${dbPassword}]`); //prueba
+
+            // Validar contraseña
+            if (inputPassword === dbPassword) {
+                // Almacenar el correo del usuario en la sesión
+                req.session.correo = data.correo;
+                console.log("Inicio de sesión exitoso como usuario.");
+                return res.redirect('/InicioU');
+            } else {
+                console.log("Contraseña incorrecta para usuario.");
+                return res.redirect('/IniciarSesion');
+            }
+        }
+
+        console.log("Correo no encontrado en administradores ni usuarios.");
+        return res.redirect('/IniciarSesion');
+
     } catch (error) {
-        console.error(error.message);
-        res.redirect('/IniciarSesion');
+        console.error("Error al iniciar sesión:", error);
+        res.status(500).send("Ocurrió un error al procesar la solicitud.");
     }
 });
 
@@ -300,7 +406,7 @@ app.post('/actualizarPerfilAdmin', async (req, res) => {
 
         if (resultado.modifiedCount > 0) {
             console.log("Administrador actualizado correctamente:", idd);
-            res.redirect('/MiPerfilA'); 
+            res.redirect('/MiPerfilA');
         } else {
             console.log("No se realizaron cambios en el administrador:", idd);
         }
@@ -308,7 +414,6 @@ app.post('/actualizarPerfilAdmin', async (req, res) => {
         console.error("Error al actualizar el administrador:", err);
     }
 });
-
 
 
 //Update de datos en configPerfilAdmin - post
@@ -346,7 +451,132 @@ app.post('/actualizarPerfilUser', async (req, res) => {
 });
 
 
+// Update de datos en PagCompraFinal - post
+app.post('/registrarCompra', async (req, res) => {
+    try {
+        // Crear el objeto de compra
+        const nuevaCompra = new compra({
+            productos: req.body.productos,
+            total: req.body.total,
+            telefono: req.body.telefono, // Número de teléfono del comprador
+            tarjetaCredito: { // Detalles de la tarjeta de crédito
+                nombre: req.body.tarjetaCredito.nombre,
+                numero: req.body.tarjetaCredito.numero,
+                expiracion: req.body.tarjetaCredito.expiracion,
+                cvc: req.body.tarjetaCredito.cvc,
+            },
+            fecha: new Date(),
+        });
+
+        // Guardar la compra en la base de datos
+        const resultado = await nuevaCompra.save();
+        console.log('Compra registrada correctamente:', resultado);
+
+        // Responder con éxito
+        res.status(201).send({
+            mensaje: 'Compra registrada con éxito.',
+            compra: resultado
+        });
+    } catch (err) {
+        console.error('Error al registrar la compra:', err);
+
+        // Responder con error
+        res.status(500).send({
+            mensaje: 'Error al registrar la compra.',
+            error: err.message
+        });
+    }
+});
+
+//Envío de correos electrónicos
+// Configuración del transporte
+const transporter = nodemailer.createTransport({
+    service: 'gmail', // O el servicio de correo que uses
+    auth: {
+        user: 'eventifybytd@gmail.com', // Correo de la empresa
+        pass: 'ccfpuitqylvtzcke' // Contraseña o contraseña de aplicación
+    }
+});
+
+// Función para enviar correo
+async function enviarCorreo({ asunto, remitente, replyTo, mensaje }) {
+    try {
+        const info = await transporter.sendMail({
+            from: '"Eventify Notificaciones" <eventifybytd@gmail.com>', // Correo de la empresa
+            to: 'eventifybytd@gmail.com', // Siempre enviar al correo de la empresa
+            subject: asunto, // Asunto
+            replyTo: replyTo, // El correo ingresado por el usuario para responder
+            html: mensaje, // Mensaje en formato HTML
+        });
+        console.log('Correo enviado correctamente:', info.messageId);
+    } catch (err) {
+        console.error('Error al enviar el correo:', err);
+    }
+}
+//ENVIAR CORREO
+app.post('/enviarCorreo', async (req, res) => {
+    const { tipoFormulario, nombre, correo, descripcion } = req.body;
+
+    try {
+        // Construir el mensaje del correo
+        const mensajeHTML = `
+            <h1>${tipoFormulario}</h1>
+            <p><strong>Nombre:</strong> ${nombre}</p>
+            <p><strong>Correo:</strong> ${correo}</p>
+            <p><strong>Descripción:</strong> ${descripcion}</p>
+        `;
+
+        // Enviar el correo
+        await enviarCorreo({
+            asunto: `${tipoFormulario} - ${nombre}`,
+            remitente: 'eventifybytd@gmail.com', // Siempre es el correo de la empresa
+            replyTo: correo, // El correo ingresado por el usuario
+            mensaje: mensajeHTML,
+        });
+
+        res.status(200).send({ mensaje: 'Correo enviado correctamente.' });
+    } catch (err) {
+        console.error('Error al procesar el formulario:', err);
+        res.status(500).send({ mensaje: 'Error al enviar el correo.', error: err.message });
+    }
+});
+
+
 //Métodos GET
+
+// Obtener todos los usuarios registrados
+app.get('/obtenerUsuarios', async (req, res) => {
+    try {
+        const usuarios = await usuarioModel.find({});
+        console.log("Usuarios obtenidos correctamente.");
+        res.status(200).json(usuarios); // Asegúrate de enviar un array JSON
+    } catch (err) {
+        console.error("Error al obtener los usuarios:", err);
+        res.status(500).json({
+            mensaje: "Error al obtener los usuarios.",
+            error: err.message,
+        });
+    }
+});
+
+
+
+// Obtener todos los eventos activos
+app.get('/obtenerEventosActivos', async (req, res) => {
+    try {
+        const eventosActivos = await eventoModel.find({ activo: true }); // Asegúrate de que los eventos tengan este campo
+        console.log("Eventos activos obtenidos correctamente.");
+        res.status(200).json(eventosActivos); // Asegúrate de enviar un array JSON
+    } catch (err) {
+        console.error("Error al obtener los eventos activos:", err);
+        res.status(500).json({
+            mensaje: "Error al obtener los eventos activos.",
+            error: err.message,
+        });
+    }
+});
+
+
 
 
 
