@@ -167,8 +167,6 @@ app.get('/MetodoPago', async (req, res) => {
     res.render("MetodoPago.html")
 });
 
-
-
 //Página Inicio Admin
 app.get('/InicioA', (req, res) => {
     res.render("PagInicioAdmin.html")
