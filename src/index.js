@@ -163,9 +163,11 @@ app.get('/EventosFiestas', (req, res) => {
 });
 
 //Página de Métodos de pago usuario
-app.get('/MetodosDePago', (req, res) => {
+app.get('/MetodoSDePago', (req, res) => {
     res.render("MetodoPago.html")
 });
+
+
 
 //Página Inicio Admin
 app.get('/InicioA', (req, res) => {
@@ -595,5 +597,6 @@ app.get('/obtenerEventosActivos', async (req, res) => {
     }
 });
 
-//MetodoPago Rutas 
+
+
 
