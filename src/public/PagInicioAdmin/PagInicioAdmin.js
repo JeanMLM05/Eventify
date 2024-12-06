@@ -58,22 +58,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // Función para cargar usuarios registrados
-    async function cargarUsuariosRegistrados() {
-        try {
-            const respuesta = await fetch('/obtenerUsuarios');
-            if (respuesta.ok) {
-                const usuarios = await respuesta.json();
-                console.log("Usuarios registrados recibidos:", usuarios); // Depuración
-                usuariosRegistradosElemento.textContent = usuarios.length > 0 ? usuarios.length : "0";
-            } else {
-                console.error("Error al obtener usuarios registrados:", await respuesta.text());
-                usuariosRegistradosElemento.textContent = "Error";
-            }
-        } catch (err) {
-            console.error("Error al conectar con el servidor para usuarios registrados:", err);
+async function cargarUsuariosRegistrados() {
+    console.log("Iniciando carga de usuarios registrados...");
+    try {
+        const respuesta = await fetch('/obtenerUsuarios');
+        console.log("Respuesta de la solicitud:", respuesta);
+        if (respuesta.ok) {
+            const usuarios = await respuesta.json();
+            console.log("Usuarios recibidos:", usuarios);
+            usuariosRegistradosElemento.textContent = usuarios.length > 0 ? usuarios.length : "0";
+        } else {
+            console.error("Error al obtener usuarios registrados:", await respuesta.text());
             usuariosRegistradosElemento.textContent = "Error";
         }
+    } catch (err) {
+        console.error("Error al conectar con el servidor para usuarios registrados:", err);
+        usuariosRegistradosElemento.textContent = "Error";
     }
+}
+
+    
 
     // Llama a las funciones para cargar datos
     cargarEventosActivos();
