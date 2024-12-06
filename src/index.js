@@ -3,11 +3,8 @@ const mongoose = require('mongoose');
 const app = express();
 const nodemailer = require('nodemailer');
 const session = require('express-session');
-const multer = require('multer');
 const usuarioModel = require('../models/usuarios.js');
 const eventoModel = require('../models/eventos.js');
-const administradorModel = require('../models/administradores.js');
-
 
 
 const path = require('path'); //unifica elementos
@@ -18,9 +15,6 @@ app.set('view engine', 'ejs')
 
 //Archivos estáticos, saber cómo llegar a la carpeta public
 app.use(express.static(path.join(__dirname, 'public')));
-
-//Imagenes, cómo llegar
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 //BODY PARSER
 const bodyParser = require('body-parser');
@@ -33,33 +27,6 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
-
-// Configuración de Multer para almacenar imágenes
-
-// Configuración de almacenamiento para Multer
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads/'); // Asegúrate de que esta carpeta exista
-    },
-    filename: (req, file, cb) => {
-        const uniqueName = `${Date.now()}-${file.originalname}`;
-        cb(null, uniqueName);
-    }
-});
-
-// Filtro para validar tipos de archivos
-const fileFilter = (req, file, cb) => {
-    const allowedTypes = /jpeg|jpg|png/;
-    const isValidType = allowedTypes.test(file.mimetype) && allowedTypes.test(path.extname(file.originalname).toLowerCase());
-    if (isValidType) {
-        cb(null, true);
-    } else {
-        cb(new Error("Solo se permiten imágenes JPEG, JPG o PNG."));
-    }
-};
-
-// Middleware de Multer
-const upload = multer({ storage: storage, fileFilter: fileFilter });
 
 
 app.listen(3000, () => {
@@ -96,24 +63,8 @@ app.get('/InicioU', (req, res) => {
 });
 
 //Página de información de un evento (detalles del evento)
-app.get('/InformacionEvento:eventoNombre', async (req, res) => {
-    const eventoNombre = req.params.eventoNombre;
-
-    try {
-        // Buscar el evento usando el nombre
-        const evento = await Evento.findOne({ nombre: eventoNombre });
-
-        // Si no se encuentra el evento, devolver un error 404
-        if (!evento) {
-            return res.status(404).send("Evento no encontrado");
-        }
-
-        // Renderizar la vista con los datos del evento
-        res.render('InfoEvento', { evento: evento });
-    } catch (error) {
-        console.error("Error al obtener el evento:", error);
-        res.status(500).send("Error al obtener el evento.");
-    }
+app.get('/InformacionEvento', (req, res) => {
+    res.render("InfoEvento.html")
 });
 
 //Perfil del usuario final
@@ -186,20 +137,6 @@ app.get('/Nosotros', (req, res) => {
     res.render("Nosotros.html")
 });
 
-//Eventos disponibles
-app.get('/EventosDisponibles', async(req, res) => {
-    const Evento = require('../models/eventos.js');
-    try {
-        // Obtener todos los eventos de la base de datos
-        const eventos = await Evento.find();
-        res.render('EventosUI', { eventos: eventos });
-
-    } catch (error) {
-        console.error("Error al obtener los eventos:", error);
-        res.status(500).send("Error al obtener los eventos.");
-    }
-});
-
 //Eventos - conciertos
 app.get('/EventosConciertos', (req, res) => {
     res.render("conciertos.html")
@@ -226,26 +163,13 @@ app.get('/EventosFiestas', (req, res) => {
 });
 
 //Página de Métodos de pago usuario
-app.get('/MetodosDePago', (req, res) => {
+app.get('/MetodoPago', async (req, res) => {
     res.render("MetodoPago.html")
 });
 
-
 //Página Inicio Admin
-app.get('/InicioA',(req, res) => {
-    const cantUsuarios = async()=>{
-        try {
-            const cantidad = await usuario.countDocuments(); // Cuenta los documentos en la colección
-            const eventosActivos = await evento.countDocuments();
-            const admins = await administradorModel.find({}, 'nombre correo numId');
-
-            res.render('PagInicioAdmin', { cantidad: cantidad, eventosActivos: eventosActivos, admins: admins }); // Renderiza la vista con el conteo de usuarios
-        } catch (err) {
-            console.error("Error al contar usuarios:", err);
-            res.status(500).send("Error al contar usuarios.");
-        }
-    }
-    cantUsuarios();
+app.get('/InicioA', (req, res) => {
+    res.render("PagInicioAdmin.html")
 });
 
 //Página de administración de eventos
@@ -329,8 +253,8 @@ app.get('/PoliticaPrivacidad', (req, res) => {
 });
 
 //Página contáctanos
-app.get('/Contacto', (req, res) => {
-    res.render("contactanos.html")
+app.get('/Contactos', (req, res) => {
+    res.render("Contacto.html")
 });
 
 //Pagina de Preguntas Frecuentes
@@ -349,16 +273,9 @@ app.get('/SolicitudReembolso', (req, res) => {
 });
 
 //Pagina de Actualizacion de Eventos
-app.get('/ActualizacionEventos', async (req, res) => {
-    try {
-        const eventos = await eventoModel.find(); // Obtén todos los eventos de la base de datos
-        res.render("ActualizacionEventos", { eventos }); // Renderiza la vista con los eventos
-    } catch (err) {
-        console.error("Error al obtener los eventos:", err);
-        res.status(500).send("Error al cargar la lista de eventos.");
-    }
+app.get('/ActualizacionEventos', (req, res) => {
+    res.render("ActualizacionEventos.html")
 });
-
 
 
 
@@ -415,6 +332,9 @@ const registrarAdmin = async () => {
 
     const resultado = await admin.save();
 }
+
+/*llamar al método --> registrarAdmin();*/
+
 
 //Iniciar sesión - post
 app.post('/iniciarSesion', async(req, res) => {
@@ -572,54 +492,6 @@ app.post('/actualizarPerfilUser', async (req, res) => {
 });
 
 
-//Crear Evento - método post
-app.post('/crearEventoBD', upload.single('ImagenEvento'), async (req, res) => {
-    const Evento = require('../models/eventos.js');
-    try {
-        const {
-            nombreEvento,
-            FechaEvento,  // Asegúrate de que este campo esté en formato 'YYYY-MM-DD'
-            LugarEvento,
-            HoraEvento,  // Debería ser en formato 'HH:MM'
-            DescripcionEvento,
-            CostoGeneral,
-            CostoVIP,
-            Regla1,
-            Regla2,
-            Regla3
-        } = req.body;
-
-        // Verificar que el archivo fue subido
-        if (!req.file) {
-            throw new Error("No se subió ninguna imagen.");
-        }
-
-        // Crear un nuevo evento
-        const nuevoEvento = new Evento({
-            titulo: nombreEvento,
-            fecha: new Date(FechaEvento),  // Convertir FechaEvento a un objeto Date
-            lugar: LugarEvento,
-            hora: HoraEvento,  // Guardar la hora como String en formato HH:MM
-            descripcion: DescripcionEvento,
-            precioGeneral: parseFloat(CostoGeneral),  // Convertir CostoGeneral a número
-            precioVip: parseFloat(CostoVIP),  // Convertir CostoVIP a número
-            foto: req.file.filename,  // Nombre del archivo subido
-            reglas: [Regla1, Regla2, Regla3]  // Array de reglas
-        });
-
-        // Guardar el evento en la base de datos
-        await nuevoEvento.save();
-        console.log("Evento creado exitosamente:", nuevoEvento);
-
-        // Redirigir a la página de administración de eventos
-        res.redirect('/AdministrarEventos');
-    } catch (error) {
-        console.error("Error al crear el evento:", error.message);
-        res.status(500).send("Error al procesar la solicitud: " + error.message);
-    }
-});
-
-
 // Update de datos en PagCompraFinal - post
 app.post('/registrarCompra', async (req, res) => {
     try {
@@ -627,7 +499,6 @@ app.post('/registrarCompra', async (req, res) => {
         const nuevaCompra = new compra({
             productos: req.body.productos,
             total: req.body.total,
-            correo: req.body.correo, // Correo del comprador
             telefono: req.body.telefono, // Número de teléfono del comprador
             tarjetaCredito: { // Detalles de la tarjeta de crédito
                 nombre: req.body.tarjetaCredito.nombre,
@@ -641,71 +512,6 @@ app.post('/registrarCompra', async (req, res) => {
         // Guardar la compra en la base de datos
         const resultado = await nuevaCompra.save();
         console.log('Compra registrada correctamente:', resultado);
-
-// --- INICIO DEL ENVÍO DE CORREOS ---
-const { nombre, correo, productos, total } = req.body; // Datos del cliente y compra
-
-// Construir el mensaje para el cliente
-const mensajeCliente = `
-    <h1>Gracias por tu compra en Eventify</h1>
-    <p><strong>Hola ${nombre},</strong></p>
-    <p>¡Gracias por confiar en nosotros! Aquí tienes el resumen de tu compra:</p>
-    <ul>
-        ${productos.map(
-            (producto) =>
-                `<li>${producto.tipo} - Cantidad: ${producto.cantidad} - Precio: $${producto.precio}</li>`
-        ).join('')}
-    </ul>
-    <p><strong>Total:</strong> $${total.toFixed(2)}</p>
-    <p>Si tienes alguna duda, contáctanos en este correo.</p>
-`;
-
-// Construir el mensaje para la empresa
-const mensajeEmpresa = `
-    <h1>Nuevo pedido registrado</h1>
-    <p><strong>Cliente:</strong> ${nombre}</p>
-    <p><strong>Correo:</strong> ${correo}</p>
-    <p><strong>Total:</strong> $${total.toFixed(2)}</p>
-    <ul>
-        ${productos.map(
-            (producto) =>
-                `<li>${producto.tipo} - Cantidad: ${producto.cantidad} - Precio: $${producto.precio}</li>`
-        ).join('')}
-    </ul>
-`;
-
-// Verificar datos antes de enviar
-console.log('Correo al cliente:', {
-    asunto: 'Confirmación de tu compra en Eventify',
-    remitente: 'eventifybytd@gmail.com',
-    to: correo,
-    mensaje: mensajeCliente,
-});
-
-console.log('Correo a la empresa:', {
-    asunto: 'Nuevo pedido registrado',
-    remitente: 'eventifybytd@gmail.com',
-    to: 'eventifybytd@gmail.com',
-    mensaje: mensajeEmpresa,
-});
-
-// Enviar correo al cliente
-await enviarCorreo({
-    asunto: 'Confirmación de tu compra en Eventify',
-    remitente: 'eventifybytd@gmail.com',
-    mensaje: mensajeCliente,
-    to: correo, // Correo del cliente
-});
-
-// Enviar correo a la empresa
-await enviarCorreo({
-    asunto: 'Nuevo pedido registrado',
-    remitente: 'eventifybytd@gmail.com',
-    mensaje: mensajeEmpresa,
-    to: 'eventifybytd@gmail.com', // Correo de la empresa
-});
-// --- FIN DEL ENVÍO DE CORREOS ---
-
 
         // Responder con éxito
         res.status(201).send({
@@ -722,9 +528,6 @@ await enviarCorreo({
         });
     }
 });
-
-
-
 
 //Envío de correos electrónicos
 // Configuración del transporte
@@ -783,6 +586,18 @@ app.post('/enviarCorreo', async (req, res) => {
 
 //Métodos GET
 
+// Obtener todos los usuarios registrados
+app.get('/contarUsuarios', async (req, res) => {
+    try {
+        const cantidadUsuarios = await usuarioModel.countDocuments(); // Cuenta los documentos en la colección
+        res.render('contarUsuarios', { cantidadUsuarios }); // Renderiza la vista con el conteo de usuarios
+    } catch (err) {
+        console.error("Error al contar usuarios:", err);
+        res.status(500).send("Error al contar usuarios.");
+    }
+});
+
+
 
 // Obtener todos los eventos activos
 app.get('/obtenerEventosActivos', async (req, res) => {
@@ -799,5 +614,6 @@ app.get('/obtenerEventosActivos', async (req, res) => {
     }
 });
 
-//MetodoPago Rutas 
 
+
+//get
