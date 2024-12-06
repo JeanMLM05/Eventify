@@ -96,8 +96,24 @@ app.get('/InicioU', (req, res) => {
 });
 
 //Página de información de un evento (detalles del evento)
-app.get('/InformacionEvento', (req, res) => {
-    res.render("InfoEvento.html")
+app.get('/InformacionEvento:eventoNombre', async (req, res) => {
+    const eventoNombre = req.params.eventoNombre;
+
+    try {
+        // Buscar el evento usando el nombre
+        const evento = await Evento.findOne({ nombre: eventoNombre });
+
+        // Si no se encuentra el evento, devolver un error 404
+        if (!evento) {
+            return res.status(404).send("Evento no encontrado");
+        }
+
+        // Renderizar la vista con los datos del evento
+        res.render('InfoEvento', { evento: evento });
+    } catch (error) {
+        console.error("Error al obtener el evento:", error);
+        res.status(500).send("Error al obtener el evento.");
+    }
 });
 
 //Perfil del usuario final

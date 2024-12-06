@@ -48,7 +48,7 @@
         <div class="proximos-eventos">
             <% eventos.forEach(evento => { %>
                 <div class="container-evento">
-                    <a href="/InformacionEvento/<%= evento._id %>">
+                    <a href="/InformacionEvento/<%= evento.nombre %>">
                         <img src="/uploads/<%= evento.foto %>" alt="<%= evento.titulo %>" class="imagen-evento" width="300rem" height="380rem">
                         <h4><%= evento.titulo %></h4>
                         <div class="info-evento">
