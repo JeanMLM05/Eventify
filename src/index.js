@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const nodemailer = require('nodemailer');
+const session = require('express-session');
 const usuarioModel = require('../models/usuarios.js');
 const eventoModel = require('../models/eventos.js');
 
