@@ -47,7 +47,7 @@
 
     <!-- Gestión de Usuarios -->
     <div class="user-management">
-        <h3>Nuestros Empleados</h3>
+        <h3>Nuestros Administradores</h3>
         <table>
             <thead>
                 <tr>
@@ -58,38 +58,16 @@
             </thead>
             <tbody>
                 <% admins.forEach(admin => { %>
-                <tr>
-                    <td><%= admin.nombre %></td>
-                    <td><%= admin.correo %></td>
-                    <td><%= admin.numId %></td>
-                </tr>
-                <tr>
-                    <td><%= admin.nombre %></td>
-                    <td><%= admin.correo %></td>
-                    <td><%= admin.numId %></td>
-                </tr>
-                <tr>
-                    <td><%= admin.nombre %></td>
-                    <td><%= admin.correo %></td>
-                    <td><%= admin.numId %></td>
-                </tr>
-                <tr>
-                    <td><%= admin.nombre %></td>
-                    <td><%= admin.correo %></td>
-                    <td><%= admin.numId %></td>
-                </tr>
-                <tr>
-                    <td><%= admin.nombre %></td>
-                    <td><%= admin.correo %></td>
-                    <td><%= admin.numId %></td>
-                </tr>
+                    <tr>
+                        <td><%= admin.nombre %></td>
+                        <td><%= admin.correo %></td>
+                        <td><%= admin.numId %></td>
+                    </tr>
                 <% }) %>
             </tbody>
         </table>
-        
-        
     </div>
-</div>
+    
 
 <!-- FOOTER -->
 <footer>
