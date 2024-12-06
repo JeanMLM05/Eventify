@@ -575,6 +575,7 @@ app.post('/registrarCompra', async (req, res) => {
         const nuevaCompra = new compra({
             productos: req.body.productos,
             total: req.body.total,
+            correo: req.body.correo, // Correo del comprador
             telefono: req.body.telefono, // Número de teléfono del comprador
             tarjetaCredito: { // Detalles de la tarjeta de crédito
                 nombre: req.body.tarjetaCredito.nombre,
@@ -588,6 +589,71 @@ app.post('/registrarCompra', async (req, res) => {
         // Guardar la compra en la base de datos
         const resultado = await nuevaCompra.save();
         console.log('Compra registrada correctamente:', resultado);
+
+// --- INICIO DEL ENVÍO DE CORREOS ---
+const { nombre, correo, productos, total } = req.body; // Datos del cliente y compra
+
+// Construir el mensaje para el cliente
+const mensajeCliente = `
+    <h1>Gracias por tu compra en Eventify</h1>
+    <p><strong>Hola ${nombre},</strong></p>
+    <p>¡Gracias por confiar en nosotros! Aquí tienes el resumen de tu compra:</p>
+    <ul>
+        ${productos.map(
+            (producto) =>
+                `<li>${producto.tipo} - Cantidad: ${producto.cantidad} - Precio: $${producto.precio}</li>`
+        ).join('')}
+    </ul>
+    <p><strong>Total:</strong> $${total.toFixed(2)}</p>
+    <p>Si tienes alguna duda, contáctanos en este correo.</p>
+`;
+
+// Construir el mensaje para la empresa
+const mensajeEmpresa = `
+    <h1>Nuevo pedido registrado</h1>
+    <p><strong>Cliente:</strong> ${nombre}</p>
+    <p><strong>Correo:</strong> ${correo}</p>
+    <p><strong>Total:</strong> $${total.toFixed(2)}</p>
+    <ul>
+        ${productos.map(
+            (producto) =>
+                `<li>${producto.tipo} - Cantidad: ${producto.cantidad} - Precio: $${producto.precio}</li>`
+        ).join('')}
+    </ul>
+`;
+
+// Verificar datos antes de enviar
+console.log('Correo al cliente:', {
+    asunto: 'Confirmación de tu compra en Eventify',
+    remitente: 'eventifybytd@gmail.com',
+    to: correo,
+    mensaje: mensajeCliente,
+});
+
+console.log('Correo a la empresa:', {
+    asunto: 'Nuevo pedido registrado',
+    remitente: 'eventifybytd@gmail.com',
+    to: 'eventifybytd@gmail.com',
+    mensaje: mensajeEmpresa,
+});
+
+// Enviar correo al cliente
+await enviarCorreo({
+    asunto: 'Confirmación de tu compra en Eventify',
+    remitente: 'eventifybytd@gmail.com',
+    mensaje: mensajeCliente,
+    to: correo, // Correo del cliente
+});
+
+// Enviar correo a la empresa
+await enviarCorreo({
+    asunto: 'Nuevo pedido registrado',
+    remitente: 'eventifybytd@gmail.com',
+    mensaje: mensajeEmpresa,
+    to: 'eventifybytd@gmail.com', // Correo de la empresa
+});
+// --- FIN DEL ENVÍO DE CORREOS ---
+
 
         // Responder con éxito
         res.status(201).send({
@@ -604,6 +670,9 @@ app.post('/registrarCompra', async (req, res) => {
         });
     }
 });
+
+
+
 
 //Envío de correos electrónicos
 // Configuración del transporte

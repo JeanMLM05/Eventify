@@ -127,6 +127,7 @@ document.getElementById("checkout-form").addEventListener("submit", function(eve
             const compra = {
                 productos: resumenCompra.productos,
                 total: resumenCompra.total,
+                correo: email.value,
                 telefono: phone.value,
                 tarjetaCredito: {
                     nombre: cardName.value,

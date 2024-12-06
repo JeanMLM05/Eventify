@@ -9,6 +9,7 @@ const compraSchema = new mongoose.Schema({
         }
     ],
     total: { type: Number, required: true },
+    correo: { type: String, required: true },
     telefono: { type: String, required: true }, // Número de teléfono del comprador
     tarjetaCredito: { // Detalles de la tarjeta de crédito utilizada
         nombre: { type: String, required: true }, // Nombre en la tarjeta
