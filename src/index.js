@@ -328,8 +328,8 @@ app.get('/PoliticaPrivacidad', (req, res) => {
 });
 
 //Página contáctanos
-app.get('/Contactos', (req, res) => {
-    res.render("Contacto.html")
+app.get('/Contacto', (req, res) => {
+    res.render("contactanos.html")
 });
 
 //Pagina de Preguntas Frecuentes
