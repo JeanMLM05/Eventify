@@ -53,35 +53,37 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Correo Electrónico</th>
-                    <th>Número de Teléfono</th>
+                    <th>Número de ID</th>
                 </tr>
             </thead>
             <tbody>
+                <% admins.forEach(admin => { %>
                 <tr>
-                    <td>Jean Marco Lopez</td>
-                    <td>jlopezmej@ucenfotec.ac.cr</td>
-                    <td>8899 2950</td>
+                    <td><%= admin.nombre %></td>
+                    <td><%= admin.correo %></td>
+                    <td><%= admin.numId %></td>
                 </tr>
                 <tr>
-                    <td>Sidney Rodriguez</td>
-                    <td>srodriguezca@ucenfotec.ac.cr</td>
-                    <td>7032 9535</td>
+                    <td><%= admin.nombre %></td>
+                    <td><%= admin.correo %></td>
+                    <td><%= admin.numId %></td>
                 </tr>
                 <tr>
-                    <td>Rayner Rodriguez</td>
-                    <td>rrodriguezs@ucenfotec.ac.cr</td>
-                    <td>8650 2020</td>
+                    <td><%= admin.nombre %></td>
+                    <td><%= admin.correo %></td>
+                    <td><%= admin.numId %></td>
                 </tr>
                 <tr>
-                    <td>Nicole Masco</td>
-                    <td>nmascoc@ucenfotec.ac.cr</td>
-                    <td>8703 2287</td>
+                    <td><%= admin.nombre %></td>
+                    <td><%= admin.correo %></td>
+                    <td><%= admin.numId %></td>
                 </tr>
                 <tr>
-                    <td>Gabriel Valverde</td>
-                    <td>gvalverdem@ucenfotec.ac.cr</td>
-                    <td>8834 1244</td>
+                    <td><%= admin.nombre %></td>
+                    <td><%= admin.correo %></td>
+                    <td><%= admin.numId %></td>
                 </tr>
+                <% }) %>
             </tbody>
         </table>
         
