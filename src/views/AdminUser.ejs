@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="AdminUsers/AdminUser.css">
+  <link rel="stylesheet" href="https://use.typekit.net/ltx2luq.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>UsuariosAd</title>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="/InicioA" class="header-left">
+      <img src="IMG/eventify-logo.png" alt="Eventify Logo" class="header-logo">
+    </a>
+    <div class="header-right">
+      <a href="/InicioA">DASHBOARD</a>
+      <a href="/AdministrarEventos">EVENTOS</a>
+      <a href="/AdministrarUsuarios">USUARIOS</a>
+      <a href="/ConfiguracionGeneral">CONFIGURACIÓN</a>
+      <a href="/MiPerfilA">MI PERFIL</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="main-title">
+      <h2>Configuración Usuarios</h2>
+    </div>
+    
+    <!-- Tabla dinámica -->
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Tipo de ID</th>
+            <th>Número de ID</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% usuarios.forEach(usuario => { %>
+          <tr>
+            <td><span><%= usuario.correo %></span></td>
+            <td><span><%= usuario.nombre %></span></td>
+            <td><span><%= usuario.apellido %></span></td>
+            <td><span><%= usuario.tipoId %></span></td>
+            <td><span><%= usuario.numId %></span></td>
+            <td>
+              <button class="delete-btn" data-id="<%= usuario._id %>">Borrar</button>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-logo">EVENTIFY</span>
+      </div>
+      <div class="footer-center">
+        <a href="/TerminosCondiciones">Términos y condiciones</a>
+        <a href="/Soporte">Ayuda</a>
+        <a href="/PoliticaPrivacidad">Política de Privacidad</a>
+        <a href="/Contacto">Contáctanos</a>
+      </div>
+      <div class="footer-right">
+        <a href="https://www.facebook.com" class="social">Facebook</a>
+        <a href="https://www.instagram.com/" class="social">Instagram</a>
+        <a href="https://www.x.com/" class="social">Twitter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Tropical Developers. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Función para manejar el borrado de usuarios
+    document.addEventListener("DOMContentLoaded", () => {
+      const deleteButtons = document.querySelectorAll(".delete-btn");
+
+      deleteButtons.forEach(button => {
+        button.addEventListener("click", async () => {
+          const userId = button.getAttribute("data-id");
+
+          const confirmDelete = confirm("¿Estás seguro de que deseas borrar este usuario?");
+          if (!confirmDelete) return;
+
+          try {
+            const response = await fetch(`/borrarUsuario/${userId}`, {
+              method: "DELETE",
+            });
+
+            if (response.ok) {
+              alert("Usuario borrado correctamente.");
+              location.reload(); // Recargar la página para actualizar la tabla
+            } else {
+              alert("Error al borrar el usuario.");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            alert("Hubo un error al borrar el usuario.");
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

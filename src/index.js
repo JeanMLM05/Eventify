@@ -254,8 +254,27 @@ app.get('/AdministrarEventos', (req, res) => {
 });
 
 //Página de administración de usuarios
-app.get('/AdministrarUsuarios', (req, res) => {
-    res.render("AdminUser.html")
+app.get('/AdministrarUsuarios', async (req, res) => {
+    try {
+        // Obtener usuarios desde la base de datos
+        const usuarios = await usuarioModel.find();
+        // Renderizar la vista con los datos
+        res.render('AdminUser', { usuarios });
+    } catch (error) {
+        console.error('Error al obtener los usuarios:', error);
+        res.status(500).send('Hubo un error al cargar la lista de usuarios.');
+    }
+});
+
+app.delete('/borrarUsuario/:id', async (req, res) => {
+    try {
+        const userId = req.params.id;
+        await usuarioModel.findByIdAndDelete(userId); // Eliminar usuario por ID
+        res.status(200).send({ message: 'Usuario borrado correctamente.' });
+    } catch (error) {
+        console.error('Error al borrar el usuario:', error);
+        res.status(500).send({ message: 'Error al borrar el usuario.' });
+    }
 });
 
 //Página de editar eventos administrador
