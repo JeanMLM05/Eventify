@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 const nodemailer = require('nodemailer');
 const session = require('express-session');
+const multer = require('multer');
 const usuarioModel = require('../models/usuarios.js');
 const eventoModel = require('../models/eventos.js');
 const administradorModel = require('../models/administradores.js');
@@ -29,6 +30,30 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+
+// Configuración de Multer para almacenar imágenes
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/'); // Carpeta donde se almacenarán las imágenes
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname)); // Nombre único para cada archivo
+    }
+});
+
+const upload = multer({ 
+    storage: storage,
+    fileFilter: (req, file, cb) => {
+        const fileTypes = /jpeg|jpg|png/; // Extensiones permitidas
+        const mimeType = fileTypes.test(file.mimetype);
+        const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
+        
+        if (mimeType && extname) {
+            return cb(null, true);
+        }
+        cb(new Error("Solo se permiten imágenes con formato JPEG, JPG o PNG."));
+    }
+});
 
 
 app.listen(3000, () => {
@@ -328,9 +353,6 @@ const registrarAdmin = async () => {
     const resultado = await admin.save();
 }
 
-/*llamar al método --> registrarAdmin();*/
-
-
 //Iniciar sesión - post
 app.post('/iniciarSesion', async(req, res) => {
     try {
@@ -580,18 +602,6 @@ app.post('/enviarCorreo', async (req, res) => {
 
 
 //Métodos GET
-
-// Obtener todos los usuarios registrados
-app.get('/contarUsuarios', async (req, res) => {
-    try {
-        const cantidadUsuarios = await usuarioModel.countDocuments(); // Cuenta los documentos en la colección
-        res.render('contarUsuarios', { cantidadUsuarios }); // Renderiza la vista con el conteo de usuarios
-    } catch (err) {
-        console.error("Error al contar usuarios:", err);
-        res.status(500).send("Error al contar usuarios.");
-    }
-});
-
 
 
 // Obtener todos los eventos activos
