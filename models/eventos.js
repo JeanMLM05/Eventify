@@ -11,6 +11,7 @@ let eventoSchema = new mongoose.Schema({
     descripcion:{type:String, required:true},
     precioGeneral:{type:Number, required:true},
     precioVip:{type:Number, required:true},
+    reglas: {type: [String], required: true},
     foto: { type: String, required: true }
 },{versionKey:false});
 
