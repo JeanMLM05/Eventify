@@ -172,7 +172,8 @@ app.get('/InicioA',(req, res) => {
     const cantUsuarios = async()=>{
         try {
             const cantidad = await usuario.countDocuments(); // Cuenta los documentos en la colección
-            res.render('PagInicioAdmin', { cantidad: cantidad }); // Renderiza la vista con el conteo de usuarios
+            const eventosActivos = await evento.countDocuments();
+            res.render('PagInicioAdmin', { cantidad: cantidad, eventosActivos: eventosActivos }); // Renderiza la vista con el conteo de usuarios
         } catch (err) {
             console.error("Error al contar usuarios:", err);
             res.status(500).send("Error al contar usuarios.");
