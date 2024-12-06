@@ -19,6 +19,9 @@ app.set('view engine', 'ejs')
 //Archivos estáticos, saber cómo llegar a la carpeta public
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Imagenes, cómo llegar
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 //BODY PARSER
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -173,7 +176,7 @@ app.get('/EventosDisponibles', async(req, res) => {
     try {
         // Obtener todos los eventos de la base de datos
         const eventos = await Evento.find();
-        res.render('eventos', { eventos: eventos });
+        res.render('EventosUI', { eventos: eventos });
 
     } catch (error) {
         console.error("Error al obtener los eventos:", error);
@@ -310,7 +313,6 @@ app.get('/SolicitudReembolso', (req, res) => {
 });
 
 //Pagina de Actualizacion de Eventos
-// Página de Actualización de Eventos
 app.get('/ActualizacionEventos', async (req, res) => {
     try {
         const eventos = await eventoModel.find(); // Obtén todos los eventos de la base de datos
