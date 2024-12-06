@@ -270,80 +270,59 @@ p{
 footer {
     background-color: #000;
     color: #fff;
-    padding: 20px 0;
+    padding: 2vh 0; /* Espaciado adaptable */
     text-align: center;
-    position: relative; /* Asegura que no se superponga */
-    margin-top: 20px; /* Espacio entre el contenido y el footer */
-    width: 100%; /* Hace que el footer ocupe todo el ancho */
-    border-top: 1px solid #444;
-    font-family: 'Coolvetica', Arial, sans-serif;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 1vw; /* Tamaño adaptable */
 }
 
-/* Contenedor del footer */
 .footer-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px; /* Ancho máximo del contenido interno */
+    max-width: 90%;
     margin: 0 auto;
-    padding: 0 20px;
-    flex-wrap: wrap; /* Ajusta el contenido en pantallas pequeñas */
-    gap: 20px;
+    padding: 0 2vw; /* Espaciado interno */
 }
 
-/* Logo del footer */
 .footer-left .footer-logo {
-    font-size: 24px;
+    font-size: 1.5vw; /* Tamaño escalable */
     font-weight: bold;
     color: #fff;
-    text-transform: uppercase;
 }
 
-/* Enlaces del footer */
-.footer-center a {
+.footer-center a, .footer-right a {
     color: #ffffff;
-    margin: 0 10px;
+    padding: 0.5vh 1vw; /* Espaciado adaptable */
     text-decoration: none;
-    font-size: 14px;
+    font-size: 1vw; /* Tamaño adaptable */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.footer-center a:hover {
-    text-decoration: underline;
-}
-
-/* Redes sociales */
 .footer-right a {
-    color: #ffffff;
     background-color: #444;
-    padding: 8px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 14px;
-    margin-left: 10px;
+    border-radius: 0.5vw; /* Bordes proporcionales */
 }
 
 .footer-right a:hover {
     background-color: #333;
 }
 
-/* Parte inferior del footer */
+/* Línea divisora */
+.footer-divider {
+    border-top: 0.1vw solid #444; /* Línea divisora adaptable */
+    margin: 1vh 0; /* Márgenes proporcionales */
+}
+
+/* Derechos reservados */
 .footer-bottom {
-    border-top: 1px solid #444;
-    margin-top: 10px;
-    padding-top: 10px;
-    font-size: 12px;
+    font-size: 0.9vw; /* Texto reducido */
     color: #ccc;
     text-align: center;
+    padding-top: 0.5vh;
 }
-
-.footer-bottom p {
-    margin: 0;
-}
-
-
-    .footer-right a {
-        margin-left: 0; /* Elimina márgenes para pantallas pequeñas */
-    }
 
 
 
