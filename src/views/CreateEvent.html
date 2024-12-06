@@ -26,7 +26,7 @@
     </div>
   </header>
 
-  <form action="/addCategory" method="POST">
+  <form action="/crearEventoBD" method="POST" enctype="multipart/form-data">
   <main>
     <div class="left-main">
       <h2>CREAR EVENTO</h2>
@@ -40,12 +40,12 @@
 
     <div class="right-main">
       <div class="title">
-        <h3>Titulo:</h3> <input type="text" id="" placeholder="Evento" name="nombreEvento">
+        <h3>Titulo:</h3> <input type="text"  placeholder="Evento" name="nombreEvento">
       </div>
       <div class="core-main">
-        <h3>Fecha:</h3> <div><input type="date" name="" id=""  class="date" name="FechaEvento"> <i class='bx bx-calendar'></i></div>
-        <h3>Lugar:</h3> <input type="text" name="" id="" placeholder="La Uruca" name="LugarEvento"> 
-        <h3>Hora:</h3> <div><input type="time" name="" id="" placeholder="Evento" class="time" name="HoraEvento"> <i class='bx bx-time'></i></div>
+        <h3>Fecha:</h3> <div><input type="date"  class="date" name="FechaEvento"> <i class='bx bx-calendar'></i></div>
+        <h3>Lugar:</h3> <input type="text"  placeholder="La Uruca" name="LugarEvento"> 
+        <h3>Hora:</h3> <div><input type="text"  placeholder="Evento" class="time" name="HoraEvento"> <i class='bx bx-time'></i></div>
       </div>
       <div class="core-final">
         <h3>Descripcion:</h3>
@@ -73,7 +73,7 @@
           <input type="text" placeholder="..." name="Regla3">
         </div>
       </div>
-      <input type="submit" class="button-bottom" value="Guardar" onclick="location.reload()">
+      <input type="submit" class="button-bottom" value="Guardar">
   </form>
     </div>
   </main>
