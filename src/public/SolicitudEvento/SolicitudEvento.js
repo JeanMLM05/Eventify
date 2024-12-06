@@ -1,6 +1,5 @@
 console.log("ManejarFormulario.js cargado correctamente.");
 
-
 // Selección de elementos del formulario
 const form = document.getElementById("reportForm");
 const name = document.getElementById("name");
@@ -9,7 +8,6 @@ const description = document.getElementById("description");
 
 // Función para mostrar mensaje de error
 function mostrarError(elemento, mensaje) {
-    // Verificar si ya existe un mensaje de error
     if (elemento.nextElementSibling && elemento.nextElementSibling.classList.contains("error-message")) {
         elemento.nextElementSibling.textContent = mensaje; // Actualizar mensaje si ya existe
     } else {
@@ -35,7 +33,7 @@ function validarCorreo(correo) {
 }
 
 // Manejo del envío del formulario
-form.addEventListener("submit", function(event) {
+form.addEventListener("submit", async function (event) {
     event.preventDefault();
     limpiarErrores(); // Limpiar errores previos
     let esValido = true;
@@ -60,7 +58,37 @@ form.addEventListener("submit", function(event) {
 
     // Enviar si todos los campos son válidos
     if (esValido) {
-        alert(`Solicitud enviada:\nNombre: ${name.value}\nCorreo: ${email.value}\nDescripción: ${description.value}`);
-        form.reset();
+        // Crear el objeto con los datos del formulario
+        const formulario = {
+            tipoFormulario: "Solicitud de Evento", // Tipo actual del formulario
+            nombre: name.value,
+            correo: email.value,
+            descripcion: description.value,
+        };
+
+        try {
+            // Enviar los datos al servidor
+            const respuesta = await fetch('/enviarCorreo', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formulario),
+            });
+
+            if (respuesta.ok) {
+                const datos = await respuesta.json();
+                alert('Formulario enviado correctamente.');
+                console.log('Respuesta del servidor:', datos);
+                form.reset();
+            } else {
+                const error = await respuesta.json();
+                alert('Error al enviar el formulario. Intenta nuevamente.');
+                console.error('Error del servidor:', error);
+            }
+        } catch (err) {
+            alert('Error al conectar con el servidor.');
+            console.error('Error de conexión:', err);
+        }
     }
 });

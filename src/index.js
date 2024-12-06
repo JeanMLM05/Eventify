@@ -508,6 +508,40 @@ app.post('/enviarCorreo', async (req, res) => {
 
 //Métodos GET
 
+// Obtener todos los usuarios registrados
+app.get('/obtenerUsuarios', async (req, res) => {
+    try {
+        // Consultar la base de datos para obtener los usuarios
+        const usuarios = await usuarioModel.find({});
+        console.log("Usuarios obtenidos correctamente.");
+        res.status(200).send(usuarios);
+    } catch (err) {
+        console.error("Error al obtener los usuarios:", err);
+        res.status(500).send({
+            mensaje: "Error al obtener los usuarios.",
+            error: err.message
+        });
+    }
+});
+
+
+// Obtener todos los eventos activos
+app.get('/obtenerEventosActivos', async (req, res) => {
+    try {
+        // Consultar la base de datos para eventos activos
+        const eventosActivos = await eventoModel.find({ activo: true });
+        console.log("Eventos activos obtenidos correctamente.");
+        res.status(200).send(eventosActivos);
+    } catch (err) {
+        console.error("Error al obtener los eventos activos:", err);
+        res.status(500).send({
+            mensaje: "Error al obtener los eventos activos.",
+            error: err.message
+        });
+    }
+});
+
+
 
 
 
