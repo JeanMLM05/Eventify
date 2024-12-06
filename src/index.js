@@ -293,9 +293,17 @@ app.get('/SolicitudReembolso', (req, res) => {
 });
 
 //Pagina de Actualizacion de Eventos
-app.get('/ActualizacionEventos', (req, res) => {
-    res.render("ActualizacionEventos.html")
+// Página de Actualización de Eventos
+app.get('/ActualizacionEventos', async (req, res) => {
+    try {
+        const eventos = await eventoModel.find(); // Obtén todos los eventos de la base de datos
+        res.render("ActualizacionEventos", { eventos }); // Renderiza la vista con los eventos
+    } catch (err) {
+        console.error("Error al obtener los eventos:", err);
+        res.status(500).send("Error al cargar la lista de eventos.");
+    }
 });
+
 
 
 

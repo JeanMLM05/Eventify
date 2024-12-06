@@ -6,7 +6,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <link rel="stylesheet" href="https://use.typekit.net/ltx2luq.css">
-    <link rel="stylesheet" href='NosotrosPag/Nosotros.css'>
+    <link rel="stylesheet" href='/ActualizacionEventos/ActualizacionEventos.css'>
     <title>Actualización de Eventos</title>
 </head>
 
@@ -15,7 +15,7 @@
 <!-- HEADER -->
 <header>
     <a href="/InicioU" class="header-left">
-        <img src="IMG/eventify-logo.png" alt="Eventify Logo" class="header-logo">
+        <img src="/IMG/eventify-logo.png" alt="Eventify Logo" class="header-logo">
     </a>
 
     <div class="header-right">
@@ -35,7 +35,7 @@
 
     <form>
         <div class="search">
-            <img src="IMG/searchh.png" alt="buscar" width="30rem">
+            <img src="/IMG/searchh.png" alt="buscar" width="30rem">
             <input class="search-input" type="search" placeholder="BUSCAR">
         </div>
     </form>
@@ -44,38 +44,36 @@
 <!-- CONTENIDO -->
 <div class="contenedor-fondo" id="contenedor-fondo">
     <div class="info-eventify">
-        <h1>Actualización de Eventos</h1>
-
-        <h2>FIESTAS ACTIVAS</h2>
-        <p>
-            EL CULTO: RITUAL
-
-            LADIES NIGHT
-
-            AFRO HOUSE
-        </p>
-
-        <h2>EVENTOS DEPORTIVOS ACTIVOS</h2>
-        <p>
-            PÁDEL TOUR
-        </p>
-
-        <h2>CONCIERTOS ACTIVOS</h2>
-        <p>
-            SHENSEEA: DIZZY BIRTHDAY CELEBRATION
-        </p>
-
-        <h2>EXPOSICIONES ACTIVAS</h2>
-        <p>
-            MIGRANTES POR JORGE CRESPO
-        </p>
-
-        <h2>ACTIVIDADES GASTRONÓMICAS ACTIVAS</h2>
-        <p>
-            MÚSICA FERIA VERDE
-        </p>
-    </div>
-</div>
+        <div class="event-management">
+            <h3>Lista de Eventos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Fecha</th>
+                        <th>Lugar</th>
+                        <th>Hora</th>
+                        <th>Descripción</th>
+                        <th>Precio General</th>
+                        <th>Precio VIP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% eventos.forEach(evento => { %>
+                        <tr>
+                            <td><%= evento.titulo %></td>
+                            <td><%= new Date(evento.fecha).toLocaleDateString() %></td>
+                            <td><%= evento.lugar %></td>
+                            <td><%= evento.hora %></td>
+                            <td><%= evento.descripcion %></td>
+                            <td><%= evento.precioGeneral %></td>
+                            <td><%= evento.precioVip %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        
 
 <!-- FOOTER -->
 <footer>
