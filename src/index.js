@@ -167,6 +167,20 @@ app.get('/Nosotros', (req, res) => {
     res.render("Nosotros.html")
 });
 
+//Eventos disponibles
+app.get('/EventosDisponibles', async(req, res) => {
+    const Evento = require('../models/eventos.js');
+    try {
+        // Obtener todos los eventos de la base de datos
+        const eventos = await Evento.find();
+        res.render('eventos', { eventos: eventos });
+
+    } catch (error) {
+        console.error("Error al obtener los eventos:", error);
+        res.status(500).send("Error al obtener los eventos.");
+    }
+});
+
 //Eventos - conciertos
 app.get('/EventosConciertos', (req, res) => {
     res.render("conciertos.html")
