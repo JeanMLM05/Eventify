@@ -32,28 +32,31 @@ app.use(session({
 }));
 
 // Configuración de Multer para almacenar imágenes
+
+// Configuración de almacenamiento para Multer
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'uploads/'); // Carpeta donde se almacenarán las imágenes
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/'); // Asegúrate de que esta carpeta exista
     },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname)); // Nombre único para cada archivo
+    filename: (req, file, cb) => {
+        const uniqueName = `${Date.now()}-${file.originalname}`;
+        cb(null, uniqueName);
     }
 });
 
-const upload = multer({ 
-    storage: storage,
-    fileFilter: (req, file, cb) => {
-        const fileTypes = /jpeg|jpg|png/; // Extensiones permitidas
-        const mimeType = fileTypes.test(file.mimetype);
-        const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
-        
-        if (mimeType && extname) {
-            return cb(null, true);
-        }
-        cb(new Error("Solo se permiten imágenes con formato JPEG, JPG o PNG."));
+// Filtro para validar tipos de archivos
+const fileFilter = (req, file, cb) => {
+    const allowedTypes = /jpeg|jpg|png/;
+    const isValidType = allowedTypes.test(file.mimetype) && allowedTypes.test(path.extname(file.originalname).toLowerCase());
+    if (isValidType) {
+        cb(null, true);
+    } else {
+        cb(new Error("Solo se permiten imágenes JPEG, JPG o PNG."));
     }
-});
+};
+
+// Middleware de Multer
+const upload = multer({ storage: storage, fileFilter: fileFilter });
 
 
 app.listen(3000, () => {
@@ -519,12 +522,13 @@ app.post('/actualizarPerfilUser', async (req, res) => {
 
 //Crear Evento - método post
 app.post('/crearEventoBD', upload.single('ImagenEvento'), async (req, res) => {
+    const Evento = require('../models/eventos.js');
     try {
         const {
             nombreEvento,
-            FechaEvento,
+            FechaEvento,  // Asegúrate de que este campo esté en formato 'YYYY-MM-DD'
             LugarEvento,
-            HoraEvento,
+            HoraEvento,  // Debería ser en formato 'HH:MM'
             DescripcionEvento,
             CostoGeneral,
             CostoVIP,
@@ -533,17 +537,22 @@ app.post('/crearEventoBD', upload.single('ImagenEvento'), async (req, res) => {
             Regla3
         } = req.body;
 
+        // Verificar que el archivo fue subido
+        if (!req.file) {
+            throw new Error("No se subió ninguna imagen.");
+        }
+
         // Crear un nuevo evento
         const nuevoEvento = new Evento({
             titulo: nombreEvento,
-            fecha: FechaEvento,
+            fecha: new Date(FechaEvento),  // Convertir FechaEvento a un objeto Date
             lugar: LugarEvento,
-            hora: HoraEvento,
+            hora: HoraEvento,  // Guardar la hora como String en formato HH:MM
             descripcion: DescripcionEvento,
-            precioGeneral: CostoGeneral,
-            precioVip: CostoVIP,
-            imagen: req.file.filename,
-            reglas: [Regla1, Regla2, Regla3]
+            precioGeneral: parseFloat(CostoGeneral),  // Convertir CostoGeneral a número
+            precioVip: parseFloat(CostoVIP),  // Convertir CostoVIP a número
+            foto: req.file.filename,  // Nombre del archivo subido
+            reglas: [Regla1, Regla2, Regla3]  // Array de reglas
         });
 
         // Guardar el evento en la base de datos
@@ -553,8 +562,8 @@ app.post('/crearEventoBD', upload.single('ImagenEvento'), async (req, res) => {
         // Redirigir a la página de administración de eventos
         res.redirect('/AdministrarEventos');
     } catch (error) {
-        console.error("Error al crear el evento:", error);
-        res.status(500).send("Error al procesar la solicitud.");
+        console.error("Error al crear el evento:", error.message);
+        res.status(500).send("Error al procesar la solicitud: " + error.message);
     }
 });
 
