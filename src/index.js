@@ -664,10 +664,6 @@ app.post('/guardarConfiguracion', (req, res) => {
     res.status(200).send("Configuración guardada correctamente.");
 });
 
-
-
-//Métodos GET
-
 // Obtener todos los usuarios registrados
 app.get('/contarUsuarios', async (req, res) => {
     try {
@@ -741,3 +737,4 @@ app.post('/crearEventoBD', upload.single('ImagenEvento'), async (req, res) => {
         res.status(500).send("Error al procesar la solicitud: " + error.message);
     }
 });
+
