@@ -2,6 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const nodemailer = require('nodemailer');
+const session = require('express-session');
+const usuarioModel = require('../models/usuarios.js');
+const eventoModel = require('../models/eventos.js');
+
 
 const path = require('path'); //unifica elementos
 app.set('views', path.join(__dirname, 'views'));
@@ -16,6 +20,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+//SESSION
+app.use(session({
+    secret: 'cadena secreta eventify',
+    resave: false,
+    saveUninitialized: true
+}));
+
 
 app.listen(3000, () => {
     console.log("Se conectó al puerto")
@@ -56,13 +68,58 @@ app.get('/InformacionEvento', (req, res) => {
 });
 
 //Perfil del usuario final
-app.get('/MiPerfilU', (req, res) => {
-    res.render("PerfilUsuario.html")
+app.get('/MiPerfilU',async(req, res) => {
+    const usuario = require('../models/usuarios.js');
+    try {
+        const correo = req.session.correo;
+
+        if (!correo) {
+            return res.redirect('/IniciarSesion');
+        }
+
+        // Buscar al usuario con el correo guardado en la sesión
+        const userBD = await usuario.findOne({ correo: correo });
+
+        if (!userBD) {
+            console.log("No se encontró el usuario en la base de datos.");
+            return res.redirect('/IniciarSesion');
+        }
+
+        // Si el usuario existe, pasar los datos a la vista
+        res.render('PerfilUsuario', { usuario:userBD });
+        
+    } catch (error) {
+        console.error("Error al obtener datos del usuario:", error);
+        res.status(500).send("Ocurrió un error al obtener los datos del usuario.");
+    }
 });
 
+
 //Perfil del administrador
-app.get('/MiPerfilA', (req, res) => {
-    res.render("PerfilAdmin.html")
+app.get('/MiPerfilA',async(req, res) => {
+    const administrador = require('../models/administradores.js');
+    try {
+        const correo = req.session.correo;
+
+        if (!correo) {
+            return res.redirect('/IniciarSesion');
+        }
+
+        // Buscar al usuario con el correo guardado en la sesión
+        const userBD = await administrador.findOne({ correo: correo });
+
+        if (!userBD) {
+            console.log("No se encontró el administrador en la base de datos.");
+            return res.redirect('/IniciarSesion');
+        }
+
+        // Si el usuario existe, pasar los datos a la vista
+        res.render('PerfilAdmin', { admin:userBD });
+        
+    } catch (error) {
+        console.error("Error al obtener datos del administrador:", error);
+        res.status(500).send("Ocurrió un error al obtener los datos del administrador.");
+    }
 });
 
 //Configuración del perfil del usuario final
@@ -243,16 +300,16 @@ app.post('/registrarUsuario', (req, res) => {
 //Registro de administradores (manual)
 const registrarAdmin = async () => {
     const admin = new administrador({
-        nombre: "Sidney",
+        nombre: "Rayner",
         apellido: "Rodríguez",
-        correo: "sidney@gmail.com",
-        fechaNacimiento: 2005 - 5 - 27,
+        correo: "rayner@gmail.com",
+        fechaNacimiento: 2005 - 7 - 20,
         tipoId: "cedula",
-        numId: 119360592,
+        numId: 118870847,
         provincia: "Alajuela",
-        canton: "Central",
-        constrasenna: "Pepsi"
-    })
+        canton: "Atenas",
+        constrasenna: "Contra4"
+    }) 
 
     const resultado = await admin.save();
 }
@@ -272,7 +329,7 @@ app.post('/iniciarSesion', async(req, res) => {
 
         if (userBD) {
 
-            //prueba para ver datos ingresados
+            /*prueba para ver datos ingresados
             console.log("Datos en la base de datos (Administrador):", userBD); //prueba
 
             console.log("Correo ingresado:", data.correo);
@@ -282,7 +339,7 @@ app.post('/iniciarSesion', async(req, res) => {
             console.log("Contraseña ingresada:", data.contrasenna);
             console.log("Tipo de contraseña ingresada:", typeof data.contrasenna);
             console.log("Tipo de contraseña en la base de datos:", typeof userBD.constrasenna);
-            //fin prueba1
+            fin prueba1 */
 
             const inputPassword = data.contrasenna.trim();
             const dbPassword = userBD.constrasenna.trim();
@@ -292,6 +349,8 @@ app.post('/iniciarSesion', async(req, res) => {
 
             // Validar contraseña
             if (inputPassword === dbPassword) {
+                // Almacenar el correo del usuario en la sesión
+                req.session.correo = data.correo;
                 console.log("Inicio de sesión exitoso como administrador.");
                 return res.redirect('/InicioA');
             } else {
@@ -304,10 +363,8 @@ app.post('/iniciarSesion', async(req, res) => {
         userBD = await usuario.findOne({ correo: data.correo });
 
         if (userBD) {
-
-            console.log("Datos en la base de datos (Usuario):", userBD);//prueba
-            
-            //prueba para ver datos ingresados
+            /*prueba para ver datos ingresados
+            console.log("Datos en la base de datos (Usuario):", userBD);
             console.log("Correo ingresado:", data.correo);
             console.log("Tipo de correo ingresada:", typeof data.correo);
             console.log("Tipo de correo en la base de datos:", typeof userBD.correo);
@@ -315,7 +372,7 @@ app.post('/iniciarSesion', async(req, res) => {
             console.log("Contraseña ingresada:", data.contrasenna);
             console.log("Tipo de contraseña ingresada:", typeof data.contrasenna);
             console.log("Tipo de contraseña en la base de datos:", typeof userBD.constrasenna);
-            //fin prueba1
+            fin prueba1*/
 
             const inputPassword = data.contrasenna.trim();
             const dbPassword = userBD.constrasenna.trim();
@@ -324,8 +381,9 @@ app.post('/iniciarSesion', async(req, res) => {
             console.log(`Contraseña en la base de datos (normalizada): [${dbPassword}]`); //prueba
 
             // Validar contraseña
-            /*if (userBD.contrasenna === data.contrasenna) {*/
             if (inputPassword === dbPassword) {
+                // Almacenar el correo del usuario en la sesión
+                req.session.correo = data.correo;
                 console.log("Inicio de sesión exitoso como usuario.");
                 return res.redirect('/InicioU');
             } else {
@@ -508,6 +566,40 @@ app.post('/enviarCorreo', async (req, res) => {
 
 
 //Métodos GET
+
+// Obtener todos los usuarios registrados
+app.get('/obtenerUsuarios', async (req, res) => {
+    try {
+        const usuarios = await usuarioModel.find({});
+        console.log("Usuarios obtenidos correctamente.");
+        res.status(200).json(usuarios); // Asegúrate de enviar un array JSON
+    } catch (err) {
+        console.error("Error al obtener los usuarios:", err);
+        res.status(500).json({
+            mensaje: "Error al obtener los usuarios.",
+            error: err.message,
+        });
+    }
+});
+
+
+
+// Obtener todos los eventos activos
+app.get('/obtenerEventosActivos', async (req, res) => {
+    try {
+        const eventosActivos = await eventoModel.find({ activo: true }); // Asegúrate de que los eventos tengan este campo
+        console.log("Eventos activos obtenidos correctamente.");
+        res.status(200).json(eventosActivos); // Asegúrate de enviar un array JSON
+    } catch (err) {
+        console.error("Error al obtener los eventos activos:", err);
+        res.status(500).json({
+            mensaje: "Error al obtener los eventos activos.",
+            error: err.message,
+        });
+    }
+});
+
+
 
 
 
