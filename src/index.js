@@ -19,6 +19,9 @@ app.set('view engine', 'ejs')
 //Archivos estáticos, saber cómo llegar a la carpeta public
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Imagenes, cómo llegar
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 //BODY PARSER
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -167,6 +170,20 @@ app.get('/Nosotros', (req, res) => {
     res.render("Nosotros.html")
 });
 
+//Eventos disponibles
+app.get('/EventosDisponibles', async(req, res) => {
+    const Evento = require('../models/eventos.js');
+    try {
+        // Obtener todos los eventos de la base de datos
+        const eventos = await Evento.find();
+        res.render('EventosUI', { eventos: eventos });
+
+    } catch (error) {
+        console.error("Error al obtener los eventos:", error);
+        res.status(500).send("Error al obtener los eventos.");
+    }
+});
+
 //Eventos - conciertos
 app.get('/EventosConciertos', (req, res) => {
     res.render("conciertos.html")
@@ -296,7 +313,6 @@ app.get('/SolicitudReembolso', (req, res) => {
 });
 
 //Pagina de Actualizacion de Eventos
-// Página de Actualización de Eventos
 app.get('/ActualizacionEventos', async (req, res) => {
     try {
         const eventos = await eventoModel.find(); // Obtén todos los eventos de la base de datos
