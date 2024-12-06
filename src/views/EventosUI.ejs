@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEPORTES</title>
+    <title>EVENTOS</title>
     <link rel="stylesheet" type="text/css" media="screen" href="Eventos/eventos.css">
     <link rel="stylesheet" href="https://use.typekit.net/ltx2luq.css">
 
@@ -19,7 +19,7 @@
 
         <div class="header-right">
                 <li class="opciones-menu-header">
-                <a href="/EventosDisponibles">EVENTOS</a>
+                <a>EVENTOS</a>
                 <ul class="sub-menu-header">
                     <li class="opciones-submenu-header"><a href="/EventosFiestas">FIESTAS</a></li>
                     <li class="opciones-submenu-header"><a href="/EventosDeportes">DEPORTES</a></li>
@@ -42,27 +42,30 @@
     </div>
 </form>
 </header>
-        <h1>DEPORTES</h1>
+        <h1>EVENTOS</h1>
 
         
         <div class="proximos-eventos">
-            <div class="container-evento">
-                <a href="/InformacionEvento">
-                    <img src="IMG/deporte1.png" alt="portada evento deporte" class="imagen-evento" width="300rem" height="380rem">
-                    <h4>PÁDEL TOUR</h4>
-                    <div class="info-evento">
-                        <div class="info-item">
-                            <p>📅</p>
-                            <p class="info-p">Sab, Nov 02, 2024, 9:00 PM</p>
+            <% eventos.forEach(evento => { %>
+                <div class="container-evento">
+                    <a href="/InformacionEvento/<%= evento.nombre %>">
+                        <img src="/uploads/<%= evento.foto %>" alt="<%= evento.titulo %>" class="imagen-evento" width="300rem" height="380rem">
+                        <h4><%= evento.titulo %></h4>
+                        <div class="info-evento">
+                            <div class="info-item">
+                                <p>📅</p>
+                                <p class="info-p"><%= new Date(evento.fecha).toLocaleString('es-CR', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %></p>
+                            </div>
+                            <div class="info-item">
+                                <p>📍</p>
+                                <p class="info-p"><%= evento.lugar %></p>
+                            </div>
                         </div>
-                        <div class="info-item">
-                            <p>📍</p>
-                            <p class="info-p">Complejo Deportivo Furati</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>    
+                    </a>
+                </div>    
+            <% }) %>
+        </div>
+          
 
         <footer>
         <div class="footer-container">
@@ -70,15 +73,17 @@
                 <span class="footer-logo">EVENTIFY</span>
             </div>
           <div class="footer-center">
-                <a href="/TerminosCondiciones">Términos y condiciones</a>
-                <a href="/Soporte">Ayuda</a>
-                <a href="/PoliticaPrivacidad">Política de Privacidad</a>
-                <a href="/Contacto">Contáctanos</a>
+            <a href="/TerminosCondiciones">Términos y condiciones</a>
+            <a href="/Soporte">Ayuda</a>
+            <a href="/PoliticaPrivacidad">Política de Privacidad</a>
+            <a href="/Contacto">Contáctanos</a>
           </div>
           <div class="footer-right">
             <a href="https://www.facebook.com" target="_blank" class="social">Facebook</a>
+           
             <a href="https://www.instagram.com" target="_blank" class="social">Instagram</a>
-            <a href="https://www.twitter.com" target="_blank" class="social">Twitter</a>
+           
+           <a href="https://www.twitter.com" target="_blank" class="social">Twitter</a>
           </div>
         </div>
         <div class="footer-bottom">

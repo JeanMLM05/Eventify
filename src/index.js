@@ -3,11 +3,8 @@ const mongoose = require('mongoose');
 const app = express();
 const nodemailer = require('nodemailer');
 const session = require('express-session');
-const multer = require('multer');
 const usuarioModel = require('../models/usuarios.js');
 const eventoModel = require('../models/eventos.js');
-const administradorModel = require('../models/administradores.js');
-
 
 
 const path = require('path'); //unifica elementos
@@ -30,33 +27,6 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
-
-// Configuración de Multer para almacenar imágenes
-
-// Configuración de almacenamiento para Multer
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads/'); // Asegúrate de que esta carpeta exista
-    },
-    filename: (req, file, cb) => {
-        const uniqueName = `${Date.now()}-${file.originalname}`;
-        cb(null, uniqueName);
-    }
-});
-
-// Filtro para validar tipos de archivos
-const fileFilter = (req, file, cb) => {
-    const allowedTypes = /jpeg|jpg|png/;
-    const isValidType = allowedTypes.test(file.mimetype) && allowedTypes.test(path.extname(file.originalname).toLowerCase());
-    if (isValidType) {
-        cb(null, true);
-    } else {
-        cb(new Error("Solo se permiten imágenes JPEG, JPG o PNG."));
-    }
-};
-
-// Middleware de Multer
-const upload = multer({ storage: storage, fileFilter: fileFilter });
 
 
 app.listen(3000, () => {
@@ -193,25 +163,13 @@ app.get('/EventosFiestas', (req, res) => {
 });
 
 //Página de Métodos de pago usuario
-app.get('/MetodosDePago', (req, res) => {
+app.get('/MetodoPago', async (req, res) => {
     res.render("MetodoPago.html")
 });
 
 //Página Inicio Admin
-app.get('/InicioA',(req, res) => {
-    const cantUsuarios = async()=>{
-        try {
-            const cantidad = await usuario.countDocuments(); // Cuenta los documentos en la colección
-            const eventosActivos = await evento.countDocuments();
-            const admins = await administradorModel.find({}, 'nombre correo numId');
-
-            res.render('PagInicioAdmin', { cantidad: cantidad, eventosActivos: eventosActivos, admins: admins }); // Renderiza la vista con el conteo de usuarios
-        } catch (err) {
-            console.error("Error al contar usuarios:", err);
-            res.status(500).send("Error al contar usuarios.");
-        }
-    }
-    cantUsuarios();
+app.get('/InicioA', (req, res) => {
+    res.render("PagInicioAdmin.html")
 });
 
 //Página de administración de eventos
@@ -276,8 +234,8 @@ app.get('/PoliticaPrivacidad', (req, res) => {
 });
 
 //Página contáctanos
-app.get('/Contacto', (req, res) => {
-    res.render("contactanos.html")
+app.get('/Contactos', (req, res) => {
+    res.render("Contacto.html")
 });
 
 //Pagina de Preguntas Frecuentes
@@ -296,17 +254,9 @@ app.get('/SolicitudReembolso', (req, res) => {
 });
 
 //Pagina de Actualizacion de Eventos
-// Página de Actualización de Eventos
-app.get('/ActualizacionEventos', async (req, res) => {
-    try {
-        const eventos = await eventoModel.find(); // Obtén todos los eventos de la base de datos
-        res.render("ActualizacionEventos", { eventos }); // Renderiza la vista con los eventos
-    } catch (err) {
-        console.error("Error al obtener los eventos:", err);
-        res.status(500).send("Error al cargar la lista de eventos.");
-    }
+app.get('/ActualizacionEventos', (req, res) => {
+    res.render("ActualizacionEventos.html")
 });
-
 
 
 
@@ -363,6 +313,9 @@ const registrarAdmin = async () => {
 
     const resultado = await admin.save();
 }
+
+/*llamar al método --> registrarAdmin();*/
+
 
 //Iniciar sesión - post
 app.post('/iniciarSesion', async(req, res) => {
@@ -520,54 +473,6 @@ app.post('/actualizarPerfilUser', async (req, res) => {
 });
 
 
-//Crear Evento - método post
-app.post('/crearEventoBD', upload.single('ImagenEvento'), async (req, res) => {
-    const Evento = require('../models/eventos.js');
-    try {
-        const {
-            nombreEvento,
-            FechaEvento,  // Asegúrate de que este campo esté en formato 'YYYY-MM-DD'
-            LugarEvento,
-            HoraEvento,  // Debería ser en formato 'HH:MM'
-            DescripcionEvento,
-            CostoGeneral,
-            CostoVIP,
-            Regla1,
-            Regla2,
-            Regla3
-        } = req.body;
-
-        // Verificar que el archivo fue subido
-        if (!req.file) {
-            throw new Error("No se subió ninguna imagen.");
-        }
-
-        // Crear un nuevo evento
-        const nuevoEvento = new Evento({
-            titulo: nombreEvento,
-            fecha: new Date(FechaEvento),  // Convertir FechaEvento a un objeto Date
-            lugar: LugarEvento,
-            hora: HoraEvento,  // Guardar la hora como String en formato HH:MM
-            descripcion: DescripcionEvento,
-            precioGeneral: parseFloat(CostoGeneral),  // Convertir CostoGeneral a número
-            precioVip: parseFloat(CostoVIP),  // Convertir CostoVIP a número
-            foto: req.file.filename,  // Nombre del archivo subido
-            reglas: [Regla1, Regla2, Regla3]  // Array de reglas
-        });
-
-        // Guardar el evento en la base de datos
-        await nuevoEvento.save();
-        console.log("Evento creado exitosamente:", nuevoEvento);
-
-        // Redirigir a la página de administración de eventos
-        res.redirect('/AdministrarEventos');
-    } catch (error) {
-        console.error("Error al crear el evento:", error.message);
-        res.status(500).send("Error al procesar la solicitud: " + error.message);
-    }
-});
-
-
 // Update de datos en PagCompraFinal - post
 app.post('/registrarCompra', async (req, res) => {
     try {
@@ -662,6 +567,18 @@ app.post('/enviarCorreo', async (req, res) => {
 
 //Métodos GET
 
+// Obtener todos los usuarios registrados
+app.get('/contarUsuarios', async (req, res) => {
+    try {
+        const cantidadUsuarios = await usuarioModel.countDocuments(); // Cuenta los documentos en la colección
+        res.render('contarUsuarios', { cantidadUsuarios }); // Renderiza la vista con el conteo de usuarios
+    } catch (err) {
+        console.error("Error al contar usuarios:", err);
+        res.status(500).send("Error al contar usuarios.");
+    }
+});
+
+
 
 // Obtener todos los eventos activos
 app.get('/obtenerEventosActivos', async (req, res) => {
@@ -678,5 +595,6 @@ app.get('/obtenerEventosActivos', async (req, res) => {
     }
 });
 
-//MetodoPago Rutas 
 
+
+//get
