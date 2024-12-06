@@ -68,7 +68,7 @@ app.get('/InformacionEvento', (req, res) => {
 });
 
 //Perfil del usuario final
-app.get('/MiPerfilU', async(req, res) => {
+app.get('/MiPerfilU',async(req, res) => {
     const usuario = require('../models/usuarios.js');
     try {
         const correo = req.session.correo;
@@ -86,7 +86,7 @@ app.get('/MiPerfilU', async(req, res) => {
         }
 
         // Si el usuario existe, pasar los datos a la vista
-        res.render('PerfilUsuario', { usuario: userBD });
+        res.render('PerfilUsuario', { usuario:userBD });
         
     } catch (error) {
         console.error("Error al obtener datos del usuario:", error);
