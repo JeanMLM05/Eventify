@@ -10,7 +10,6 @@
 <body>
 
 <!-- HEADER -->
-
 <header>
     <a href="#" class="header-left">
         <img src="../IMG/eventify-logo.png" alt="Eventify Logo" class="header-logo">
@@ -22,52 +21,52 @@
         <a href='/ConfiguracionGeneral'>CONFIGURACIÓN</a>
         <a href='/MiPerfilA'>MI PERFIL</a>
     </div>
-    </header>
+</header>
 
-<!-- Contenedor Principal del Dashboard -->
-<div class="dashboard-container">
-    <!-- Bloques de Información -->
-    <div class="info-container">
-        <div class="info-block">
-            <h3>Eventos Activos</h3>
-            <p><%= eventosActivos %></p>
+<!-- Contenedor Principal -->
+<div class="main-container">
+    <!-- Contenedor Principal del Dashboard -->
+    <div class="dashboard-container">
+        <!-- Bloques de Información -->
+        <div class="info-container">
+            <div class="info-block">
+                <h3>Eventos Activos</h3>
+                <p><%= eventosActivos %></p>
+            </div>
+            <div class="info-block">
+                <h3>Usuarios Registrados</h3>
+                <p><%= cantidad %></p>
+            </div>
+            <div class="info-block">
+                <h3>Ventas Totales</h3>
+                <p id="ventas-totales"></p>
+            </div>
         </div>
-        <div class="info-block">
-            <h3>Usuarios Registrados</h3>
-            <p><%= cantidad %></p>
-        </div>
-        <div class="info-block">
-            <h3>Ventas Totales</h3>
-            <p id="ventas-totales"></p>
-        </div>
-    </div>
 
-    <!-- Botones de Acción -->
-
-
-    <!-- Gestión de Usuarios -->
-    <div class="user-management">
-        <h3>Nuestros Administradores</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Correo Electrónico</th>
-                    <th>Número de ID</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% admins.forEach(admin => { %>
+        <!-- Gestión de Usuarios -->
+        <div class="user-management">
+            <h3>Nuestros Administradores</h3>
+            <table>
+                <thead>
                     <tr>
-                        <td><%= admin.nombre %></td>
-                        <td><%= admin.correo %></td>
-                        <td><%= admin.numId %></td>
+                        <th>Nombre</th>
+                        <th>Correo Electrónico</th>
+                        <th>Número de ID</th>
                     </tr>
-                <% }) %>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <% admins.forEach(admin => { %>
+                        <tr>
+                            <td><%= admin.nombre %></td>
+                            <td><%= admin.correo %></td>
+                            <td><%= admin.numId %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
     </div>
-    
+</div>
 
 <!-- FOOTER -->
 <footer>
