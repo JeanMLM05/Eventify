@@ -329,6 +329,7 @@ app.get('/PoliticaPrivacidad', (req, res) => {
 });
 
 //Página contáctanos
+<<<<<<< HEAD
 app.get('/Contactos', (req, res) => {
     res.render("contactanos.html")
 });
