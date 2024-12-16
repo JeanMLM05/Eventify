@@ -45,24 +45,69 @@
 
         <!-- Parte izquierda de la página: foto del evento -->
         <div class="contenedor-foto" id="contenedor-foto">
-            <img class="foto-evento" src="/uploads/<%= evento.foto %>" alt="Imagen ilustrativa del evento">
+            <img class="foto-evento" src="/IMG/evento1-.png" alt="Imagen ilustrativa del evento">
         </div>
 
         <!-- Contenedor principal "Mi perfil" -->
         <div class="contenedor-datos-evento" id="contenedor-datos-evento">
-            <h1 class="titulo-evento" id="titulo-evento"><%= evento.titulo %></h1>
+            <h1 class="titulo-evento" id="titulo-evento">EL CULTO:RITUAL</h1>
 
             <div class="datos-evento" id="datos-evento">
-                <p>📅<span><%= new Date(evento.fecha).toLocaleDateString() %></span></p>
-                <p>📍<span><%= evento.lugar %></span></p>
-                <p>🕒<span><%= evento.hora %></span></p>
+                <p>📅<span>7 de diciembre de 2024</span></p>
+                <p>📍<span>Centro de Eventos La Uruca</span></p>
+                <p>🕒<span>21:00</span></p>
             </div>
 
             <div class="descripcion-evento" id="descripcion-evento">
-                <p><%= evento.descripcion %></p>
+                <p>Prepárate para la noche más aterradora y emocionante del año. No te pierdas esta fiesta llena de
+                    buena música y un gran ambiente. Premios a los mejores 3 disfraces de la noche. ¡Te esperamos para
+                    una fiesta de disfraces inolvidable!</p>
             </div>
 
-            <!-- Aquí van las entradas, precios y demás información -->
+            
+            <!--<div class="cantEntradas" id="cantEntradas2">
+                <select id="cantEntradas" name="cantEntradas1">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                </select>
+            </div>
+
+            <div class="cantEntradas" id="cantEntradas2">
+                <select id="cantEntradas" name="cantEntradas2">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                </select>
+            </div>
+        -->
+            
         </div>
     </div>
 

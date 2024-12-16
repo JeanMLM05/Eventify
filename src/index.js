@@ -93,8 +93,8 @@ app.get('/InicioU', (req, res) => {
 });
 
 //Página de información de un evento (detalles del evento)
-app.get('/InformacionEvento/:eventoNombre', async (req, res) => {
-    const eventoNombre = req.body.titulo;
+app.get('/InformacionEvento', (req, res) => {
+    /*const eventoNombre = req.body.titulo;
     const Evento = require('../models/eventos.js');
 
     try {
@@ -111,7 +111,8 @@ app.get('/InformacionEvento/:eventoNombre', async (req, res) => {
     } catch (error) {
         console.error("Error al obtener el evento:", error);
         res.status(500).send("Error al obtener el evento.");
-    }
+    }*/
+    res.render("InfoEvento.html")
 });
 
 //Perfil del usuario final
@@ -329,7 +330,7 @@ app.get('/PoliticaPrivacidad', (req, res) => {
 
 //Página contáctanos
 app.get('/Contactos', (req, res) => {
-    res.render("Contacto.html")
+    res.render("contactanos.html")
 });
 
 //Pagina de Preguntas Frecuentes
